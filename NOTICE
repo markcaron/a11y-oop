@@ -1,0 +1,22 @@
+Accessibility, on purpose (a11y-oop)
+
+Unchanged RHDS accessibility Markdown is retained from Red Hat Design System,
+RedHat-UX/red-hat-design-system, revision
+7b65f1378496ac57cc207be8f84822afc8180345, under vendor/rhds/accessibility.
+Hashes and the historical website adaptation ledger are preserved in
+sources/legacy/rhds-sources.json. The website adaptations themselves remain
+on the site-archive branch.
+
+Historical checklist synthesis incorporates contributor-supplied Greg Gibson
+Web QA exports, UX Dot accessibility planning material, a DX checklist cheat
+sheet, and a JSON checklist attributed by the contributor to Heydon Pickering.
+The historical record and mappings are retained in sources/legacy/checklist.json
+for provenance and review, not as approved guidance. Source PDFs are not distributed.
+
+The historical RHDS component review ledger is retained in
+sources/legacy/rhds-component-sources.json; it is not a bundle of those components.
+
+RHDS/W3C quotations and third-party material retain their original attribution
+and applicable terms. The project LICENSE does not replace third-party terms
+or grant rights in third-party trademarks. Website fonts and visual assets
+have not been carried into this skills branch.
