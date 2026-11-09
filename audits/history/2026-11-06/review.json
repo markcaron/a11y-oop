@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "reviewed": "2026-11-06",
+  "result": "Automated scan and selected interaction checks passed; whole-site conformance not established.",
+  "skills": [
+    "uxd-a11y-source-audit",
+    "uxd-a11y-runtime-review",
+    "uxd-a11y-release"
+  ],
+  "alloy": {
+    "previous": "0.3.1",
+    "current": "0.7.0"
+  },
+  "axeVersion": "4.14.0",
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+  "profile": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa",
+    "best-practice"
+  ],
+  "sourceState": "Uncommitted local work; file hashes identify reviewed source.",
+  "sourceHashes": {
+    "content/about.md": "7e08ad9773be8ee23a2a95bec0f2aa3592951a079af1a6c3dd5888d6e738eea2",
+    "content/guidelines/accessibility-tools.md": "93d328bc623a35991709f7647da49b7b740129b3181d65217fd4bfac87f55b9d",
+    "content/guidelines/assistive-tech.md": "48197c386424a6799548423f14c57b35d3ee71f2591b32f524a226cfd57206ff",
+    "content/guidelines/ci-cd.md": "73f2ace57860e4ff013c0588fda93805fa3106099882449d83289b3515262775",
+    "content/guidelines/content.md": "13e252bf5171c1c6cd859eca5b213f2fd03686c4c9122bb79c1fb2867c6052b4",
+    "content/guidelines/contributors.md": "d3702765e6164040244f19a8ea27ad136f87716cad56a4eaa14b409600b9281c",
+    "content/guidelines/design.md": "6b968fb98531330a15391e9c3033be0183121ccc14c7266023ebde8056df7288",
+    "content/guidelines/development.md": "8657c581bae6558ec656e47568ceec10958ed9beb22e8b536ed583fc414fdeca",
+    "content/guidelines/fundamentals.md": "8c6b3804ca127caf8c367e5ba06d6098db7bc2b2831a8a01eb9f8b222c6e3fad",
+    "content/guidelines/index.html": "193a43a1a8bf5375818daabdc79e352f83415e8074acffa24aa6bf3a7a1351a0",
+    "content/guidelines/manual-testing.md": "fe6a999f18ce886ecdf0f1a078dc8da5485637c08766c4c2d3fc0dcb7238551e",
+    "content/guidelines/providers.md": "a5a8821676f7f810c1dc50488473f2877c7c8d80c67e7989f43bd0a93a0fa7a6",
+    "content/guidelines/requirements-and-evidence.md": "f6fab2de6b5d0dd28337e6cc0cafc13210d0946b287a6401d00f8e5388f4487f",
+    "content/guidelines/research.md": "a0cdc87ee3a2450e5e60970d5e5d219a3e0325f24c3572ff08d17c3d74e214eb",
+    "content/guidelines/resources.md": "a3796815d4eca343e86bae7c57ad182130780b4dd45ecea380b32c20e646d7d6",
+    "content/guidelines/screen-readers-computer.md": "ded0a870c73e96b21225c3888d469c9bbd8aa18db368c7f8a86334e6aa5ae995",
+    "content/guidelines/screen-readers-mobile.md": "35d48d793963c19505118a9ff2eb66483914d0ca1ca2dbb547550898d4623827",
+    "content/guidelines/screen-readers.md": "f564dc5af8099f0ccb50cdaa86fa9470344a42f07961ce9f78489544d11b17a8",
+    "content/guidelines/tables.md": "5b72591996f494ef8a01630184d48341f9e26f7babb6fee5da81219ccfbb974e",
+    "content/index.html": "94e94ec46ce623c3760af2215800c1f2a5b4d37471a9790e2476eae5f3a009c7",
+    "content/skills-recipes.md": "ab6fddf4f1f51dd44c594826a086df1a1a00e77a0d1a64a77ac9d1399cb55693",
+    "layouts/default.liquid": "0300c91268df37d4dc2717da2fce4d10e48548f75d3f3ef8073aad30da60b302",
+    "layouts/guide.liquid": "4db263835aa244500120ab2da3211fdede6e462d6c12ef11d8e6ba3d7d0e5ee3",
+    "scripts/audit-server.mjs": "b6a5899a386aa544f1ae63bfcee417472f2ba8cfe3becb23c641a419996e3b55",
+    "scripts/check-build.mjs": "1edcc4f95ff537d3d0da59359f6a22f3efb41bb001dcf6cea93bef07843d226d",
+    "scripts/prepare.mjs": "3439557f1d57240664db9557094a342ee0905a9455ae190bf943331b9866fe54",
+    "static/assets/checklist-state.js": "9cd7b1c84cf38bbad10ec051b11b7d585c939c3680467d63d8934c88cef01728",
+    "static/assets/checklist.js": "54d83f9aab885de8394c5d0c9dc1163033c85dab0aef616e82f791028ee793f4",
+    "static/assets/site.css": "5595ed6ecbe4e023c5b7d9c0749a6189aff980d742c8dfff156bf3c0cd4b42af",
+    "static/assets/site.js": "6ea10ccf8192d26c60547b763368314588719adea08ae95eedf95822be40626c"
+  },
+  "matrix": [
+    {
+      "file": "audits/axe-pages-light-1280.json",
+      "mode": "pages",
+      "scheme": "light",
+      "width": 1280,
+      "scans": 31,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 4
+    },
+    {
+      "file": "audits/axe-states-light-1280.json",
+      "mode": "states",
+      "scheme": "light",
+      "width": 1280,
+      "scans": 3,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 1
+    },
+    {
+      "file": "audits/axe-pages-dark-1280.json",
+      "mode": "pages",
+      "scheme": "dark",
+      "width": 1280,
+      "scans": 31,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 4
+    },
+    {
+      "file": "audits/axe-states-dark-1280.json",
+      "mode": "states",
+      "scheme": "dark",
+      "width": 1280,
+      "scans": 3,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 1
+    },
+    {
+      "file": "audits/axe-pages-light-320.json",
+      "mode": "pages",
+      "scheme": "light",
+      "width": 320,
+      "scans": 31,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 5
+    },
+    {
+      "file": "audits/axe-states-light-320.json",
+      "mode": "states",
+      "scheme": "light",
+      "width": 320,
+      "scans": 3,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 1
+    },
+    {
+      "file": "audits/axe-pages-dark-320.json",
+      "mode": "pages",
+      "scheme": "dark",
+      "width": 320,
+      "scans": 31,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 5
+    },
+    {
+      "file": "audits/axe-states-dark-320.json",
+      "mode": "states",
+      "scheme": "dark",
+      "width": 320,
+      "scans": 3,
+      "violations": 0,
+      "horizontalOverflow": 0,
+      "needsReviewRules": 1
+    }
+  ],
+  "totalScans": 136,
+  "violations": 0,
+  "findings": [
+    {
+      "id": "AOP01",
+      "checks": [
+        "VIS01"
+      ],
+      "type": "normative violation",
+      "criterion": "1.4.11",
+      "impact": "moderate",
+      "confidence": "confirmed",
+      "status": "corrected and retested",
+      "issue": "Required input/select/textarea boundaries contrasted 1.49:1 in light mode and 2.10:1 in dark mode against their surfaces.",
+      "fix": "Separate control-border token: #778078 on #fff (4.08:1) and #8ca493 on #233129 (5.09:1). Decorative dividers keep their lighter token.",
+      "evidence": "Rendered light-mode CSS inspected; dark provider palette checked; full light/dark scans and control checks after change."
+    },
+    {
+      "id": "AOP02",
+      "checks": [
+        "TXT02"
+      ],
+      "type": "automated naming finding",
+      "criterion": "2.5.3",
+      "impact": "serious (axe classification)",
+      "confidence": "confirmed scanner flag; no human speech-input test",
+      "status": "corrected and retested",
+      "issue": "axe flagged the brand on every page: decorative text glyph and an overriding aria-label created ambiguous visible/name matching.",
+      "fix": "Use an empty-alt logo image and derive the link name from visible brand text plus a hidden home suffix.",
+      "evidence": "31 baseline label-content-name-mismatch results; zero after change in all four page profiles. Native accessibility name is a11y oop home."
+    },
+    {
+      "id": "AOP03",
+      "checks": [
+        "STR04"
+      ],
+      "type": "best practice",
+      "impact": "moderate",
+      "confidence": "confirmed",
+      "status": "corrected and retested",
+      "issue": "Adapted explanatory asides created repeated unnamed complementary landmarks; desktop/mobile screen-reader navigation groups also lacked distinct names.",
+      "fix": "Use non-landmark note wrappers and distinct navigation labels without changing prose.",
+      "evidence": "Baseline landmark-unique results on four pages; none in final scans."
+    },
+    {
+      "id": "AOP04",
+      "checks": [
+        "STR02"
+      ],
+      "type": "best practice",
+      "impact": "moderate",
+      "confidence": "confirmed",
+      "status": "corrected and retested",
+      "issue": "A Note label in the development introduction skipped from the page h1 to h3.",
+      "fix": "Keep the word Note as emphasized text instead of a structural heading.",
+      "evidence": "Baseline heading-order result; none after change. Not independently asserted as a WCAG failure."
+    },
+    {
+      "id": "AOP05",
+      "checks": [
+        "STR03",
+        "INT03"
+      ],
+      "type": "source focus risk",
+      "criterion": "2.4.3 / 2.4.7 related",
+      "impact": "moderate",
+      "confidence": "source risk before change; corrected runtime behavior observed",
+      "status": "corrected and retested",
+      "issue": "Focus ownership was checked after hiding a filtered-out card, when the browser could already have moved focus away.",
+      "fix": "Capture focus ownership before filtering, then focus a results heading that becomes visible on focus.",
+      "evidence": "Changing TAB01 to Pass under the Not assessed filter reduced four visible checks to three and placed focus on Checklist results. Subsequent Tab navigation reached Export, Import and Start over."
+    },
+    {
+      "id": "AOP06",
+      "checks": [
+        "INT01"
+      ],
+      "type": "semantic naming finding",
+      "impact": "minor",
+      "confidence": "confirmed source issue",
+      "status": "corrected and retested",
+      "issue": "Home statistics used aria-label on an unnamed generic div, flagged as incomplete by axe.",
+      "fix": "Give the intentionally named statistics collection a group role.",
+      "evidence": "No aria-prohibited-attr result on home in final scans."
+    },
+    {
+      "id": "AOP07",
+      "checks": [
+        "VIS03"
+      ],
+      "type": "reflow finding",
+      "criterion": "1.4.10 related",
+      "impact": "moderate",
+      "confidence": "confirmed",
+      "status": "corrected and retested",
+      "issue": "The recipe page code block lacked the prose wrapper that constrains overflow; the whole page scrolled horizontally at 320 CSS pixels.",
+      "fix": "Apply the existing prose/code styling so the code example can scroll within its own region.",
+      "evidence": "Baseline 320-pixel page overflow; no page-wide overflow in all 124 final page scans."
+    },
+    {
+      "id": "AOP08",
+      "checks": [
+        "INT02"
+      ],
+      "type": "normative violation",
+      "criterion": "2.1.1",
+      "impact": "serious (axe classification)",
+      "confidence": "confirmed",
+      "status": "corrected and retested",
+      "issue": "Overflowing code examples on CI/CD, Content and Development could not receive keyboard focus at narrow widths.",
+      "fix": "Give code examples tabindex=0 only when they actually overflow; ResizeObserver updates this as layout changes.",
+      "evidence": "Three baseline scrollable-region-focusable results; none in final 320-pixel profiles."
+    }
+  ],
+  "manualChecks": [
+    {
+      "id": "M01",
+      "task": "Keyboard bypass",
+      "status": "Pass within recorded scope",
+      "method": "Native browser keyboard",
+      "expected": "Tab reaches the skip link; Enter moves to main.",
+      "actual": "Observed focus on Skip to main content, then main."
+    },
+    {
+      "id": "M02",
+      "task": "Filtered-result focus",
+      "status": "Pass within recorded scope",
+      "method": "Native browser result control and focus observation",
+      "expected": "Changing a focused card so it leaves the current filter gives focus a meaningful visible destination.",
+      "actual": "Four checks became three; focus moved to visible Checklist results heading. Selection used the native control value API, not a full select-menu keyboard test."
+    },
+    {
+      "id": "M03",
+      "task": "Modal keyboard and cancellation",
+      "status": "Pass within recorded scope",
+      "method": "Native browser keyboard and accessibility-tree observation",
+      "expected": "Keyboard can open reset, initial focus is least destructive, Tab reaches confirm, Escape cancels and returns focus.",
+      "actual": "Three Tabs from results heading and Enter opened reset. Keep my progress received focus; Tab reached Clear all progress; Escape returned to Start over. Background content was absent from modal AX scope."
+    },
+    {
+      "id": "M04",
+      "task": "Visible focus",
+      "status": "Pass within recorded scope",
+      "method": "Rendered style and screenshot",
+      "expected": "Focused toolbar action has a visible indicator.",
+      "actual": "Start over matched :focus-visible; solid 3px rgb(153,80,0) outline. Dialog screenshot recorded cancel focus and unobscured content."
+    },
+    {
+      "id": "M05",
+      "task": "Reset",
+      "status": "Pass within recorded scope",
+      "method": "Native browser interaction",
+      "expected": "Confirmation clears results, keeps filters and returns focus.",
+      "actual": "After confirm: 0 of 66 reviewed, four table checks restored, filters unchanged, focus on Start over."
+    },
+    {
+      "id": "M06",
+      "task": "Required exclusion reason",
+      "status": "Pass within recorded scope",
+      "method": "Native browser interaction and accessibility tree",
+      "expected": "Unexplained N/A does not count; expose its reason control; count only once a reason is supplied.",
+      "actual": "Details opened automatically; required reason and instruction exposed; count stayed zero until text was entered, then became one. Test result was cleared afterward."
+    }
+  ],
+  "coverageGaps": [
+    {
+      "id": "G01",
+      "status": "Not tested",
+      "method": "Human assistive technology",
+      "details": "No real screen-reader speech, speech-input, magnifier, switch-control or participant session. AX snapshots are not substitutes. Dynamic announcement quality still needs human verification."
+    },
+    {
+      "id": "G02",
+      "status": "Not tested",
+      "method": "OS forced colors / high contrast",
+      "details": "CSS fallback reviewed, but no Windows forced-colors or OS high-contrast session was executed. Light/dark tests use a CSS color-scheme override."
+    },
+    {
+      "id": "G03",
+      "status": "Not tested",
+      "method": "Additional adaptation",
+      "details": "No actual browser zoom/text-only 200% session, WCAG text-spacing override, portrait/landscape device session or complete target-size exception inventory in this run. Narrow 320-pixel reflow scans do not replace these."
+    },
+    {
+      "id": "G04",
+      "status": "Not tested",
+      "method": "Additional environments and flows",
+      "details": "Single Chrome 156/macOS-reported browser environment. No Safari/Firefox/mobile matrix, full import/export file roundtrip, blocked-storage browser simulation, or JavaScript-disabled browser session in this run. Unit import validation passes. Dialog state scans open dialogs directly and are not end-to-end file-upload tests."
+    },
+    {
+      "id": "G05",
+      "status": "Needs review / partial triage",
+      "method": "Axe incomplete contrast",
+      "details": "Axe retains non-character arrow/keycap checks, offscreen media-table cells at 320px, and a reset-dialog paragraph background-overlap result. Decorative arrows do not carry independent meaning. Reset paragraph was visibly legible and measured #242c28 on #fff in light mode; dark CSS uses #eff3eb on #233129. Offscreen cells remain review items, not failures or automated passes."
+    }
+  ]
+}

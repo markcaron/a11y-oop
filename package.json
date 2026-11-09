@@ -1,0 +1,19 @@
+{
+  "name": "a11y-oop",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prepare:site": "node scripts/prepare.mjs",
+    "build": "node scripts/prepare.mjs && alloy build && node scripts/check-build.mjs",
+    "dev": "node scripts/prepare.mjs && alloy dev --port 3000",
+    "test": "node --test test/*.test.mjs",
+    "audit": "npm run build && node scripts/audit-server.mjs",
+    "audit:check": "node scripts/check-audit.mjs"
+  },
+  "engines": {
+    "node": ">=20.11"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0"
+  }
+}

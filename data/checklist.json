@@ -1,0 +1,2994 @@
+{
+  "schemaVersion": "1.0.0",
+  "updated": "2026-11-06",
+  "scope": "Normalized planning catalog from supplied exports plus selected already-reviewed RHDS guidance. Not a complete WCAG conformance checklist; no application testing performed.",
+  "roles": {
+    "content": "Content and multimedia",
+    "design": "UX and visual design",
+    "dev": "Product engineering / CMS builders",
+    "system": "Design-system contributors",
+    "qa": "QA and accessibility specialists",
+    "research": "UX research",
+    "locale": "Localization and internationalization",
+    "delivery": "Product / delivery / publishing"
+  },
+  "roleSummaries": [
+    [
+      "content",
+      "Own meaning, alternatives and instructions.",
+      "TXT01–04, IMG01–02, MED01, STR01–03, FRM01–02, TAB01, LOC02",
+      "Content spec → localized, reviewed output",
+      "R13, R14, R18"
+    ],
+    [
+      "design",
+      "Own accessible interaction and presentation intent.",
+      "STR03–05, VIS01–06, INT03–10, FRM01–03, TAB03–04",
+      "Annotated flows/states → tested prototype intent",
+      "R11, R14"
+    ],
+    [
+      "dev",
+      "Own accessible product composition and behavior.",
+      "INT01–10, FRM01–03, TAB02–04, LOC01, SYS01–02",
+      "Rendered implementation → executable evidence",
+      "R02, R04, R06–09"
+    ],
+    [
+      "system",
+      "Own safe component APIs and documented boundaries.",
+      "SYS01–03 plus shared component patterns",
+      "Versioned contract → tested primitives and guidance",
+      "R03, R07, R09, R15, R18"
+    ],
+    [
+      "qa",
+      "Own verification scope, evidence and retest.",
+      "QA01–06 and applicable shared modules",
+      "Coverage plan → findings, evidence and retest",
+      "R02, R06, R08, R16–17"
+    ],
+    [
+      "research",
+      "Own inclusive participation and observed task needs.",
+      "RES01–02; table/form/navigation comprehension studies",
+      "Access plan → observed barriers and learning",
+      "R12, R16"
+    ],
+    [
+      "locale",
+      "Own linguistic/direction review with implementation partners.",
+      "LOC01–03; translated names, alternatives, media and data",
+      "Locale inventory → language-qualified journey evidence",
+      "R13–14, R17"
+    ],
+    [
+      "delivery",
+      "Own scope, resources, current policies and unresolved release decisions.",
+      "QA04–07; product/CMS/analytics/privacy overlays",
+      "Approved baseline → owned residual barriers and upkeep",
+      "R08, R17"
+    ]
+  ],
+  "checks": [
+    {
+      "id": "STR01",
+      "topic": "Structure and navigation",
+      "title": "Page and embedded titles",
+      "check": "Give each page a descriptive title. Name iframes and embedded media according to their purpose; do not use one generic label for unrelated embeds.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Rendered title and accessible embed name in context.",
+      "sources": [
+        "H027",
+        "S1 p1",
+        "S4 p2",
+        "S6 p4",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "2.4.2",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "STR02",
+      "topic": "Structure and navigation",
+      "title": "Heading hierarchy",
+      "check": "Write headings that introduce real sections and reflect their relationships. Check rendered heading structure; treat a single h1 as a product convention, rather than an automatic WCAG test.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Outline, rendered headings and relationship review.",
+      "sources": [
+        "H006",
+        "H007",
+        "H073",
+        "S1 p1",
+        "S4 p1",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "1.3.1",
+        "2.4.6"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "STR03",
+      "topic": "Structure and navigation",
+      "title": "Reading and focus order",
+      "check": "Preserve meaning and operability in visual, DOM, screen-reader and sequential focus order. They need not be mechanically identical; explicitly document meaningful differences.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "qa",
+        "research"
+      ],
+      "evidence": "Annotated order and observed reading/focus journey.",
+      "sources": [
+        "H033",
+        "S5 p4–5",
+        "S6 p3–4",
+        "S8 p1–2",
+        "RD",
+        "RV"
+      ],
+      "criteria": [
+        "1.3.2",
+        "2.4.3"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "STR04",
+      "topic": "Structure and navigation",
+      "title": "Landmarks and bypass routes",
+      "check": "Use appropriate native sections/landmarks and a suitable mechanism to bypass repeated blocks. Avoid redundant landmarks and unnecessary region proliferation.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "design",
+        "system",
+        "qa"
+      ],
+      "evidence": "Landmark/heading navigation and bypass test.",
+      "sources": [
+        "H052",
+        "H066",
+        "RV"
+      ],
+      "criteria": [
+        "1.3.1",
+        "2.4.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "STR05",
+      "topic": "Structure and navigation",
+      "title": "Findability and consistent navigation",
+      "check": "Use consistent navigation, terminology and identifiable calls to action. Offer a useful contents/navigation aid for long material where appropriate.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "research",
+        "qa"
+      ],
+      "evidence": "Navigation inventory and task-based finding exercise.",
+      "sources": [
+        "H032",
+        "H060",
+        "H074",
+        "H080",
+        "RD",
+        "RC"
+      ],
+      "criteria": [
+        "3.2.3",
+        "3.2.4",
+        "2.4.5"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TXT01",
+      "topic": "Language and content",
+      "title": "Clear, inclusive wording",
+      "check": "Use clear, respectful language; explain unfamiliar acronyms for the audience. Readability and style guidance must be distinguished from an A/AA failure.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "research",
+        "locale",
+        "design"
+      ],
+      "evidence": "Editorial review with intended readers and terminology list.",
+      "sources": [
+        "H008",
+        "H036",
+        "H068",
+        "RC",
+        "S5 p4"
+      ],
+      "criteria": [],
+      "classification": "Inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TXT02",
+      "topic": "Language and content",
+      "title": "Useful links and action names",
+      "check": "Describe destination or action clearly in context. Visible labels should support speech input; accessible names should include the visible label where required.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Visible/name comparison and contextual link review.",
+      "sources": [
+        "H050",
+        "H072",
+        "H090",
+        "S4 p2",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "2.4.4",
+        "2.5.3",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TXT03",
+      "topic": "Language and content",
+      "title": "Unexpected navigation",
+      "check": "Avoid surprising context changes. Explain unusual behavior when needed; opening all links in one window and warning on every off-site link are not universal A/AA requirements.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "qa"
+      ],
+      "evidence": "Navigation and new-context behavior observed.",
+      "sources": [
+        "H070",
+        "S1 p1",
+        "S4 p2"
+      ],
+      "criteria": [
+        "3.2.1",
+        "3.2.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TXT04",
+      "topic": "Language and content",
+      "title": "Text rather than images of text",
+      "check": "Use real text where the required presentation can be achieved with it; account for applicable exceptions and meaningful image descriptions.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Content review and zoom/translation behavior.",
+      "sources": [
+        "H075",
+        "S5 p4",
+        "S6 p3",
+        "RC"
+      ],
+      "criteria": [
+        "1.4.5"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "IMG01",
+      "topic": "Images and visual data",
+      "title": "Contextual text alternatives",
+      "check": "Identify informative, functional, complex and decorative images, SVGs, icons and grouped images. Write alternatives conveying purpose, rather than merely checking that an alt attribute exists.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Asset purpose inventory and rendered accessible names/text alternatives.",
+      "sources": [
+        "H024",
+        "H025",
+        "H069",
+        "H077",
+        "S1 p2",
+        "S4 p1",
+        "S5 p4–5",
+        "S6 p4",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "1.1.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "IMG02",
+      "topic": "Images and visual data",
+      "title": "Complex visualization meaning",
+      "check": "Provide the information or functional equivalent needed to understand charts and diagrams. Decide what needs a short alternative, detailed description, data view or another accessible interaction.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "research",
+        "qa"
+      ],
+      "evidence": "Equivalent interpretation/task with alternative presentation.",
+      "sources": [
+        "H017",
+        "S5 p4",
+        "RC"
+      ],
+      "criteria": [
+        "1.1.1",
+        "1.3.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "MED01",
+      "topic": "Audio, video and motion",
+      "title": "Captions, transcripts and descriptions",
+      "check": "Identify audio-only, video-only, synchronized, live and prerecorded media. Supply applicable alternatives, captions and audio description; verify accuracy and meaningful sounds, not just file presence.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "qa",
+        "dev",
+        "locale",
+        "delivery"
+      ],
+      "evidence": "Media inventory and human review of equivalent information.",
+      "sources": [
+        "H009",
+        "H010",
+        "S5 p5",
+        "S6 p5",
+        "RC"
+      ],
+      "criteria": [
+        "1.2.1",
+        "1.2.2",
+        "1.2.3",
+        "1.2.4",
+        "1.2.5"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "MED02",
+      "topic": "Audio, video and motion",
+      "title": "Player and autoplay controls",
+      "check": "Make player controls keyboard operable and named. Check audio autoplay and pause/stop/hide requirements for moving content under their actual applicability conditions.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "design",
+        "content",
+        "qa",
+        "system"
+      ],
+      "evidence": "Playback/control journey, timing and state observations.",
+      "sources": [
+        "S1 p1",
+        "S3 p1",
+        "S4 p2",
+        "S5 p5",
+        "S6 p5",
+        "RC"
+      ],
+      "criteria": [
+        "1.4.2",
+        "2.1.1",
+        "2.2.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "MED03",
+      "topic": "Audio, video and motion",
+      "title": "Motion preferences and flashing",
+      "check": "Specify meaningful motion, honor reduced-motion preferences and test them. Assess flashing thresholds separately from animation style and reduced-motion support.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "content"
+      ],
+      "evidence": "Preference on/off recording and flashing assessment where relevant.",
+      "sources": [
+        "H018",
+        "H019",
+        "S4 p2",
+        "S5 p5",
+        "S6 p3",
+        "RD"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS01",
+      "topic": "Visual presentation and adaptation",
+      "title": "Contrast in real states",
+      "check": "Measure applicable text and non-text contrast against actual backgrounds, including images, states and themes. Distinguish AA minimums, AAA targets and disabled/decorative exceptions.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Computed/rendered foreground-background values and state captures.",
+      "sources": [
+        "H026",
+        "S1 p1",
+        "S4 p2",
+        "S8 p1",
+        "RD"
+      ],
+      "criteria": [
+        "1.4.3",
+        "1.4.11"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS02",
+      "topic": "Visual presentation and adaptation",
+      "title": "Information beyond color",
+      "check": "Provide a non-color cue for meaningful status, charts, links and controls; verify the cue remains understandable in context.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Grayscale/forced-colors review plus semantic state inspection.",
+      "sources": [
+        "H031",
+        "H051",
+        "S5 p5",
+        "RD"
+      ],
+      "criteria": [
+        "1.4.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS03",
+      "topic": "Visual presentation and adaptation",
+      "title": "Resize, reflow and zoom",
+      "check": "Allow text enlargement to 200% and separately verify reflow at the applicable narrow viewport (typically 320 CSS px for horizontal writing). Preserve content/function and account for two-dimensional content exceptions. Do not treat no fixed widths as the criterion.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Measured viewport/text scale, content and control operation.",
+      "sources": [
+        "H012",
+        "H013",
+        "H016",
+        "H055",
+        "S4 p1–2",
+        "S5 p5",
+        "S6 p4",
+        "RD"
+      ],
+      "criteria": [
+        "1.4.4",
+        "1.4.10"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS04",
+      "topic": "Visual presentation and adaptation",
+      "title": "Typography and text spacing",
+      "check": "Choose legible typography and permit user text-spacing overrides without loss. Minimum body font, avoiding all-caps/thin faces/justification and prescribed line-height are design policies unless a specific requirement is demonstrated.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "system",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Spacing override result and editorial/design review.",
+      "sources": [
+        "H011",
+        "H045",
+        "H046",
+        "H063",
+        "H064",
+        "H067",
+        "S6 p3",
+        "RD"
+      ],
+      "criteria": [
+        "1.4.12"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS05",
+      "topic": "Visual presentation and adaptation",
+      "title": "Forced colors and user preferences",
+      "check": "Test OS/browser forced colors and applicable contrast/theme preferences. Preserve meaning, focus and controls; images versus CSS backgrounds alone cannot establish support.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "design",
+        "system",
+        "qa"
+      ],
+      "evidence": "Real preference environment and observed states.",
+      "sources": [
+        "H023",
+        "RD",
+        "RV"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "VIS06",
+      "topic": "Visual presentation and adaptation",
+      "title": "Orientation and responsive task parity",
+      "check": "Support orientation unless essential and preserve essential information/function across responsive variants. Different layouts need not be pixel-identical.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "locale",
+        "research"
+      ],
+      "evidence": "Portrait/landscape and narrow/wide task outcomes.",
+      "sources": [
+        "H088",
+        "S3 p1",
+        "S4 p1",
+        "S5 p5",
+        "S6 p4",
+        "RD"
+      ],
+      "criteria": [
+        "1.3.4",
+        "1.4.10"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT01",
+      "topic": "Interaction, focus and state",
+      "title": "Native semantics and behavior",
+      "check": "Choose native action/navigation/form elements where suitable. Match exposed role, name, value and state to behavior; avoid arbitrary div-count rules and redundant ARIA.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "system",
+        "design",
+        "qa"
+      ],
+      "evidence": "Rendered semantics and representative interaction tests.",
+      "sources": [
+        "H002",
+        "H003",
+        "H022",
+        "H047",
+        "H048",
+        "S5 p5",
+        "S6 p4",
+        "S8 p2–3",
+        "RV"
+      ],
+      "criteria": [
+        "1.3.1",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT02",
+      "topic": "Interaction, focus and state",
+      "title": "Keyboard pattern and escape",
+      "check": "Complete essential tasks using keyboard only. Use the actual widget pattern and variant for key expectations; distinguish navigation, selection and activation. No inaccessible keyboard traps.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "system",
+        "design",
+        "qa"
+      ],
+      "evidence": "Key sequence, focus/state evidence and successful task completion.",
+      "sources": [
+        "S4 p2–3",
+        "S5 p5–6",
+        "S8 p1–2",
+        "RV",
+        "RS"
+      ],
+      "criteria": [
+        "2.1.1",
+        "2.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT03",
+      "topic": "Interaction, focus and state",
+      "title": "Visible and unobscured focus",
+      "check": "Keep keyboard focus discernible and not entirely obscured by author-created content under AA. Separate stronger product policy and AAA focus requirements.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Focus captures across states, sticky content and overlays.",
+      "sources": [
+        "H044",
+        "S4 p2",
+        "RD"
+      ],
+      "criteria": [
+        "2.4.7",
+        "2.4.11"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT04",
+      "topic": "Interaction, focus and state",
+      "title": "Modal and nonmodal overlays",
+      "check": "Choose a modal, disclosure, popover or tooltip contract deliberately. For modal dialogs, choose context-appropriate initial focus, keep background content inert and restore focus suitably. Do not impose a modal trap on every overlay.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "content"
+      ],
+      "evidence": "Open/interact/close journey with keyboard and selected AT.",
+      "sources": [
+        "H038",
+        "H039",
+        "S5 p6",
+        "RS"
+      ],
+      "criteria": [
+        "2.1.2",
+        "2.4.3",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT05",
+      "topic": "Interaction, focus and state",
+      "title": "Hidden and disabled states",
+      "check": "Prevent focus reaching content intended to be unavailable. Distinguish visually hidden AT text, collapsed content, inert content, native disabled and aria-disabled patterns; some disabled composite items intentionally remain focusable.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "system",
+        "design",
+        "qa"
+      ],
+      "evidence": "Focus/reading tree and activation checks for each state.",
+      "sources": [
+        "H061",
+        "H082",
+        "H083",
+        "S5 p5",
+        "RV"
+      ],
+      "criteria": [
+        "2.4.3",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT06",
+      "topic": "Interaction, focus and state",
+      "title": "Scrollable regions and standard behavior",
+      "check": "Ensure needed content can be reached and scrolled by keyboard. Add a focus stop only when needed by the implementation/support matrix, with a useful name where appropriate. Preserve expected browser scrolling and navigation.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "design",
+        "system",
+        "qa"
+      ],
+      "evidence": "Keyboard scrolling and reachability across supported browsers.",
+      "sources": [
+        "H030",
+        "H037",
+        "RV"
+      ],
+      "criteria": [
+        "2.1.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT07",
+      "topic": "Interaction, focus and state",
+      "title": "Target size and pointer alternatives",
+      "check": "Check AA minimum target size/spacing and exceptions; distinguish AAA/product larger-target policies. Provide applicable simple-pointer alternatives to multipoint/path gestures and dragging, separately from keyboard support.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Measured hit regions, spacing and alternative interaction tasks.",
+      "sources": [
+        "H028",
+        "H057",
+        "RD"
+      ],
+      "criteria": [
+        "2.5.1",
+        "2.5.7",
+        "2.5.8"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT08",
+      "topic": "Interaction, focus and state",
+      "title": "Predictable activation and focus",
+      "check": "Avoid unexpected changes on focus/input and unjustified autofocus. Define intentional route/step focus changes. Hover/focus content must satisfy applicable dismissible, hoverable and persistent conditions.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Focus/input/hover journey and context-change record.",
+      "sources": [
+        "H020",
+        "H085",
+        "S5 p6",
+        "RS"
+      ],
+      "criteria": [
+        "3.2.1",
+        "3.2.2",
+        "1.4.13"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT09",
+      "topic": "Interaction, focus and state",
+      "title": "Dynamic status and updates",
+      "check": "Identify actual status messages and an appropriate programmatic mechanism without unnecessary interruption. Error association, invalid state and announcement are separate. Do not announce every DOM update or force all errors into alert regions.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "State transition and human AT observation; source/tree evidence alone is partial.",
+      "sources": [
+        "H043",
+        "H089",
+        "S5 p6",
+        "RS"
+      ],
+      "criteria": [
+        "4.1.3"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "INT10",
+      "topic": "Interaction, focus and state",
+      "title": "Timing and progressive disclosure",
+      "check": "Avoid unnecessary time limits and provide adjustment where required. Make loading more/revealing content discoverable, preserve position and keep key information reachable. Load-more versus infinite scroll is a design decision to verify.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "dev",
+        "qa",
+        "research"
+      ],
+      "evidence": "Timed task and continuation/recovery journey.",
+      "sources": [
+        "H059",
+        "H062",
+        "H081",
+        "RD"
+      ],
+      "criteria": [
+        "2.2.1",
+        "2.2.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "FRM01",
+      "topic": "Forms, errors and recovery",
+      "title": "Labels, groups and instructions",
+      "check": "Provide meaningful names plus visible labels/instructions where applicable; group related controls when needed. Test label activation and programmatic association, including custom-element hosts. Label placement is a design choice.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Visible labels, accessible names, relationships and pointer activation.",
+      "sources": [
+        "H040",
+        "H041",
+        "H042",
+        "S4 p3",
+        "S5 p4",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "1.3.1",
+        "3.3.2",
+        "4.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "FRM02",
+      "topic": "Forms, errors and recovery",
+      "title": "Error identification and recovery",
+      "check": "Identify errors in text, associate guidance with controls and expose invalid/required state as appropriate. Provide suggestions and necessary safeguards for consequential submissions. Preserve usable recovery.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "dev",
+        "system",
+        "qa",
+        "research",
+        "locale"
+      ],
+      "evidence": "Invalid→correction→submit journey and state/error association.",
+      "sources": [
+        "H054",
+        "S5 p4–5",
+        "S6 p5",
+        "S8 p2",
+        "RC"
+      ],
+      "criteria": [
+        "3.3.1",
+        "3.3.3",
+        "3.3.4"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "FRM03",
+      "topic": "Forms, errors and recovery",
+      "title": "Efficient forms and accessible authentication",
+      "check": "Collect only necessary information, break up complex tasks sensibly and use applicable input-purpose/autocomplete support. Review repeated entry and cognitive authentication barriers; a honeypot is not a universal replacement for CAPTCHA.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "content",
+        "qa",
+        "research",
+        "locale"
+      ],
+      "evidence": "Complete/repeat/authentication task and alternative path.",
+      "sources": [
+        "H079",
+        "H086",
+        "H087",
+        "RD"
+      ],
+      "criteria": [
+        "1.3.5",
+        "3.3.7",
+        "3.3.8"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TAB01",
+      "topic": "Tables and structured data",
+      "title": "Data meaning and understandable headers",
+      "check": "Confirm a data table is appropriate; simplify relationships and write useful column/row headers, units and contextual identification/caption as needed.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "research",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Data model and interpretation exercise with representative content.",
+      "sources": [
+        "H029",
+        "S5 p4",
+        "S6 p4–5",
+        "S7 p1",
+        "RC"
+      ],
+      "criteria": [
+        "1.3.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TAB02",
+      "topic": "Tables and structured data",
+      "title": "Programmatic table relationships",
+      "check": "Use table/header/data-cell markup and appropriate header associations. Handle multi-level headers explicitly when needed. Avoid layout tables and unnecessary grid roles for static data.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "system",
+        "content",
+        "qa"
+      ],
+      "evidence": "DOM/accessibility inspection and AT header association checks.",
+      "sources": [
+        "H029",
+        "S5 p4",
+        "S6 p4–5",
+        "RC"
+      ],
+      "criteria": [
+        "1.3.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TAB03",
+      "topic": "Tables and structured data",
+      "title": "Responsive and localized tables",
+      "check": "Keep relationships understandable while resizing/localizing. A two-dimensional table may scroll in its own region; keep surrounding content reflowing and make required scrolling keyboard accessible.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "locale",
+        "content",
+        "qa"
+      ],
+      "evidence": "Narrow/zoom/long-label variants and keyboard scrolling.",
+      "sources": [
+        "H058",
+        "S5 p5",
+        "S6 p4",
+        "RD"
+      ],
+      "criteria": [
+        "1.4.10",
+        "2.1.1"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "TAB04",
+      "topic": "Tables and structured data",
+      "title": "Interactive data operations",
+      "check": "Specify names, sort/filter/selection state, keyboard model and status updates for interactive tables. Use grid behavior only when that pattern is intentionally selected and fully supported.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "system",
+        "content",
+        "qa",
+        "research"
+      ],
+      "evidence": "Sort/filter/select task and AT state/results observations.",
+      "sources": [
+        "S4 p2",
+        "RS",
+        "RV"
+      ],
+      "criteria": [
+        "2.1.1",
+        "4.1.2",
+        "4.1.3"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "LOC01",
+      "topic": "Localization and internationalization",
+      "title": "Language and direction metadata",
+      "check": "Declare the actual page language and applicable changes in language; support direction and bidirectional content. A CMS core-language list must not determine whether a language can be identified in HTML.",
+      "lead": "locale",
+      "roles": [
+        "locale",
+        "content",
+        "dev",
+        "system",
+        "qa"
+      ],
+      "evidence": "Rendered lang/dir and mixed-language/direction review.",
+      "sources": [
+        "H049",
+        "S1 p1",
+        "S4 p2",
+        "S5 p5",
+        "S6 p5",
+        "RC"
+      ],
+      "criteria": [
+        "3.1.1",
+        "3.1.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "LOC02",
+      "topic": "Localization and internationalization",
+      "title": "Translated accessible content",
+      "check": "Translate relevant labels, alternatives, instructions, errors, captions and accessible-only strings as well as visible copy; preserve meaningful names and label matching.",
+      "lead": "locale",
+      "roles": [
+        "locale",
+        "content",
+        "dev",
+        "qa",
+        "design"
+      ],
+      "evidence": "Per-locale inventory and language-qualified review.",
+      "sources": [
+        "S2 p1",
+        "S4 p1–2",
+        "S5 p5",
+        "RC"
+      ],
+      "criteria": [
+        "1.1.1",
+        "2.5.3",
+        "3.3.2"
+      ],
+      "classification": "Accessibility",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "LOC03",
+      "topic": "Localization and internationalization",
+      "title": "Localized flow and presentation",
+      "check": "Check destinations, offers, dates/numbers, truncation, line breaks and expansion with representative locales/directions. Validate language fallback and form expectations rather than checking translation presence only.",
+      "lead": "locale",
+      "roles": [
+        "locale",
+        "qa",
+        "content",
+        "design",
+        "dev"
+      ],
+      "evidence": "Locale-specific journey, long-string/RTL screenshots and destination checks.",
+      "sources": [
+        "S2 p1",
+        "S4 p1–3",
+        "RC"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and web QA",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "SYS01",
+      "topic": "Component contracts and libraries",
+      "title": "Consumer versus component obligations",
+      "check": "Record accessible defaults, slots/props, naming, focus/state and consumer duties for each versioned component. Use PF/RHDS/Felt provider docs; valid API use alone does not establish accessible composition.",
+      "lead": "system",
+      "roles": [
+        "system",
+        "dev",
+        "design",
+        "content",
+        "qa"
+      ],
+      "evidence": "Versioned contract with examples and responsibility boundary.",
+      "sources": [
+        "S5 p5–6",
+        "S6 p4–5",
+        "RV",
+        "RS"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "SYS02",
+      "topic": "Component contracts and libraries",
+      "title": "React and Web Component runtime evidence",
+      "check": "Verify actual semantics and focus across portals, slots, Shadow DOM, ElementInternals and form association where used. Detect capabilities/versions; preserve known tooling limitations without rewriting correct components to appease a scanner.",
+      "lead": "system",
+      "roles": [
+        "system",
+        "dev",
+        "qa"
+      ],
+      "evidence": "Real browser fixture, composed focus/relationships and selected AT test.",
+      "sources": [
+        "S5 p5",
+        "S6 p5",
+        "RS",
+        "RI"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "SYS03",
+      "topic": "Component contracts and libraries",
+      "title": "Accessible authoring defaults",
+      "check": "Make approved building blocks easy to use correctly and document required author inputs. For applicable authoring tools, review authoring-interface accessibility and support for accessible output separately.",
+      "lead": "system",
+      "roles": [
+        "system",
+        "dev",
+        "design",
+        "content",
+        "qa",
+        "delivery"
+      ],
+      "evidence": "Authoring journey, generated artifact review and safeguards.",
+      "sources": [
+        "S5 p4–6",
+        "S6 p3–5",
+        "RS",
+        "RF"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and inclusive design",
+      "stage": "Design → build → verify"
+    },
+    {
+      "id": "RES01",
+      "topic": "Research and discovery",
+      "title": "Identify users, barriers and essential tasks",
+      "check": "Plan with disabled people and varied access strategies. Record needs and barriers alongside task IDs; user stories/personas are hypotheses or reference material, not observed research evidence.",
+      "lead": "research",
+      "roles": [
+        "research",
+        "design",
+        "content",
+        "delivery",
+        "qa"
+      ],
+      "evidence": "Research plan, recruitment rationale and traced task needs.",
+      "sources": [
+        "S5 p3–4",
+        "S6 p2",
+        "RF",
+        "RA"
+      ],
+      "criteria": [],
+      "classification": "Inclusive design",
+      "stage": "Discover → evaluate → learn"
+    },
+    {
+      "id": "RES02",
+      "topic": "Research and discovery",
+      "title": "Accessible research participation",
+      "check": "Arrange accessible invitations, consent/materials, tools, accommodations and session methods with participants. Capture actual task barriers and distinguish study observations from expert conformance findings.",
+      "lead": "research",
+      "roles": [
+        "research",
+        "content",
+        "design",
+        "qa",
+        "delivery"
+      ],
+      "evidence": "Participation/access plan and consented study observations.",
+      "sources": [
+        "S5 p3–4",
+        "RF",
+        "RA"
+      ],
+      "criteria": [],
+      "classification": "Inclusive design",
+      "stage": "Discover → evaluate → learn"
+    },
+    {
+      "id": "QA01",
+      "topic": "Verification and release",
+      "title": "Source and rendered semantic review",
+      "check": "Inspect rendered DOM/accessible semantics, validate relevant markup and triage real defects. A validator score, DOM inspection or accessibility snapshot alone does not prove AT behavior or conformance.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "dev",
+        "system"
+      ],
+      "evidence": "Scoped findings with source/tree evidence and human triage.",
+      "sources": [
+        "S8 p2–3",
+        "RV",
+        "RI"
+      ],
+      "criteria": [],
+      "classification": "Accessibility",
+      "stage": "Build → verify"
+    },
+    {
+      "id": "QA02",
+      "topic": "Verification and release",
+      "title": "Automated scanning and regression tests",
+      "check": "Run installed, versioned checks against applicable routes and states; record scope, profile and limitations. Correctly distinguish violations, best practices and manual review; test regressions in real supported runtimes.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "dev",
+        "system"
+      ],
+      "evidence": "Executed scan/test output with environment, route/state and coverage gaps.",
+      "sources": [
+        "S4 p1–2",
+        "S8 p3",
+        "RI",
+        "RT"
+      ],
+      "criteria": [],
+      "classification": "Accessibility",
+      "stage": "Build → verify → maintain"
+    },
+    {
+      "id": "QA03",
+      "topic": "Verification and release",
+      "title": "Human assistive-technology journeys",
+      "check": "Select browser/OS/AT combinations for product needs. Complete essential tasks and record speech/reading, operation and recovery. A screenshot, simulated persona or passing axe scan cannot substitute.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "research",
+        "dev",
+        "system"
+      ],
+      "evidence": "Observed tasks with versions, settings, results and limitations.",
+      "sources": [
+        "S4 p2",
+        "S5 p4",
+        "S6 p3",
+        "RA",
+        "RR",
+        "RT"
+      ],
+      "criteria": [],
+      "classification": "Accessibility",
+      "stage": "Verify → learn"
+    },
+    {
+      "id": "QA04",
+      "topic": "Verification and release",
+      "title": "Browser, device and state coverage",
+      "check": "Keep a dated product support matrix of actual browser/OS/device/viewport versions. Check responsive behavior and representative interaction states; visual regression services cover only the checks they actually perform.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "delivery",
+        "dev",
+        "design"
+      ],
+      "evidence": "Executed environment/state matrix with Not tested where missing.",
+      "sources": [
+        "S3 p1",
+        "S4 p1",
+        "RT"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and web QA",
+      "stage": "Plan → verify → maintain"
+    },
+    {
+      "id": "QA05",
+      "topic": "Verification and release",
+      "title": "Findings, ownership and retest",
+      "check": "Separate impact, confidence, requirement type and release priority. Record target/state/method, owner, evidence, N/A reason and Not tested gaps; retest corrections against stable IDs.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "delivery",
+        "dev",
+        "system",
+        "design",
+        "content"
+      ],
+      "evidence": "Versioned finding history and explicit residual coverage.",
+      "sources": [
+        "S1 p1",
+        "S4 p1",
+        "S5 p6",
+        "RT"
+      ],
+      "criteria": [],
+      "classification": "Accessibility and web QA",
+      "stage": "All stages"
+    },
+    {
+      "id": "QA06",
+      "topic": "Verification and release",
+      "title": "Policy and standards baseline",
+      "check": "Record the project-approved standards/version and additional product policies. Preserve historical 2.1 wording as source context; use proposed WCAG 2.2 A/AA profile without asserting a current corporate/legal mandate.",
+      "lead": "delivery",
+      "roles": [
+        "delivery",
+        "qa",
+        "system"
+      ],
+      "evidence": "Approved profile and authority/source/date ledger.",
+      "sources": [
+        "S5 p4,9",
+        "S6 p2–3",
+        "S8 p3",
+        "RF"
+      ],
+      "criteria": [],
+      "classification": "Governance",
+      "stage": "Plan → maintain"
+    },
+    {
+      "id": "QA07",
+      "topic": "Verification and release",
+      "title": "Adoption and outcome learning",
+      "check": "Monitor use, contributions, completion/coverage and observed task barriers. Historical download/survey targets are planning ideas, not current acceptance criteria or evidence of accessibility.",
+      "lead": "delivery",
+      "roles": [
+        "delivery",
+        "research",
+        "qa",
+        "system"
+      ],
+      "evidence": "Owned review cadence and meaningful outcome/usage measures.",
+      "sources": [
+        "S5 p3,6–9",
+        "S7 p3"
+      ],
+      "criteria": [],
+      "classification": "Governance",
+      "stage": "Maintain → learn"
+    },
+    {
+      "id": "WEB01",
+      "topic": "Web QA and product overlays",
+      "title": "Approved copy and artwork",
+      "check": "Compare against approved copy/artwork, character counts, images, text sizes, spacing, color and hover designs. Approval does not establish accessibility.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "design",
+        "qa",
+        "delivery"
+      ],
+      "evidence": "Versioned spec comparison and relevant captures.",
+      "sources": [
+        "S1 p1–2",
+        "S4 p1",
+        "S2 p1"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Draft → publish"
+    },
+    {
+      "id": "WEB02",
+      "topic": "Web QA and product overlays",
+      "title": "Brand and editorial conventions",
+      "check": "Check sentence case, punctuation, Red Hat nonbreaking treatment, registration marks and superscript conventions using the current brand policy. Do not treat these as WCAG rules.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "locale",
+        "design",
+        "qa"
+      ],
+      "evidence": "Brand/editorial review against current policy.",
+      "sources": [
+        "S1 p1,3",
+        "S2 p1",
+        "S4 p1–2"
+      ],
+      "criteria": [],
+      "classification": "Product policy",
+      "stage": "Draft → publish"
+    },
+    {
+      "id": "WEB03",
+      "topic": "Web QA and product overlays",
+      "title": "Links and offer routing",
+      "check": "Verify intended destinations, destination-page links, offer IDs, downloads and lead routing. Verify the accessible link purpose under TXT02 separately.",
+      "lead": "qa",
+      "roles": [
+        "qa",
+        "content",
+        "dev",
+        "locale",
+        "delivery"
+      ],
+      "evidence": "Clicked destination and form-submission outcomes.",
+      "sources": [
+        "S1 p1",
+        "S2 p1",
+        "S4 p2–3"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Build → publish"
+    },
+    {
+      "id": "WEB04",
+      "topic": "Web QA and product overlays",
+      "title": "Drupal routing and publishing",
+      "check": "Apply product-specific internal node references, page/admin naming, taxonomy and shared-node preservation only in relevant publishing environments.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "content",
+        "qa",
+        "delivery"
+      ],
+      "evidence": "CMS configuration and rendered destination checks.",
+      "sources": [
+        "S1 p1",
+        "S2 p1",
+        "S4 p2"
+      ],
+      "criteria": [],
+      "classification": "Product policy",
+      "stage": "Build → publish"
+    },
+    {
+      "id": "WEB05",
+      "topic": "Web QA and product overlays",
+      "title": "Analytics and personalization",
+      "check": "Validate the applicable tactic ID rules, analytics attributes, language policy and personalization frequency. Obtain current product rules; the supplied IDs and parameter conventions are historical examples.",
+      "lead": "delivery",
+      "roles": [
+        "delivery",
+        "dev",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Product analytics/debug evidence and personalization scenario.",
+      "sources": [
+        "S1 p1,3",
+        "S2 p1–2",
+        "S4 p2,4"
+      ],
+      "criteria": [],
+      "classification": "Product policy",
+      "stage": "Build → publish"
+    },
+    {
+      "id": "WEB06",
+      "topic": "Web QA and product overlays",
+      "title": "URLs and SEO metadata",
+      "check": "Verify intended URL, metadata title/description/image and applicable structured data. Share the descriptive page-title check with STR01; do not duplicate its accessibility result.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "dev",
+        "qa",
+        "locale",
+        "delivery"
+      ],
+      "evidence": "Rendered metadata and approved URL comparison.",
+      "sources": [
+        "H071",
+        "S1 p1",
+        "S2 p1",
+        "S4 p2"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Build → publish"
+    },
+    {
+      "id": "WEB07",
+      "topic": "Web QA and product overlays",
+      "title": "Asset hosting and image budgets",
+      "check": "Use approved asset hosts and appropriate compression/responsive delivery. The 250 KB limit is a supplied site policy, not a universal accessibility threshold.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "content",
+        "design",
+        "qa"
+      ],
+      "evidence": "Asset URLs, encoded sizes and rendering quality.",
+      "sources": [
+        "H004",
+        "H005",
+        "H034",
+        "H084",
+        "S1 p2–3",
+        "S4 p1"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Build → publish"
+    },
+    {
+      "id": "WEB08",
+      "topic": "Web QA and product overlays",
+      "title": "Performance and resource delivery",
+      "check": "Reduce unnecessary code and blocking work; optimize font delivery without dropping required characters/languages. Performance affects access but is not itself a WCAG pass/fail proxy.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "system",
+        "qa",
+        "locale"
+      ],
+      "evidence": "Measured load behavior and glyph/language coverage.",
+      "sources": [
+        "H001",
+        "H014",
+        "H078"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Build → maintain"
+    },
+    {
+      "id": "WEB09",
+      "topic": "Web QA and product overlays",
+      "title": "PWA and offline requirements",
+      "check": "Use service workers/offline caching and install metadata only when product needs justify them; check freshness, failure and recovery. These are not mandatory accessibility features.",
+      "lead": "dev",
+      "roles": [
+        "dev",
+        "delivery",
+        "qa"
+      ],
+      "evidence": "Offline/install scenario with cache/recovery behavior.",
+      "sources": [
+        "H015",
+        "H056"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Plan → build → verify"
+    },
+    {
+      "id": "WEB10",
+      "topic": "Web QA and product overlays",
+      "title": "Privacy-sensitive integrations",
+      "check": "Review third-party behavior and applicable privacy choices with current organizational policy. Preserve the old DNT item as historical input, not a sufficient modern privacy control.",
+      "lead": "delivery",
+      "roles": [
+        "delivery",
+        "dev",
+        "qa"
+      ],
+      "evidence": "Current policy decision and integration evidence.",
+      "sources": [
+        "H021",
+        "H035"
+      ],
+      "criteria": [],
+      "classification": "Governance",
+      "stage": "Plan → build → maintain"
+    },
+    {
+      "id": "WEB11",
+      "topic": "Web QA and product overlays",
+      "title": "Print and downloadable documents",
+      "check": "If print or downloads are in scope, provide usable equivalents and refer PDFs to a dedicated document-accessibility process. Tags alone do not prove an accessible PDF; do not hide meaningful interactive content from print without an equivalent.",
+      "lead": "content",
+      "roles": [
+        "content",
+        "dev",
+        "design",
+        "qa",
+        "delivery"
+      ],
+      "evidence": "Print/download review or documented specialist handoff.",
+      "sources": [
+        "H065",
+        "H076",
+        "S5 p8"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Author → verify"
+    },
+    {
+      "id": "WEB12",
+      "topic": "Web QA and product overlays",
+      "title": "AI asset approval workflow",
+      "check": "Preserve the supplied content/design AI review steps as an organization-specific policy to validate with its current owner; do not execute historical contact instructions or assume they still apply.",
+      "lead": "delivery",
+      "roles": [
+        "delivery",
+        "content",
+        "design"
+      ],
+      "evidence": "Current policy reference and approval record if applicable.",
+      "sources": [
+        "S4 p1,4"
+      ],
+      "criteria": [],
+      "classification": "Product policy",
+      "stage": "Author → publish"
+    },
+    {
+      "id": "WEB13",
+      "topic": "Web QA and product overlays",
+      "title": "Visual fallback and existing content",
+      "check": "Check hero/background fallback, image clarity, overlapping/default elements and existing/shared components after updates. Test contrast independently, including when assets fail.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "dev",
+        "qa",
+        "content"
+      ],
+      "evidence": "Normal/failure render and changed/pre-existing element regression.",
+      "sources": [
+        "S1 p2",
+        "S4 p1–2"
+      ],
+      "criteria": [],
+      "classification": "Web QA",
+      "stage": "Build → verify"
+    },
+    {
+      "id": "POL01",
+      "topic": "Web QA and product overlays",
+      "title": "Optional visual style preferences",
+      "check": "Treat above-field labels, avoiding pure black/white and strong prescribed affordance styles as design decisions. Evaluate outcomes and user needs rather than enforcing inherited recipes universally.",
+      "lead": "design",
+      "roles": [
+        "design",
+        "content",
+        "system",
+        "research"
+      ],
+      "evidence": "Documented design policy and usability evidence.",
+      "sources": [
+        "H042",
+        "H053",
+        "H050"
+      ],
+      "criteria": [],
+      "classification": "Product policy",
+      "stage": "Design → evaluate"
+    }
+  ],
+  "sharedTopics": [
+    {
+      "topic": "Tables and structured data",
+      "actions": {
+        "content": "Choose appropriate data, simplify, author headers/units/caption and an understandable explanation.",
+        "design": "Specify reading relationships, visual grouping, narrow/zoom layouts and interaction states.",
+        "dev": "Implement table associations and the selected static-table or interactive-grid behavior.",
+        "system": "Provide safe primitives, slots/props and documented sorting/selection/focus responsibilities.",
+        "qa": "Verify header associations, sorting/selection, keyboard access and narrow/AT tasks.",
+        "research": "Test whether people can locate and interpret important values using their access strategies.",
+        "locale": "Validate translated headers/units, number formats, long strings and direction."
+      }
+    },
+    {
+      "topic": "Forms, errors and recovery",
+      "actions": {
+        "content": "Write labels, instructions, errors, recovery suggestions and confirmation text.",
+        "design": "Specify grouped flow, required/invalid presentation, focus and error placement.",
+        "dev": "Associate labels/errors; expose required/invalid states; implement recovery and submission.",
+        "system": "Document accessible defaults versus consumer duties, including form association.",
+        "qa": "Test valid, invalid, repeated-entry, correction and consequential-submit paths.",
+        "research": "Evaluate comprehension, effort, authentication and recovery barriers.",
+        "locale": "Review local names/addresses, translated feedback and label/name consistency."
+      }
+    },
+    {
+      "topic": "Images and visual data",
+      "actions": {
+        "content": "Decide purpose and author contextual short/long alternatives.",
+        "design": "Preserve meaning beyond color and plan accessible equivalent views.",
+        "dev": "Use the right alternative/name hooks without redundant or hidden semantics.",
+        "system": "Expose safe decorative/informative icon/image APIs and examples.",
+        "qa": "Review actual purpose, rendered alternatives and complex-data task equivalence.",
+        "research": "Evaluate whether alternatives support the same important interpretation.",
+        "locale": "Translate alternatives and localize embedded data/units."
+      }
+    },
+    {
+      "topic": "Audio, video and motion",
+      "actions": {
+        "content": "Plan accurate captions, transcripts, descriptions and media names.",
+        "design": "Specify controls, pause/reduced-motion behavior and non-motion alternatives.",
+        "dev": "Implement accessible controls, preferences and timing behavior.",
+        "system": "Provide accessible player/motion defaults and documented consumer duties.",
+        "qa": "Check playback, keyboard, alternatives, preferences and flashing where applicable.",
+        "locale": "Localize synchronized text, descriptions and controls.",
+        "delivery": "Budget and schedule accessible media production."
+      }
+    },
+    {
+      "topic": "Structure and navigation",
+      "actions": {
+        "content": "Write a meaningful outline, titles, links and navigation labels.",
+        "design": "Specify relationships, reading/focus sequences and consistent navigation.",
+        "dev": "Preserve structure and order in rendered semantics and routing.",
+        "system": "Support correct section/landmark and navigation compositions.",
+        "qa": "Verify structure, bypass and reading/keyboard journeys.",
+        "research": "Evaluate findability and comprehension rather than inferring them from markup.",
+        "locale": "Validate localized names, outlines and direction."
+      }
+    },
+    {
+      "topic": "Interaction, focus and state",
+      "actions": {
+        "content": "Write names, instructions, state and status messages.",
+        "design": "Select pattern/variant, specify keys, focus, targets, hidden/disabled behavior and status intent.",
+        "dev": "Implement actual behavior, focus and programmatic semantics.",
+        "system": "Supply tested pattern primitives and versioned accessibility contracts.",
+        "qa": "Exercise all important states with keyboard, pointer and selected AT.",
+        "research": "Evaluate task success, discoverability and predictability with participants."
+      }
+    },
+    {
+      "topic": "Visual presentation and adaptation",
+      "actions": {
+        "content": "Keep content understandable under expansion, text alternatives and reordered presentation.",
+        "design": "Specify contrast, state cues, typography and adaptive layouts.",
+        "dev": "Honor browser/OS preferences and preserve content/function under adaptation.",
+        "system": "Provide robust tokens, themes and safe component states.",
+        "qa": "Measure and exercise contrast, zoom, spacing, orientation and forced colors.",
+        "locale": "Stress long strings, glyph coverage, wrapping and direction.",
+        "research": "Validate readability and task outcomes under participants’ settings."
+      }
+    },
+    {
+      "topic": "Localization and internationalization",
+      "actions": {
+        "locale": "Own locale/direction coverage and linguistic review.",
+        "content": "Supply translatable visible and accessible-only content with context.",
+        "design": "Plan expansion, wrapping, direction and local conventions.",
+        "dev": "Implement lang/dir, locale behavior and translated semantics.",
+        "system": "Provide locale-capable components and accessible string hooks.",
+        "qa": "Run per-locale tasks and verify destinations, names and layouts."
+      }
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "pages": 3,
+      "characters": 3603,
+      "sha256": "408952a757ac6721c93c4b1e8374f622fa0c663155bc9fbfae9269e6b8614f1e",
+      "title": "Web QA Checklist Template [MAKE A COPY!] - Templated Page Build QA (Simple builds)",
+      "fileName": "Web QA Checklist Template [MAKE A COPY!] - Templated Page Build QA (Simple builds).pdf"
+    },
+    {
+      "id": "S2",
+      "pages": 2,
+      "characters": 2489,
+      "sha256": "3817f86b62b50c496c15bc3b402ae340d9d48d5af2c26e6eff4340e72604a7f1",
+      "title": "Web QA Checklist Template [MAKE A COPY!] - Localization QA",
+      "fileName": "Web QA Checklist Template [MAKE A COPY!] - Localization QA.pdf"
+    },
+    {
+      "id": "S3",
+      "pages": 1,
+      "characters": 597,
+      "sha256": "22f7341bef48ff49d66c5e5956110c0663722c9e878f5713c22e442b2ca02d15",
+      "title": "Web QA Checklist Template [MAKE A COPY!] - Browsers QA",
+      "fileName": "Web QA Checklist Template [MAKE A COPY!] - Browsers QA.pdf"
+    },
+    {
+      "id": "S4",
+      "pages": 4,
+      "characters": 10572,
+      "sha256": "2935756c36460bdaa3aefa49346df40823b16dce3f1d6eac5c1754492ad31965",
+      "title": "Web QA Checklist Template [MAKE A COPY!] - Draft QA",
+      "fileName": "Web QA Checklist Template [MAKE A COPY!] - Draft QA.pdf"
+    },
+    {
+      "id": "S5",
+      "pages": 9,
+      "characters": 14022,
+      "sha256": "1105d236d829ed94da601185565806e821991881ce0584366ffaae49178455c6",
+      "title": "Notes - A11y Checklist App — Kick-off",
+      "fileName": "Notes - A11y Checklist App — Kick-off.pdf"
+    },
+    {
+      "id": "S6",
+      "pages": 6,
+      "characters": 7340,
+      "sha256": "207d4c5e23beedc1d7c6d3d06a33e4965cfb2c0c30c16ca8a53d78e92a8ce2fa",
+      "title": "Accessibility section of UX Dot_ IA",
+      "fileName": "Accessibility section of UX Dot_ IA.pdf"
+    },
+    {
+      "id": "S7",
+      "pages": 3,
+      "characters": 3562,
+      "sha256": "ed1ec3daa0dfdd8c3f98c9b152ab0c0291dce1c49398d3b9e005a0ed689f96bd",
+      "title": "Accessibility section of UX Dot_ Resources_Worksheet",
+      "fileName": "Accessibility section of UX Dot_ Resources_Worksheet.pdf"
+    },
+    {
+      "id": "S8",
+      "pages": 3,
+      "characters": 3469,
+      "sha256": "d111b4133cb64fed08c4e878068767fe829b3790c35706d7de5f974d128e8b66",
+      "title": "DX web accessibility checklist cheat sheet",
+      "fileName": "DX web accessibility checklist cheat sheet.pdf"
+    },
+    {
+      "id": "H",
+      "title": "Supplied Heydon checklist export",
+      "items": 90,
+      "sha256": "3500a3b255e67e17cfa64739a73334ba3d10b772a71f6cedafbfb74099ef1dcb",
+      "fileName": "heydon-checklist.json"
+    },
+    {
+      "id": "RC",
+      "title": "RHDS content",
+      "path": "https://ux.redhat.com/accessibility/content/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RD",
+      "title": "RHDS design",
+      "path": "https://ux.redhat.com/accessibility/design/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RV",
+      "title": "RHDS development",
+      "path": "https://ux.redhat.com/accessibility/development/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RS",
+      "title": "RHDS contributors",
+      "path": "https://ux.redhat.com/accessibility/contributors/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RT",
+      "title": "RHDS manual-testing",
+      "path": "https://ux.redhat.com/accessibility/manual-testing/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RA",
+      "title": "RHDS assistive-tech",
+      "path": "https://ux.redhat.com/accessibility/assistive-tech/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RR",
+      "title": "RHDS screen-readers",
+      "path": "https://ux.redhat.com/accessibility/screen-readers/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RI",
+      "title": "RHDS ci-cd",
+      "path": "https://ux.redhat.com/accessibility/ci-cd/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    },
+    {
+      "id": "RF",
+      "title": "RHDS index",
+      "path": "https://ux.redhat.com/accessibility/",
+      "revision": "7b65f1378496ac57cc207be8f84822afc8180345"
+    }
+  ],
+  "heydonSourceMap": [
+    {
+      "id": "H001",
+      "original": "Minify CSS and JS, and remove unused/redundant code",
+      "resources": [
+        "https://developers.google.com/speed/docs/insights/MinifyResources"
+      ],
+      "mappedTo": [
+        "WEB08"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H002",
+      "original": "Maintain terse HTML, without over-reliance on `<div>` scaffolding",
+      "resources": [
+        "http://designingforperformance.com/optimizing-markup-and-styles/#divitis"
+      ],
+      "mappedTo": [
+        "INT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H003",
+      "original": "Use screen reader and keyboard accessible HTML",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML"
+      ],
+      "mappedTo": [
+        "INT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H004",
+      "original": "Compress raster images",
+      "resources": [
+        "https://www.html5rocks.com/en/tutorials/speed/img-compression/"
+      ],
+      "mappedTo": [
+        "WEB07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H005",
+      "original": "Optimize SVG path data",
+      "resources": [
+        "https://web-design-weekly.com/2014/10/22/optimizing-svg-web/"
+      ],
+      "mappedTo": [
+        "WEB07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H006",
+      "original": "Make sure heading levels describe a logical section/subsection structure",
+      "resources": [
+        "https://webaim.org/techniques/semanticstructure/"
+      ],
+      "mappedTo": [
+        "STR02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H007",
+      "original": "Only include heading elements where they introduce sections of content",
+      "resources": [],
+      "mappedTo": [
+        "STR02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H008",
+      "original": "Remove potentially insensitive or uninclusive language (use \"singular they\")",
+      "resources": [
+        "http://alexjs.com/"
+      ],
+      "mappedTo": [
+        "TXT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H009",
+      "original": "Give video content captions and transcripts",
+      "resources": [],
+      "mappedTo": [
+        "MED01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H010",
+      "original": "Provide transcripts for audio content",
+      "resources": [],
+      "mappedTo": [
+        "MED01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H011",
+      "original": "Make sure main body (paragraph) text is no smaller than the default (user agent) size",
+      "resources": [
+        "https://www.smashingmagazine.com/2011/10/16-pixels-body-copy-anything-less-costly-mistake/"
+      ],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H012",
+      "original": "Support \"pinch zoom\" (remove `user-scalable=no` if present)",
+      "resources": [],
+      "mappedTo": [
+        "VIS03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H013",
+      "original": "Use relative units (`em`, `rem`, and `ch`), especially for font metrics",
+      "resources": [],
+      "mappedTo": [
+        "VIS03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H014",
+      "original": "Make sure styles and scripts are not render blocking",
+      "resources": [
+        "https://csabapalfi.github.io/eliminate-render-blocking/"
+      ],
+      "mappedTo": [
+        "WEB08"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H015",
+      "original": "Install a service worker and cache all applicable assets",
+      "resources": [
+        "https://css-tricks.com/serviceworker-for-offline/"
+      ],
+      "mappedTo": [
+        "WEB09"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H016",
+      "original": "Use content-based, not device-specific, media queries",
+      "resources": [
+        "http://bradfrost.com/blog/post/7-habits-of-highly-effective-media-queries/#content"
+      ],
+      "mappedTo": [
+        "VIS03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H017",
+      "original": "Provide alternatives and/or descriptions for complex visualizations",
+      "resources": [],
+      "mappedTo": [
+        "IMG02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H018",
+      "original": "Include only clear, meaningful animations",
+      "resources": [],
+      "mappedTo": [
+        "MED03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H019",
+      "original": "Honor requests to remove animation via the `prefers-reduced-motion` media query",
+      "resources": [],
+      "mappedTo": [
+        "MED03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H020",
+      "original": "Make sure controls do not elicit unexpected or jarring behavior",
+      "resources": [
+        "https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html",
+        "https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html"
+      ],
+      "mappedTo": [
+        "INT08"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H021",
+      "original": "Do not include third parties that compromise user privacy",
+      "resources": [
+        "https://css-tricks.com/potential-dangers-of-third-party-javascript/"
+      ],
+      "mappedTo": [
+        "WEB10"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H022",
+      "original": "Do not recreate supported and expected browser behaviors with bespoke scripts",
+      "resources": [],
+      "mappedTo": [
+        "INT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H023",
+      "original": "Support Windows high contrast mode (use images, not background images)",
+      "resources": [
+        "http://adrianroselli.com/2012/08/css-background-images-high-contrast-mode.html"
+      ],
+      "mappedTo": [
+        "VIS05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H024",
+      "original": "Provide alternative text for salient images",
+      "resources": [
+        "https://www.w3.org/WAI/tutorials/images/decision-tree/"
+      ],
+      "mappedTo": [
+        "IMG01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H025",
+      "original": "Apply `alt=\"\"` or `aria-hidden=\"true\"` to decorative images",
+      "resources": [
+        "https://www.w3.org/WAI/tutorials/images/decorative/"
+      ],
+      "mappedTo": [
+        "IMG01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H026",
+      "original": "Make sure text and background colors contrast sufficiently",
+      "resources": [
+        "https://accessibility.blog.gov.uk/2016/06/17/colour-contrast-why-does-it-matter/"
+      ],
+      "mappedTo": [
+        "VIS01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H027",
+      "original": "Provide `<title>`s that name the site and the specific page",
+      "resources": [
+        "https://www.w3.org/TR/WCAG20-TECHS/G88.html"
+      ],
+      "mappedTo": [
+        "STR01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H028",
+      "original": "Provide large touch \"targets\" for interactive elements",
+      "resources": [
+        "http://www.bbc.co.uk/guidelines/futuremedia/accessibility/mobile/design/touch-target-size"
+      ],
+      "mappedTo": [
+        "INT07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H029",
+      "original": "Use data tables (`<table>`) for data only, not visual layout purposes",
+      "resources": [],
+      "mappedTo": [
+        "TAB01",
+        "TAB02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H030",
+      "original": "Make scrollable elements focusable for keyboard users",
+      "resources": [],
+      "mappedTo": [
+        "INT06"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H031",
+      "original": "Do not rely on color for differentiation of visual elements",
+      "resources": [],
+      "mappedTo": [
+        "VIS02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H032",
+      "original": "Use the same design patterns to solve the same problems",
+      "resources": [],
+      "mappedTo": [
+        "STR05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H033",
+      "original": "Ensure keyboard focus order is logical regarding visual layout",
+      "resources": [],
+      "mappedTo": [
+        "STR03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H034",
+      "original": "Lazy load large image assets",
+      "resources": [],
+      "mappedTo": [
+        "WEB07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H035",
+      "original": "Honour DNT (Do Not Track) header",
+      "resources": [
+        "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/DNT"
+      ],
+      "mappedTo": [
+        "WEB10"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H036",
+      "original": "Translate / spell out acronyms the first time you use them",
+      "resources": [],
+      "mappedTo": [
+        "TXT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H037",
+      "original": "Do not hijack standard scrolling behavior",
+      "resources": [],
+      "mappedTo": [
+        "INT06"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H038",
+      "original": "Move focus between dialogs and the controls that invoked them",
+      "resources": [],
+      "mappedTo": [
+        "INT04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H039",
+      "original": "Provide focus traps to dialogs and make other elements non-selectable",
+      "resources": [
+        "https://css-tricks.com/a-css-approach-to-trap-focus-inside-of-an-element/"
+      ],
+      "mappedTo": [
+        "INT04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H040",
+      "original": "Give all form elements permanently visible labels",
+      "resources": [],
+      "mappedTo": [
+        "FRM01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H041",
+      "original": "Give grouped form elements group labels",
+      "resources": [],
+      "mappedTo": [
+        "FRM01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H042",
+      "original": "Place labels above form elements",
+      "resources": [],
+      "mappedTo": [
+        "FRM01",
+        "POL01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H043",
+      "original": "Provide status and error messages as WAI-ARIA live regions",
+      "resources": [],
+      "mappedTo": [
+        "INT09"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H044",
+      "original": "Provide clear, unambiguous focus styles",
+      "resources": [],
+      "mappedTo": [
+        "INT03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H045",
+      "original": "Employ well-balanced, highly legible fonts (not too complex or elaborate)",
+      "resources": [],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H046",
+      "original": "Do not use very thin font faces",
+      "resources": [
+        "http://www.telegraph.co.uk/science/2016/10/23/internet-is-becoming-unreadable-because-of-a-trend-towards-light/"
+      ],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H047",
+      "original": "Ensure states (pressed, expanded, invalid, etc) are communicated to assistive software",
+      "resources": [],
+      "mappedTo": [
+        "INT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H048",
+      "original": "Match semantics to behavior for assistive technology users",
+      "resources": [],
+      "mappedTo": [
+        "INT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H049",
+      "original": "Provide a default language and use `lang=\"[ISO code]\"` for subsections in different languages",
+      "resources": [],
+      "mappedTo": [
+        "LOC01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H050",
+      "original": "Make controls look like controls; give them strong perceived affordance",
+      "resources": [],
+      "mappedTo": [
+        "TXT02",
+        "POL01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H051",
+      "original": "Underline links — at least in body copy",
+      "resources": [],
+      "mappedTo": [
+        "VIS02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H052",
+      "original": "Make sure all content belongs to a landmark element (`<header>`, `<footer>`, `<nav>`, `<main>`, etc)",
+      "resources": [],
+      "mappedTo": [
+        "STR04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H053",
+      "original": "Avoid pure white or pure black shades",
+      "resources": [],
+      "mappedTo": [
+        "POL01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H054",
+      "original": "Mark invalid fields clearly and provide associated error messages",
+      "resources": [],
+      "mappedTo": [
+        "FRM02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H055",
+      "original": "Ensure content is not obscured through zooming (no fixed widths)",
+      "resources": [],
+      "mappedTo": [
+        "VIS03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H056",
+      "original": "Provide a `manifest.json` file for identifiable homescreen entries",
+      "resources": [],
+      "mappedTo": [
+        "WEB09"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H057",
+      "original": "Indicate swipe gesture support clearly, and provide simple tap-based alternatives",
+      "resources": [],
+      "mappedTo": [
+        "INT07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H058",
+      "original": "Make sure data tables wider than their container can be scrolled horizontally",
+      "resources": [],
+      "mappedTo": [
+        "TAB03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H059",
+      "original": "Avoid time constraints where possible; provide a clear warning and option to extend where not possible",
+      "resources": [],
+      "mappedTo": [
+        "INT10"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H060",
+      "original": "Label and describe the same things with the same terminology",
+      "resources": [],
+      "mappedTo": [
+        "STR05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H061",
+      "original": "Ensure disabled controls are not focusable",
+      "resources": [],
+      "mappedTo": [
+        "INT05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H062",
+      "original": "Do not instate \"infinite scroll\" by default; provide buttons to load more items",
+      "resources": [],
+      "mappedTo": [
+        "INT10"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H063",
+      "original": "Avoid justified body text",
+      "resources": [
+        "https://www.w3.org/TR/WCAG20-TECHS/F88.html"
+      ],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H064",
+      "original": "Provide enough spacing between lines of text (`line-height`)",
+      "resources": [
+        "https://www.w3.org/TR/WCAG20-TECHS/C21.html"
+      ],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H065",
+      "original": "Ensure PDF content is accessible (include tags)",
+      "resources": [
+        "https://webaim.org/techniques/acrobat/"
+      ],
+      "mappedTo": [
+        "WEB11"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H066",
+      "original": "Provide a skip link if necessary ",
+      "resources": [
+        "https://webaim.org/techniques/skipnav/"
+      ],
+      "mappedTo": [
+        "STR04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H067",
+      "original": "Avoid all-caps text",
+      "resources": [
+        "https://github.com/humanmade/hm-pattern-library/issues/75"
+      ],
+      "mappedTo": [
+        "VIS04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H068",
+      "original": "Ensure that content is written as clearly and simply as possible",
+      "resources": [
+        "https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-supplements.html"
+      ],
+      "mappedTo": [
+        "TXT01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H069",
+      "original": "Provide descriptive captions for figures",
+      "resources": [],
+      "mappedTo": [
+        "IMG01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H070",
+      "original": "Warn users of links that have unusual behaviors, like linking off-site, or loading a new tab",
+      "resources": [],
+      "mappedTo": [
+        "TXT03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H071",
+      "original": "Make content easier to find and improve search results with structured data",
+      "resources": [
+        "https://developers.google.com/search/docs/guides/prototype"
+      ],
+      "mappedTo": [
+        "WEB06"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H072",
+      "original": "Use textual labels to make voice activation cues obvious",
+      "resources": [],
+      "mappedTo": [
+        "TXT02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H073",
+      "original": "Do not mark up subheadings/straplines with separate heading elements",
+      "resources": [],
+      "mappedTo": [
+        "STR02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H074",
+      "original": "Ensure primary calls to action are easy to recognize and reach",
+      "resources": [],
+      "mappedTo": [
+        "STR05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H075",
+      "original": "Avoid images of text — text that cannot be translated, selected, or understood by assistive tech",
+      "resources": [],
+      "mappedTo": [
+        "TXT04"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H076",
+      "original": "Provide a print stylesheet (single column, with interactive content hidden)",
+      "resources": [],
+      "mappedTo": [
+        "WEB11"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H077",
+      "original": "Use well-established, therefore recognizable, icons and symbols",
+      "resources": [],
+      "mappedTo": [
+        "IMG01"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H078",
+      "original": "Subset fonts to just the characters needed",
+      "resources": [],
+      "mappedTo": [
+        "WEB08"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H079",
+      "original": "Instead of obstructing users with CAPTCHAs, use honeypots",
+      "resources": [
+        "https://en.wikipedia.org/wiki/Honeypot_(computing)"
+      ],
+      "mappedTo": [
+        "FRM03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H080",
+      "original": "Begin long, multi-section documents with a table of contents",
+      "resources": [],
+      "mappedTo": [
+        "STR05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H081",
+      "original": "Do not make users perform actions to reveal content unless completely necessary",
+      "resources": [],
+      "mappedTo": [
+        "INT10"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H082",
+      "original": "If content is meant to be hidden, ensure it is properly hidden to all users",
+      "resources": [],
+      "mappedTo": [
+        "INT05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H083",
+      "original": "Make sure controls within hidden content are not focusable",
+      "resources": [],
+      "mappedTo": [
+        "INT05"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H084",
+      "original": "Use `srcset` to tailor images to devices and reduce bandwidth costs",
+      "resources": [],
+      "mappedTo": [
+        "WEB07"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H085",
+      "original": "Do not auto focus form fields, on page load",
+      "resources": [],
+      "mappedTo": [
+        "INT08"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H086",
+      "original": "Break up long and complex forms into discrete sections and/or screens",
+      "resources": [],
+      "mappedTo": [
+        "FRM03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H087",
+      "original": "Make forms as short as possible; offer shortcuts like autocompleting the address using the postcode",
+      "resources": [],
+      "mappedTo": [
+        "FRM03"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H088",
+      "original": "Ensure the same content is available across different devices and platforms",
+      "resources": [],
+      "mappedTo": [
+        "VIS06"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H089",
+      "original": "Inform the user when there are important changes to the application state",
+      "resources": [],
+      "mappedTo": [
+        "INT09"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    },
+    {
+      "id": "H090",
+      "original": "Make sure the purpose of a link is clearly described: \"read more\" vs. \"read more about accessibility\"",
+      "resources": [],
+      "mappedTo": [
+        "TXT02"
+      ],
+      "disposition": "Mapped to normalized checks; wording qualified by applicability and classification. Original links retained as provenance and not individually verified."
+    }
+  ],
+  "corrections": [
+    [
+      "Scope and provenance",
+      "S5 p2,8–9; S6 p1; S8 p3",
+      "The referenced full WCAG worksheet/master spreadsheet is not one of the supplied files. Planning summaries and a cheat sheet cannot establish complete WCAG coverage. The proposed profile is 2.2 A/AA; historical 2.1 and later MVP 2.2 notes coexist.",
+      "Keep a coverage ledger and obtain/reconcile the actual master worksheet before asserting completeness."
+    ],
+    [
+      "Heading count and straplines",
+      "S1 p1; S4 p1; H006–007,H073",
+      "One h1 is a useful page convention; count alone is not a universal WCAG failure. A real subsection may warrant a heading, whatever the editorial name strapline.",
+      "STR02: judge actual section structure; retain site policy separately."
+    ],
+    [
+      "Images and alternatives",
+      "S1 p2–3; S4 p1,4; H025",
+      "The alt-tag how-to footnote repeats a file-size instruction. Empty alt for a decorative img and aria-hidden are not interchangeable in every context; do not hide a focusable control.",
+      "IMG01: classify purpose and test the actual library output; use provider defaults, such as decorative RHDS icons."
+    ],
+    [
+      "Disabled and hidden controls",
+      "H061,H082–083",
+      "Native disabled controls usually leave sequential focus; aria-disabled composite items can remain discoverable/focusable. Intentionally visually hidden text may remain accessible.",
+      "INT05: define the state and widget contract before applying a rule."
+    ],
+    [
+      "Messages and dialogs",
+      "H038–039,H043",
+      "Not every error/status requires a new live region. Modal initial focus and return are contextual; nonmodal overlays must not inherit modal trapping.",
+      "INT04/INT09/FRM02: distinguish focus, association, state and announcement."
+    ],
+    [
+      "Typography, units and targets",
+      "H011,H013,H028,H042,H045–046,H053,H063–064,H067",
+      "Relative units, font choice, label position and avoiding pure black/white are methods or design policies. AA target size has exceptions; larger targets may be a product goal.",
+      "VIS04/INT07/POL01: assess outcomes and label authority rather than enforcing one CSS recipe."
+    ],
+    [
+      "200% is not the whole adaptation check",
+      "S4 p2; H055,H058",
+      "Text resize and reflow are separate checks. Some two-dimensional table content is exempt from reflow, while surrounding content still needs it.",
+      "VIS03/TAB03: test resize, narrow viewport, text spacing and table scrolling separately."
+    ],
+    [
+      "Language and navigation policy",
+      "S1 p1; S4 p2; H070",
+      "A CMS language list is not the boundary of valid HTML language metadata. Same-window navigation and warnings for every external link are site conventions, not universal AA obligations.",
+      "LOC01/TXT03: expose actual language and evaluate unexpected behavior."
+    ],
+    [
+      "Older web technology recommendations",
+      "H015,H023,H035,H056,H078–079",
+      "Service workers/manifests are optional product architecture. Image type alone does not establish forced-color support. DNT is historical; font subsetting and honeypots need product-specific evaluation.",
+      "WEB08–10/VIS05/FRM03: retain intent; do not turn legacy advice into universal requirements."
+    ],
+    [
+      "General QA and automation claims",
+      "S3 p1; S4 auto-QA column; S5 p6; H065",
+      "Visual regression is not keyboard/AT verification. Historical adoption targets are not current goals. PDF tags are necessary in many workflows but insufficient alone.",
+      "QA02–07/WEB11: record exactly what was observed or delegated."
+    ]
+  ],
+  "roadmap": [
+    [
+      "R04 + R08",
+      "Canonical checks and role-task views",
+      "Store stable IDs, source/version, authority, applicability, role actions and evidence requirements. Generate short, detailed and export views from one record.",
+      "One corrected table rule appears consistently in content/design/dev/QA views; duplicate source wording remains traceable."
+    ],
+    [
+      "R13 + R14",
+      "Shared topic packages",
+      "Start with tables, forms/errors, media, structure and visual alternatives. Keep meaning, design intent, implementation and verification linked.",
+      "A table has one contract and role-specific work, not four contradictory checklist copies."
+    ],
+    [
+      "R09 + R15",
+      "Provider bindings",
+      "Bind shared checks to versioned PF React/HTML, RHDS WC and future Felt React/WC docs/APIs; runtime selection remains separate.",
+      "Switch providers without replacing the table meaning or evidence contract."
+    ],
+    [
+      "R05 + R10 + R18",
+      "Workflow and authoring integration",
+      "Load applicable checks for role + task + stage + target; make exported checklists, skill references and authoring prompts use the same catalog.",
+      "Screenshot reviews cannot mark runtime checks passed; CMS-specific analytics rules never become shared WCAG rules."
+    ],
+    [
+      "R12 + R16 + R17",
+      "Research, verification and governance",
+      "Add accessible participation, observed task evidence, dated support matrices, source owners and retest/upkeep. Preserve historical plans as context.",
+      "Research observations remain distinct from expert/automated evidence; updates retain stable IDs and assigned owners."
+    ]
+  ],
+  "sourceLimitations": [
+    "The full DX/WCAG master worksheet and linked Google Sheets source data were referenced in plans but not provided or retrieved.",
+    "All 31 PDF pages were text-read and checked in rendered contact sheets; PDF links and older checklist resource links were not all validated.",
+    "The supplied Heydon JSON has no embedded author/date/version metadata. Attribution is user-supplied; preserve its file hash and item order.",
+    "RHDS documentation is pinned to source revision 7b65f1378496ac57cc207be8f84822afc8180345 from the prior review; this catalog reuses selected guidance rather than remapping every component page.",
+    "Research participation and several modern checks are synthesis/roadmap additions beyond the short source checklists; no historical corporate policy is asserted as current."
+  ],
+  "resultContract": {
+    "required": [
+      "checkId",
+      "checkVersion",
+      "topic",
+      "applicabilityReason",
+      "roleAction",
+      "lifecycleStage",
+      "providerAndVersion",
+      "targetAndState",
+      "method",
+      "status",
+      "evidence",
+      "impact",
+      "confidence",
+      "owner",
+      "retestHistory"
+    ],
+    "status": [
+      "Not assessed",
+      "Pass",
+      "Fail",
+      "Not applicable (reason required)",
+      "Not tested"
+    ],
+    "notes": "Normative obligation, APG recommendation, inclusive-design practice and product policy are separate from severity/priority. Related WCAG mappings are not standalone failure assertions. Research evidence is recorded separately."
+  }
+}

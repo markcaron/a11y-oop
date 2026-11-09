@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "reviewedOn": "2026-11-09",
+  "scope": "Temporary Felt light/dark appearance regression",
+  "result": "Executed automated checks pass; incomplete results and untested methods remain. No full conformance claim.",
+  "build": {
+    "alloy": "0.7.0",
+    "pages": 31,
+    "nodeTestsPassed": 5
+  },
+  "reports": [
+    {
+      "file": "axe-pages-dark-1280.json",
+      "startedAt": "2026-11-09T18:10:57.670Z",
+      "scans": 31,
+      "violations": 0,
+      "incomplete": 4,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-pages-dark-320.json",
+      "startedAt": "2026-11-09T18:11:07.981Z",
+      "scans": 31,
+      "violations": 0,
+      "incomplete": 5,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-pages-light-1280.json",
+      "startedAt": "2026-11-09T18:10:53.697Z",
+      "scans": 31,
+      "violations": 0,
+      "incomplete": 4,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-pages-light-320.json",
+      "startedAt": "2026-11-09T18:11:04.441Z",
+      "scans": 31,
+      "violations": 0,
+      "incomplete": 5,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-states-dark-1280.json",
+      "startedAt": "2026-11-09T18:11:03.911Z",
+      "scans": 3,
+      "violations": 0,
+      "incomplete": 1,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-states-dark-320.json",
+      "startedAt": "2026-11-09T18:11:15.378Z",
+      "scans": 3,
+      "violations": 0,
+      "incomplete": 2,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-states-light-1280.json",
+      "startedAt": "2026-11-09T18:10:57.295Z",
+      "scans": 3,
+      "violations": 0,
+      "incomplete": 1,
+      "horizontalOverflow": 0
+    },
+    {
+      "file": "axe-states-light-320.json",
+      "startedAt": "2026-11-09T18:11:07.660Z",
+      "scans": 3,
+      "violations": 0,
+      "incomplete": 2,
+      "horizontalOverflow": 0
+    }
+  ],
+  "contrastPairs": [
+    {
+      "name": "light secondary text",
+      "foreground": "#4d4d4d",
+      "background": "#f2f2f2",
+      "ratio": 7.55
+    },
+    {
+      "name": "dark secondary text",
+      "foreground": "#c7c7c7",
+      "background": "#292929",
+      "ratio": 8.61
+    },
+    {
+      "name": "light interactive",
+      "foreground": "#0066cc",
+      "background": "#ffffff",
+      "ratio": 5.57
+    },
+    {
+      "name": "dark interactive",
+      "foreground": "#92c5f9",
+      "background": "#292929",
+      "ratio": 8.02
+    },
+    {
+      "name": "light control boundary",
+      "foreground": "#707070",
+      "background": "#f2f2f2",
+      "ratio": 4.42
+    },
+    {
+      "name": "dark control boundary",
+      "foreground": "#a3a3a3",
+      "background": "#292929",
+      "ratio": 5.77
+    },
+    {
+      "name": "light destructive text",
+      "foreground": "#ffffff",
+      "background": "#b1380b",
+      "ratio": 6.1
+    },
+    {
+      "name": "dark destructive text",
+      "foreground": "#151515",
+      "background": "#f89b78",
+      "ratio": 8.65
+    }
+  ],
+  "observedVisualChecks": [
+    "Home light and dark",
+    "Checklist dark",
+    "Design guidance light"
+  ],
+  "coverageGaps": [
+    "Human assistive technology and announcement quality were not tested.",
+    "OS forced colors, actual zoom/text spacing overrides and additional browsers were not tested.",
+    "The full import/export file roundtrip and blocked-storage/JavaScript-disabled flows were not tested.",
+    "24 incomplete axe color-contrast rule results remain for human review: decorative arrows/keycaps, offscreen table cells, and modal paragraph background-overlap detection. These are not counted as passes."
+  ],
+  "previousReview": "history/2026-11-06/review.json",
+  "themeSources": "../data/felt-theme-sources.json"
+}

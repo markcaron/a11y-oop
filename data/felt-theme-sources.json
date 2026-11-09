@@ -1,0 +1,21 @@
+{
+  "updated": "2026-11-09",
+  "scope": "Temporary Felt appearance: standard light/dark only",
+  "figma": "https://www.figma.com/design/bbsf9FkFgMv1SyuZA5R4uV/Felt-v1--Components--Tokens--and-Styles?node-id=3547-330",
+  "implementation": "static/assets/felt-theme.css",
+  "observed": {
+    "primaryButtonFillLight": "#0066cc",
+    "canvasLight": "#ffffff",
+    "canvasDark": "#1f1f1f",
+    "surfacePrimaryDark": "#1f1f1f",
+    "surfaceSecondaryDark": "#292929",
+    "borderDefaultDark": "#4d4d4d"
+  },
+  "fontFiles": {
+    "RedHatText-VF.woff2": "1a5c9a8a88447c5b171ae99dab5daa4c1d49e3502db0fdc0da65d59fc5603feb",
+    "RedHatText-Italic-VF.woff2": "97b89f470394820fd11c803b65c7272fe193e179adea956e0ac3495e290c6dd4",
+    "RedHatDisplay-VF.woff2": "69dca56dda2a2b067dee3e910323c97e54b8544f90f3d1c2192b5a37c0eb1ec3",
+    "RedHatMono-VF.woff2": "54145e1e268b1c5359966336a6b6b12a5dfa046e493d3b4f2dc620c5edd12b62"
+  },
+  "notes": "Figma component palettes inspected; remaining mappings use local Felt/RHDS preview sources and are explicitly provisional. No actual Felt WCs, glass, high-contrast or density modes."
+}

@@ -1,0 +1,145 @@
+{
+  "revision": "7b65f1378496ac57cc207be8f84822afc8180345",
+  "files": [
+    {
+      "path": "docs/accessibility/accessibility-tools.md",
+      "sha256": "ce8f943733604f4e69c4bcf7e4d5bb7e607dcafbf93c241fb2462f593336103e",
+      "page": "/guidelines/accessibility-tools/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Added separately labeled interpretation note",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    },
+    {
+      "path": "docs/accessibility/assistive-tech.md",
+      "sha256": "1e073296b77a9b7881c8ef9f982dd0eacfecb65c87eb2c0143715ce5a22e7b25",
+      "page": "/guidelines/assistive-tech/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/ci-cd.md",
+      "sha256": "72d05226bbc71a13795b25cdfab21775cd30ac07156310305ac85f4266eb4382",
+      "page": "/guidelines/ci-cd/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Fixed PatternFly repository URL typo"
+      ]
+    },
+    {
+      "path": "docs/accessibility/content.md",
+      "sha256": "aff5f24f5933561b3a0c615773b48626ac343dd7ce9fd44a8a5a1be7a8a4e2af",
+      "page": "/guidelines/content/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/contributors.md",
+      "sha256": "2a04eddda5fa9d5218d367d63085b8402344bc1dc63c5a688f6f6f3c34f8c66e",
+      "page": "/guidelines/contributors/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/design.md",
+      "sha256": "07ef688155e562a24101040dce58f9f8c0b25f7f3aad1e5d5a9b09126238efd5",
+      "page": "/guidelines/design/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Added separately labeled interpretation note",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    },
+    {
+      "path": "docs/accessibility/development.md",
+      "sha256": "2c2310af152e82eec016ef8a546c7b9b19525d98a7a0ca732f5266effa6bce30",
+      "page": "/guidelines/development/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Added separately labeled interpretation note",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    },
+    {
+      "path": "docs/accessibility/index.md",
+      "sha256": "6472b8aba8273c1fcf238a1c346adf0d2cbdeb3975b0ae92bce2079f59bbf63e",
+      "page": "/guidelines/fundamentals/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/manual-testing.md",
+      "sha256": "95fe3178bd988dc56f51f86e92265f5d60e6044b05cd23019b771fae309bdcd7",
+      "page": "/guidelines/manual-testing/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/resources.md",
+      "sha256": "b13d3e357f3edf7ffb85ff7d94f21bfed47da69ca8c479ee969ed033849315a9",
+      "page": "/guidelines/resources/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets"
+      ]
+    },
+    {
+      "path": "docs/accessibility/screen-readers-computer.md",
+      "sha256": "3c8430ebbb1f1f57fd5788921b154b133d07188db0191c09a863fd110baf268f",
+      "page": "/guidelines/screen-readers-computer/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    },
+    {
+      "path": "docs/accessibility/screen-readers-mobile.md",
+      "sha256": "d01a5faafa6d775b1a484a90135e1a6ab267ede93d71651194932e9aa966dad2",
+      "page": "/guidelines/screen-readers-mobile/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    },
+    {
+      "path": "docs/accessibility/screen-readers.md",
+      "sha256": "f064b0ab1084ed1404498d5e08ec68f0e6a7e7cedc53da61dfe4311d87616258",
+      "page": "/guidelines/screen-readers/",
+      "changes": [
+        "Removed module/style imports",
+        "Converted display wrappers to native HTML",
+        "Resolved site links and copied available local assets",
+        "Accessibility retest: explanatory note wrappers no longer create redundant landmarks; Note labels use strong text; screen-reader navigation groups have distinct labels where present. Original prose retained."
+      ]
+    }
+  ]
+}

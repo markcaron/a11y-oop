@@ -1,0 +1,22 @@
+Accessibility, on purpose (a11y-oop)
+
+RHDS accessibility guidance and associated example assets are adapted from
+Red Hat Design System, RedHat-UX/red-hat-design-system, source revision
+7b65f1378496ac57cc207be8f84822afc8180345. Original source Markdown and hashes
+are retained in vendor/rhds/accessibility and data/rhds-sources.json.
+
+Checklist synthesis incorporates contributor-supplied Greg Gibson Web QA
+exports, UX Dot accessibility planning material, a DX checklist cheat sheet,
+and a JSON checklist attributed by the contributor to Heydon Pickering.
+Original wording, sources and mappings are retained in data/checklist.json.
+The supplied source PDFs are not distributed.
+
+RHDS/W3C quotations, linked materials and third-party assets retain their
+original attribution. The project LICENSE does not replace applicable
+third-party terms or grant rights in third-party trademarks.
+
+Red Hat Text, Red Hat Display and Red Hat Mono variable font files are copied
+unchanged from the local RHDS checkout. Copyright 2021 Red Hat, Inc.; Reserved
+Font Name Red Hat. Licensed under SIL Open Font License 1.1; see
+static/assets/fonts/OFL.txt. Theme reference: proposed Felt Figma library,
+local Felt prototype styles and RHDS Project Felt preview styles.

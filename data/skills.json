@@ -1,0 +1,42 @@
+[
+  {
+    "name": "uxd-a11y-plan",
+    "title": "Plan accessible work",
+    "description": "Define accessibility scope, user tasks, role ownership and verification methods for a new feature, prototype or review."
+  },
+  {
+    "name": "uxd-a11y-research",
+    "title": "Plan inclusive research",
+    "description": "Prepare accessible research participation and analyze observed accessibility barriers in user tasks; do not substitute simulated personas for participant evidence."
+  },
+  {
+    "name": "uxd-a11y-content",
+    "title": "Review accessible content",
+    "description": "Write or review text alternatives, structure, labels, errors, tables, media and localization intent for an accessible experience."
+  },
+  {
+    "name": "uxd-a11y-design",
+    "title": "Specify accessible interaction intent",
+    "description": "Review designs and specify reading order, contrast, adaptation, focus, states and alternatives before implementation."
+  },
+  {
+    "name": "uxd-a11y-source-audit",
+    "title": "Review accessibility in source",
+    "description": "Review semantic HTML, component APIs and accessibility relationships in a scoped source target or diff."
+  },
+  {
+    "name": "uxd-a11y-runtime-review",
+    "title": "Review a running accessible experience",
+    "description": "Evaluate scoped browser tasks using available keyboard, semantic, visual, automated and human AT evidence methods."
+  },
+  {
+    "name": "uxd-a11y-test-gen",
+    "title": "Generate targeted accessibility tests",
+    "description": "Turn an identified accessibility expectation or failure into tests using the project\u2019s installed framework and real components."
+  },
+  {
+    "name": "uxd-a11y-release",
+    "title": "Assemble accessibility release evidence",
+    "description": "Consolidate existing accessibility evidence, coverage, unresolved barriers, owners and retest needs for a build or release."
+  }
+]

@@ -1,0 +1,10 @@
+_site/
+.alloy/
+node_modules/
+.DS_Store
+content/checklist.html
+content/skills/
+static/data/
+static/downloads/
+static/skills/
+skills/shared/catalog.json

@@ -1,0 +1,274 @@
+/*
+ * Temporary Felt appearance for a11y-oop, standard light/dark palettes only.
+ * UI reference: Felt v1 Figma, Button/Primary/Default (3:31), Card and mode frames.
+ * Additional values: local Felt prototype and RHDS Project Felt preview.
+ * These project-prefixed mock tokens are NOT an asserted @felt/tokens API.
+ */
+@font-face {
+  font-family: "Red Hat Display";
+  src: url("./fonts/RedHatDisplay-VF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Red Hat Text";
+  src: url("./fonts/RedHatText-VF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Red Hat Text";
+  src: url("./fonts/RedHatText-Italic-VF.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 300 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Red Hat Mono";
+  src: url("./fonts/RedHatMono-VF.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+}
+:root {
+  color-scheme: light dark;
+  /* Primitives shared by the referenced Felt palettes. */
+  --aop-felt-white: #fff;
+  --aop-felt-gray-10: #f2f2f2;
+  --aop-felt-gray-20: #e0e0e0;
+  --aop-felt-gray-30: #c7c7c7;
+  --aop-felt-gray-40: #a3a3a3;
+  --aop-felt-gray-50: #707070;
+  --aop-felt-gray-60: #4d4d4d;
+  --aop-felt-gray-80: #292929;
+  --aop-felt-gray-90: #1f1f1f;
+  --aop-felt-gray-95: #151515;
+  --aop-felt-blue-20: #b9dafc;
+  --aop-felt-blue-30: #92c5f9;
+  --aop-felt-blue-50: #0066cc;
+  --aop-felt-blue-60: #004d99;
+  --aop-felt-brand-red: #ee0000;
+  --aop-felt-radius-md: 16px;
+  --aop-felt-radius-action: 64px;
+  --aop-felt-radius-field: 6px;
+  --aop-felt-space-sm: 8px;
+  --aop-felt-space-md: 16px;
+  --aop-felt-space-lg: 24px;
+  --aop-felt-space-xl: 32px;
+  --aop-felt-font-body: "Red Hat Text", Helvetica, Arial, sans-serif;
+  --aop-felt-font-heading: "Red Hat Display", Helvetica, Arial, sans-serif;
+  --aop-felt-font-code: "Red Hat Mono", ui-monospace, monospace;
+
+  /* Semantic roles. The browser/OS selects the default color scheme. */
+  --aop-felt-canvas-primary: light-dark(var(--aop-felt-white), var(--aop-felt-gray-90));
+  --aop-felt-canvas-secondary: light-dark(var(--aop-felt-gray-10), var(--aop-felt-gray-95));
+  --aop-felt-surface-primary: light-dark(var(--aop-felt-white), var(--aop-felt-gray-90));
+  --aop-felt-surface-secondary: light-dark(var(--aop-felt-gray-10), var(--aop-felt-gray-80));
+  --aop-felt-text-primary: light-dark(var(--aop-felt-gray-95), var(--aop-felt-white));
+  --aop-felt-text-secondary: light-dark(var(--aop-felt-gray-60), var(--aop-felt-gray-30));
+  --aop-felt-border-default: light-dark(var(--aop-felt-gray-30), var(--aop-felt-gray-60));
+  --aop-felt-border-control: light-dark(var(--aop-felt-gray-50), var(--aop-felt-gray-40));
+  --aop-felt-interactive: light-dark(var(--aop-felt-blue-50), var(--aop-felt-blue-30));
+  --aop-felt-interactive-hover: light-dark(var(--aop-felt-blue-60), var(--aop-felt-blue-20));
+  --aop-felt-on-interactive: light-dark(var(--aop-felt-white), var(--aop-felt-gray-95));
+  --aop-felt-interactive-subtle: light-dark(#e0f0ff, #253447);
+  --aop-felt-interactive-plain-hover: light-dark(#e0e0e0, #383838);
+  --aop-felt-destructive: light-dark(#b1380b, #f89b78);
+  --aop-felt-destructive-hover: light-dark(#731f00, #fbbea8);
+  --aop-felt-on-destructive: light-dark(var(--aop-felt-white), var(--aop-felt-gray-95));
+
+  /* Bridge to the site's existing components. Replace this bridge when adopting Felt. */
+  --aop-bg: var(--aop-felt-canvas-primary);
+  --aop-surface: var(--aop-felt-surface-primary);
+  --aop-text: var(--aop-felt-text-primary);
+  --aop-secondary: var(--aop-felt-text-secondary);
+  --aop-border: var(--aop-felt-border-default);
+  --aop-accent: var(--aop-felt-interactive);
+  --aop-tint: var(--aop-felt-surface-secondary);
+  --aop-focus: var(--aop-felt-interactive);
+  --aop-control-border: var(--aop-felt-border-control);
+  --aop-radius: var(--aop-felt-radius-md);
+  font-family: var(--aop-felt-font-body);
+  font-size: 100%;
+  line-height: 1.5;
+}
+body { font-family: var(--aop-felt-font-body); line-height: 1.5; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--aop-felt-font-heading);
+  font-weight: 500;
+  letter-spacing: normal;
+}
+code, pre, .recipe-steps { font-family: var(--aop-felt-font-code); }
+a:hover { color: var(--aop-felt-interactive-hover); }
+a:focus-visible, button:focus-visible, summary:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+[tabindex="0"]:focus-visible, [data-results-title]:focus-visible {
+  outline: 3px solid var(--aop-focus);
+  outline-offset: 3px;
+}
+/* Branded chrome, using the same a11y-oop name and navigation. */
+.site-header { padding-block: 20px; }
+.brand { font-family: var(--aop-felt-font-heading); font-weight: 700; letter-spacing: normal; }
+/* Inline SVG shares the document color scheme; retain the supplied orange ball. */
+.brand-logo { display: block; width: 220px; max-width: 100%; height: auto; }
+.brand-logo-ink { fill: light-dark(#151515, #ffffff); }
+@media (forced-colors: active) { .brand-logo-ink { fill: CanvasText; } }
+.site-header nav { gap: 8px; }
+.site-header nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-bottom: 3px solid transparent;
+  color: var(--aop-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.site-header nav a:hover { background: var(--aop-felt-interactive-plain-hover); }
+.site-header nav a[aria-current] {
+  text-decoration: none;
+  border-bottom-color: var(--aop-felt-brand-red);
+}
+.hero { padding-block: 64px; gap: 64px; }
+.hero h1 {
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+.hero h1 em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
+}
+.lead { font-size: 1.125rem; line-height: 1.5; }
+.eyebrow {
+  text-transform: none;
+  letter-spacing: normal;
+  font-size: .875rem;
+  font-weight: 500;
+}
+.small, .muted, .site-footer { font-size: .875rem; }
+.hero-aside {
+  border: 1px solid var(--aop-border);
+  padding: var(--aop-felt-space-xl);
+  background: var(--aop-felt-surface-secondary);
+}
+.hero-aside h2 { font-size: 1.5rem; font-weight: 500; letter-spacing: normal; }
+.journey { margin-top: 24px; }
+.journey li { padding-block: 16px; gap: 16px; }
+.journey span:first-child { font-size: .875rem; }
+.journey strong { font-size: 1rem; font-weight: 500; }
+.journey p { font-size: .875rem; }
+.section-heading h2 { font-size: 2rem; font-weight: 500; letter-spacing: normal; }
+.strip strong { font-family: var(--aop-felt-font-heading); font-weight: 500; }
+.card { padding: var(--aop-felt-space-lg); }
+.card h2, .card h3 { font-size: 1.5rem; font-weight: 500; letter-spacing: normal; }
+.card p { font-size: 1rem; }
+.card .number, .card > a:last-child { font-size: .875rem; }
+.card > a:last-child { font-weight: 500; }
+.quote { padding: 32px; border-left-color: var(--aop-felt-interactive); border-radius: 0 16px 16px 0; }
+.quote p { font-family: var(--aop-felt-font-heading); font-size: 1.5rem; letter-spacing: normal; }
+/* Mock Felt actions keep native anchor/button semantics and 44px minimum targets. */
+.button, button {
+  border-radius: var(--aop-felt-radius-action);
+  border-color: var(--aop-felt-interactive);
+  padding: 9px 23px;
+  min-height: 44px;
+  font-family: var(--aop-felt-font-body);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+  background: transparent;
+  color: var(--aop-felt-interactive);
+}
+.button:hover, button:hover {
+  border-color: var(--aop-felt-interactive-hover);
+  color: var(--aop-felt-interactive-hover);
+  background: var(--aop-felt-interactive-subtle);
+}
+.button.primary, [data-confirm-import] {
+  background: var(--aop-felt-interactive);
+  color: var(--aop-felt-on-interactive);
+  border-color: var(--aop-felt-interactive);
+}
+.button.primary:hover, [data-confirm-import]:hover {
+  background: var(--aop-felt-interactive-hover);
+  color: var(--aop-felt-on-interactive);
+  border-color: var(--aop-felt-interactive-hover);
+}
+[data-confirm-reset] {
+  background: var(--aop-felt-destructive);
+  color: var(--aop-felt-on-destructive);
+  border-color: var(--aop-felt-destructive);
+}
+[data-confirm-reset]:hover {
+  background: var(--aop-felt-destructive-hover);
+  color: var(--aop-felt-on-destructive);
+  border-color: var(--aop-felt-destructive-hover);
+}
+button:disabled { opacity: .6; }
+.page-head h1 { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; letter-spacing: normal; }
+.prose h1 { font-size: 2.5rem; font-weight: 500; letter-spacing: normal; }
+.prose h2 { font-size: 1.75rem; font-weight: 500; letter-spacing: normal; }
+.prose h3 { font-size: 1.25rem; font-weight: 500; }
+.prose pre, .prose :not(pre) > code { font-family: var(--aop-felt-font-code); }
+.prose pre { font-size: .875rem; border: 1px solid var(--aop-border); border-radius: 8px; }
+.prose blockquote { border-color: var(--aop-felt-border-control); }
+.note { border: 1px solid var(--aop-border); padding: 24px; border-radius: 16px; font-size: 1rem; }
+.doc-nav h2 { text-transform: none; font-family: var(--aop-felt-font-body); letter-spacing: normal; font-size: .875rem; }
+.doc-nav a { padding: 8px 12px; border-left: 3px solid transparent; border-radius: 0 8px 8px 0; font-size: .875rem; }
+.doc-nav a[aria-current] {
+  border-left-color: var(--aop-felt-brand-red);
+  color: var(--aop-text);
+  background: var(--aop-felt-surface-secondary);
+  font-weight: 500;
+}
+/* Fields and checklist surfaces. Their boundaries remain distinct from decorative dividers. */
+input:not([type=checkbox]), select, textarea {
+  border: 1px solid var(--aop-felt-border-control);
+  border-radius: var(--aop-felt-radius-field);
+  font-family: var(--aop-felt-font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  background: var(--aop-felt-surface-primary);
+  color: var(--aop-text);
+}
+label, legend { font-size: .875rem; font-weight: 500; }
+.filters { padding: 24px; background: var(--aop-felt-surface-secondary); }
+.filter-hint, .source-note { font-size: .875rem; }
+.filters button { font-size: .875rem; padding-inline: 16px; }
+.progress-panel { border: 1px solid var(--aop-border); padding: 24px; }
+.progress-top strong { font-family: var(--aop-felt-font-heading); font-size: 1.5rem; font-weight: 500; }
+.progress-panel progress { accent-color: var(--aop-felt-interactive); height: 8px; }
+.progress-panel p, .progress-top { font-size: .875rem; }
+.check-item { padding: 24px; }
+.check-item h2 { font-size: 1.25rem; font-weight: 500; letter-spacing: normal; }
+.check-item > p { font-size: 1rem; }
+.check-row p, .check-meta { font-size: .875rem; }
+.check-tools button { font-size: .875rem; padding: 9px 16px; }
+.check-item details { font-size: 1rem; }
+.check-item dt { font-weight: 500; }
+.pill { padding: 2px 10px; border-radius: 64px; font-size: .75rem; background: var(--aop-felt-surface-secondary); }
+.skill-row h2 { font-size: 1.5rem; font-weight: 500; }
+.skill-row p { font-size: 1rem; }
+.recipe { padding: 24px; border-radius: 16px; }
+.recipe h2 { font-size: 1.5rem; font-weight: 500; }
+.recipe-steps { font-size: .875rem; }
+dialog { border-radius: 16px; padding: 32px; border-color: var(--aop-border); }
+dialog h2 { font-family: var(--aop-felt-font-heading); font-size: 1.5rem; font-weight: 500; }
+dialog .actions { gap: 12px; }
+@media (max-width: 720px) {
+  .hero { padding-block: 40px; gap: 32px; }
+  .hero-aside, .filters, .card, .check-item, .recipe, .note { padding: 20px; }
+  .hero h1 { font-size: 2.25rem; }
+  .section-heading h2 { font-size: 1.75rem; }
+  .site-header nav { gap: 0; }
+  .site-header nav a { font-size: .875rem; padding-inline: 8px; }
+  .prose h1 { font-size: 2rem; }
+  .quote { padding: 24px; }
+  dialog { padding: 24px; }
+}
