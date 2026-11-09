@@ -2,6 +2,8 @@
 
 Status: Proposal for review. No implementation or migration is implied by this document.
 
+Implementation note (2026-11-09): The skills-foundation branch now contains draft modal-only implementations of a11y-source-audit, a11y-keyboard-test, and a11y-report, plus their required contracts, methods, checks, and standalone packaging. The broader inventory below remains planned. No Alloy site, retained RHDS site pages, or historical checklist ships with this pilot. See the repository README for current scope and evaluation status.
+
 This plan maps the proposed reference library, skills, methods, checklists, recipes, and directory structure for a11y-oop. It describes the intended scope, not a requirement to generate every file immediately.
 
 AI Helpers’ existing PatternFly plugin stays separate and supported. The current a11y-oop skills are drafts to evaluate and replace; their names, structure, and checklist count are not requirements for this work.

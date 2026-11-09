@@ -1,0 +1,115 @@
+{
+  "version": "0.1.0-draft.1",
+  "scope": "Modal pilot only; not an exhaustive WCAG catalog.",
+  "checks": [
+    {
+      "id": "MOD-01",
+      "title": "Name and role",
+      "expectation": "Exposed semantics identify the dialog and its name.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "browser-semantics"
+      ],
+      "relatedCriteria": [
+        "4.1.2"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-02",
+      "title": "Actual modality",
+      "expectation": "Declared modality agrees with background interaction restrictions.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-03",
+      "title": "Entry focus",
+      "expectation": "Opening places focus appropriately inside.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-04",
+      "title": "Navigation",
+      "expectation": "Keyboard users traverse the modal without entering background content.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-05",
+      "title": "Dismissal",
+      "expectation": "Keyboard users can close or complete; evaluate Escape and closing controls.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.1.2"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-06",
+      "title": "Exit focus",
+      "expectation": "Closing restores the invoker or a justified next task.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    },
+    {
+      "id": "MOD-07",
+      "title": "Focus indication",
+      "expectation": "Focused controls are identifiable and not entirely obscured by author content.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.4.7",
+        "2.4.11"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "../library/patterns/modal-dialog.md"
+    }
+  ]
+}

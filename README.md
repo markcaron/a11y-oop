@@ -1,41 +1,39 @@
 # Accessibility, on purpose
 
-a11y-oop is a skills-first accessibility project: modular references, evidence-collection methods, task-focused AI skills, shared checks, and workflow recipes.
+Three new, independently usable draft skills for modal-dialog review:
 
-## Current status
+- [a11y-source-audit](skills/a11y-source-audit/SKILL.md): source findings and runtime verification queue.
+- [a11y-keyboard-test](skills/a11y-keyboard-test/SKILL.md): observed keyboard/focus behavior or explicit unexecuted steps.
+- [a11y-report](skills/a11y-report/SKILL.md): consolidated findings, conflicts, and method-specific coverage.
 
-This branch establishes the project foundation. The 18 skills in the plan are candidates, not implemented or released packages. The previous eight generated skills have not been carried forward.
+These are new implementations, not the eight archived drafts. Coverage is modal dialogs only; the other 15 planned skills are not implemented. The RHDS site content and historical catalog have been removed.
 
-- [Architecture and action plan](docs/a11y-oop-architecture-plan.md)
-- [Sample prompts for proposed skills](docs/a11y-oop-sample-prompts.md)
-- [Contribution guidance](CONTRIBUTING.md)
-- [Source provenance](sources/README.md)
+## Install and validate
 
-The first implementation will cover one modal-dialog reference and its checks, minimal scope/result contracts, and a packaged source-review → keyboard-test → report workflow. Other directories are added when they contain reviewed work; there are no empty skill scaffolds.
-
-## Working locally
-
-No Alloy installation, website build, Node packages, or network access is required for the current foundation. Run the documentation and source-integrity checks with Python 3:
+Python 3.10+ is sufficient; no Alloy, Node packages, or network is needed to validate/package instructions:
 
 ```sh
 python3 scripts/validate.py
+python3 -m unittest discover -s evals/tests -v
+python3 scripts/package.py
 ```
 
-Future packaging and evaluation tooling will be introduced with the first executable workflow. Passing the current validator does not establish skill behavior or accessibility conformance.
+Extract a ZIP from dist/ into your assistant's supported skill location. Each contains one skill folder and its required references. Install that generated folder, not a bare source skills/ folder: the source uses canonical files, while distributions rewrite paths into local references/. Browser tools and provider libraries are not bundled.
 
-## Archived website
+## Use
 
-The Alloy site and original skill drafts are preserved on the `site-archive` branch. Its README contains its build and testing instructions. Build outputs, caches, and installed dependencies are not committed.
+Follow the [modal recipe](recipes/modal-review.md) or invoke a skill independently:
 
-To work on the archived site separately:
+> Use a11y-source-audit on this modal. Record source evidence and the keyboard transitions needing verification. Do not edit files.
 
-```sh
-git fetch origin
-git worktree add ../a11y-oop-site site-archive
-```
+> Use a11y-keyboard-test at [URL] with these findings. Without execution, mark checks Not tested and give manual steps.
 
-If the archive branch only exists on the remote in a fresh clone, create its local branch with `git branch --track site-archive origin/site-archive` first. Use the separate worktree to avoid mixing site files into the skills branch. The skills repository is intended to become the canonical source that any future website consumes.
+> Use a11y-report to consolidate these results, preserving unresolved findings and different revisions/methods.
 
-## License and attribution
+## Status and layout
 
-The existing Apache-2.0 license is retained. See [NOTICE](NOTICE) for retained upstream material. Historical source records are preserved for review, not presented as an approved checklist or a complete standards mapping.
+Expectations live in library/, procedures in methods/, records in contracts/, check IDs in checks/, and task entrypoints in skills/. packaging/ distinguishes dependencies from optional reading. sources/ holds URLs and review metadata, not site pages.
+
+See [evaluation guidance](evals/README.md) for fixtures and the outstanding behavioral release gate. Package tests do not prove assistant behavior or actual keyboard/AT performance. Packages remain drafts; no release tag or conformance claim is made.
+
+The [architecture](docs/a11y-oop-architecture-plan.md) and [sample prompts](docs/a11y-oop-sample-prompts.md) include future work. The site remains on site-archive. Apache-2.0 is retained; see [NOTICE](NOTICE).

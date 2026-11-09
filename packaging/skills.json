@@ -1,0 +1,97 @@
+{
+  "version": "0.1.0-draft.1",
+  "status": "draft",
+  "resources": {
+    "contracts/scope.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "contracts/results.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "contracts/coverage.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "contracts/handoffs.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "methods/source-inspection.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "methods/keyboard-testing.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "library/foundations/names-and-descriptions.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "library/foundations/focus-and-native-dialogs.md": {
+      "required": [],
+      "optionalReading": []
+    },
+    "library/patterns/modal-dialog.md": {
+      "required": [
+        "library/foundations/names-and-descriptions.md",
+        "library/foundations/focus-and-native-dialogs.md"
+      ],
+      "optionalReading": []
+    },
+    "checks/catalog.json": {
+      "required": [
+        "library/patterns/modal-dialog.md"
+      ],
+      "optionalReading": []
+    },
+    "skills/a11y-source-audit/SKILL.md": {
+      "required": [
+        "contracts/scope.md",
+        "contracts/results.md",
+        "contracts/handoffs.md",
+        "contracts/coverage.md",
+        "checks/catalog.json",
+        "library/patterns/modal-dialog.md",
+        "methods/source-inspection.md"
+      ],
+      "optionalReading": []
+    },
+    "skills/a11y-keyboard-test/SKILL.md": {
+      "required": [
+        "contracts/scope.md",
+        "contracts/results.md",
+        "contracts/handoffs.md",
+        "contracts/coverage.md",
+        "checks/catalog.json",
+        "library/patterns/modal-dialog.md",
+        "methods/keyboard-testing.md"
+      ],
+      "optionalReading": []
+    },
+    "skills/a11y-report/SKILL.md": {
+      "required": [
+        "contracts/scope.md",
+        "contracts/results.md",
+        "contracts/handoffs.md",
+        "contracts/coverage.md",
+        "checks/catalog.json",
+        "library/patterns/modal-dialog.md"
+      ],
+      "optionalReading": []
+    }
+  },
+  "skills": {
+    "a11y-source-audit": {
+      "entry": "skills/a11y-source-audit/SKILL.md"
+    },
+    "a11y-keyboard-test": {
+      "entry": "skills/a11y-keyboard-test/SKILL.md"
+    },
+    "a11y-report": {
+      "entry": "skills/a11y-report/SKILL.md"
+    }
+  }
+}

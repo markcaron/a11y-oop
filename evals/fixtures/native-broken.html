@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Intentionally broken modal fixture</title>
+<h1>Intentionally broken modal fixture</h1>
+<button id="open" type="button">Open intended modal</button>
+<button type="button">Background action</button>
+<!-- Seeded: dangling name reference and show() despite intended modality. -->
+<dialog id="details" aria-labelledby="missing-heading" aria-modal="true">
+  <h2>Review details</h2>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+<script>
+document.getElementById('open').addEventListener('click', () => document.getElementById('details').show());
+</script>
+</html>

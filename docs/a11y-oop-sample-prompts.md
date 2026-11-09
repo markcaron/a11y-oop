@@ -2,6 +2,8 @@
 
 These examples use the **proposed skill names** from the [architecture and action plan](a11y-oop-architecture-plan.md). They are not all implemented yet. Each skill can be invoked independently.
 
+Current pilot: a11y-source-audit, a11y-keyboard-test, and a11y-report are implemented as modal-only drafts. The other names below are planned. Broader form, page, and dashboard examples will require later reference coverage; use modal targets when trying the current pilot.
+
 Replace bracketed placeholders with the relevant URLs, paths, or findings.
 
 ## Planning and design

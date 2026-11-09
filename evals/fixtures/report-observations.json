@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "scope": {"id": "S-EXAMPLE", "target": "example modal", "revision": "A", "requiredUnits": ["source:MOD-04:A", "keyboard:MOD-04:A", "keyboard:MOD-06:A", "keyboard:OTHER-01:A"]},
+  "observations": [
+    {"id": "R-01", "check": "MOD-04", "method": "source", "state": "open", "environment": "synthetic source", "revision": "A", "status": "Pass", "evidence": "Synthetic structural observation; not runtime evidence"},
+    {"id": "R-02", "finding": "F-01", "check": "MOD-04", "method": "keyboard", "state": "open", "environment": "synthetic browser E", "revision": "A", "status": "Fail", "evidence": "Synthetic focus escape"},
+    {"id": "R-03", "finding": "F-02", "check": "MOD-06", "method": "keyboard", "state": "close", "environment": "synthetic browser E", "revision": "A", "status": "Fail", "evidence": "Synthetic focus loss"},
+    {"id": "R-04", "finding": "F-02", "check": "MOD-06", "method": "keyboard", "state": "close", "environment": "synthetic browser E", "revision": "A", "status": "Pass", "evidence": "Synthetic conflicting repeat; cause unresolved"},
+    {"id": "R-05", "finding": "F-03", "check": "OTHER-01", "method": "keyboard", "state": "open", "environment": "synthetic browser E", "revision": "A", "status": "Not tested", "evidence": "Missing supplied artifact; finding remains unresolved"},
+    {"id": "R-06", "check": "MOD-04", "method": "source", "state": "open", "environment": "synthetic source", "revision": "B", "status": "Pass", "evidence": "Different revision and method; no keyboard retest"}
+  ]
+}
