@@ -1,30 +1,41 @@
 # Accessibility, on purpose
 
-Three new, independently usable draft skills for modal-dialog review:
+a11y-oop is a plugin marketplace for accessibility workflows. The first plugin, **a11y-review**, contains three draft modal-dialog skills:
 
-- [a11y-source-audit](skills/a11y-source-audit/SKILL.md): source findings and runtime verification queue.
-- [a11y-keyboard-test](skills/a11y-keyboard-test/SKILL.md): observed keyboard/focus behavior or explicit unexecuted steps.
-- [a11y-report](skills/a11y-report/SKILL.md): consolidated findings, conflicts, and method-specific coverage.
+- [a11y-source-audit](plugins/a11y-review/skills/a11y-source-audit/SKILL.md): source findings and a runtime verification queue.
+- [a11y-keyboard-test](plugins/a11y-review/skills/a11y-keyboard-test/SKILL.md): observed keyboard/focus behavior or explicit unexecuted steps.
+- [a11y-report](plugins/a11y-review/skills/a11y-report/SKILL.md): consolidated findings, conflicts, and method-specific coverage.
 
-These are new implementations, not the eight archived drafts. Coverage is modal dialogs only; the other 15 planned skills are not implemented. The RHDS site content and historical catalog have been removed.
+## Plugin installation
 
-## Install and validate
+The installable unit is the entire plugins/a11y-review/ directory. It contains both platform manifests, all three skills, and one shared copy of their contracts, methods, references, checks, and recipe. Do not copy an individual skill folder without its plugin resources. No ZIP generation, path rewriting, dist/ directory, or build step is required.
 
-Python 3.10+ is sufficient; no Alloy, Node packages, or network is needed to validate/package instructions:
+For local development, check out skills-foundation and load the plugin directory using your client's plugin support. For Claude Code:
+
+```sh
+claude --plugin-dir ./plugins/a11y-review
+```
+
+The repository has matching Claude and Cursor marketplace catalogs. They register a11y-review at ./plugins/a11y-review. For marketplace installation, use a checkout/ref containing these files; main does not contain this work until merged. See the [Claude plugin docs](https://code.claude.com/docs/en/plugins) and [Cursor plugin reference](https://cursor.com/docs/reference/plugins) for client installation and discovery. No client settings or marketplace registrations are changed automatically by this repo.
+
+Host-specific plugin loading has not been exercised in the automated tests. Browser tools and provider libraries are supplied by the host/project, not this plugin.
+
+## Validate
+
+Python 3.10+ is needed only for contributor validation:
 
 ```sh
 python3 scripts/validate.py
 python3 -m unittest discover -s evals/tests -v
-python3 scripts/package.py
 ```
 
-Extract a ZIP from dist/ into your assistant's supported skill location. Each contains one skill folder and its required references. Install that generated folder, not a bare source skills/ folder: the source uses canonical files, while distributions rewrite paths into local references/. Browser tools and provider libraries are not bundled.
+These check matching manifests/catalogs, skill discovery/frontmatter, plugin-contained references, check records, and portability after copying the plugin out of its authoring repository. They do not prove assistant behavior or accessibility conformance.
 
 ## Use
 
-Follow the [modal recipe](recipes/modal-review.md) or invoke a skill independently:
+Follow the [modal recipe](plugins/a11y-review/recipes/modal-review.md) or invoke a skill independently using your client's skill syntax:
 
-> Use a11y-source-audit on this modal. Record source evidence and the keyboard transitions needing verification. Do not edit files.
+> Use a11y-source-audit on this modal. Record source evidence and keyboard transitions needing verification. Do not edit files.
 
 > Use a11y-keyboard-test at [URL] with these findings. Without execution, mark checks Not tested and give manual steps.
 
@@ -32,8 +43,8 @@ Follow the [modal recipe](recipes/modal-review.md) or invoke a skill independent
 
 ## Status and layout
 
-Expectations live in library/, procedures in methods/, records in contracts/, check IDs in checks/, and task entrypoints in skills/. packaging/ distinguishes dependencies from optional reading. sources/ holds URLs and review metadata, not site pages.
+Coverage is modal dialogs only; the other 15 proposed skills are not implemented. See [evaluation guidance](evals/README.md) for the outstanding behavioral release gate. The plugin remains a draft.
 
-See [evaluation guidance](evals/README.md) for fixtures and the outstanding behavioral release gate. Package tests do not prove assistant behavior or actual keyboard/AT performance. Packages remain drafts; no release tag or conformance claim is made.
+Canonical skill resources live inside plugins/a11y-review/. docs/ contains the [architecture](docs/a11y-oop-architecture-plan.md) and [future skill prompts](docs/a11y-oop-sample-prompts.md); evals/ and scripts/ are repository-level contributor tools. Future plugins can be added under plugins/ when their scope warrants a separate installable unit.
 
-The [architecture](docs/a11y-oop-architecture-plan.md) and [sample prompts](docs/a11y-oop-sample-prompts.md) include future work. The site remains on site-archive. Apache-2.0 is retained; see [NOTICE](NOTICE).
+The original site and eight generated drafts remain on site-archive. No RHDS site snapshots or old checklist are included. Apache-2.0 is retained; see [NOTICE](NOTICE).

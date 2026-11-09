@@ -2,7 +2,7 @@
 
 Status: Proposal for review. No implementation or migration is implied by this document.
 
-Implementation note (2026-11-09): The skills-foundation branch now contains draft modal-only implementations of a11y-source-audit, a11y-keyboard-test, and a11y-report, plus their required contracts, methods, checks, and standalone packaging. The broader inventory below remains planned. No Alloy site, retained RHDS site pages, or historical checklist ships with this pilot. See the repository README for current scope and evaluation status.
+Implementation note (2026-11-09): The three modal-only draft skills now ship together as the a11y-review plugin under plugins/a11y-review/. Its canonical library, contracts, methods, checks, recipes, and sources are inside that plugin. The repository has matching Claude/Cursor plugin manifests and marketplace catalogs. The broader inventory remains planned; no Alloy site, retained RHDS pages, historical checklist, or dist/ build is included.
 
 This plan maps the proposed reference library, skills, methods, checklists, recipes, and directory structure for a11y-oop. It describes the intended scope, not a requirement to generate every file immediately.
 
@@ -18,102 +18,56 @@ The library has five distinct responsibilities:
 - **Recipes:** Sequences of skills with shared inputs and handoffs.
 - **Checklists:** Role-specific views of shared checks, usable with or without an assistant.
 
-The website presents these resources. Download packages distribute them. Neither should maintain a separate copy of the guidance.
+Plugins distribute these resources together. A future website can present the same canonical guidance without owning a separate copy.
+
+Distribute related skills as plugins. The first plugin is a11y-review; do not create one plugin per skill.
 
 Use **`a11y-` as the proposed working skill prefix** for this independent project. Settle branding before publishing.
 
 ## 2. Proposed directory structure
 
-This is a target layout, not an instruction to move the existing site immediately. Existing site directories can remain in place during development.
+The tree shows the implemented plugin layout. The expanded reference and skill inventories in later sections remain a backlog. All installed resources stay within their plugin; repository-level contributor tools do not need to be installed.
 
 ```text
 a11y-oop/
+├── .claude-plugin/marketplace.json
+├── .cursor-plugin/marketplace.json
 ├── AGENTS.md
 ├── README.md
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── NOTICE
-│
-├── library/                         # Canonical accessibility knowledge
-│   ├── index.yaml                   # Reference IDs, paths, tags, relationships
-│   ├── foundations/
-│   ├── patterns/
-│   ├── runtimes/
-│   └── providers/
-│
-├── methods/                         # Evidence collection and interpretation
-│   ├── scope-and-sampling.md
-│   ├── design-inspection.md
-│   ├── source-inspection.md
-│   ├── automated-scanning.md
-│   ├── keyboard-testing.md
-│   ├── rendered-semantics.md
-│   ├── visual-and-preference-testing.md
-│   ├── assistive-technology-testing.md
-│   └── regression-testing.md
-│
-├── contracts/                       # Shared definitions, kept small
-│   ├── scope.md
-│   ├── results.md
-│   ├── findings.md
-│   ├── coverage.md
-│   └── handoffs.md
-│
-├── checks/
-│   ├── catalog.json                 # Stable check IDs and reference mappings
-│   └── profiles/
-│       ├── designer.json
-│       ├── content-author.json
-│       ├── developer.json
-│       ├── component-author.json
-│       └── qa.json
-│
-├── skills/
-│   └── a11y-*/SKILL.md              # Full proposed inventory below
-│
-├── recipes/
-│   ├── design-to-development.md
-│   ├── pull-request-review.md
-│   ├── existing-experience-audit.md
-│   ├── component-development.md
-│   ├── content-publication.md
-│   ├── remediation-and-retest.md
-│   ├── release-review.md
-│   └── design-system-adoption.md
-│
-├── packaging/
-│   ├── skills.json                  # Resources included with each skill
-│   └── bundles.json                 # Optional collections of skills
-│
-├── schemas/                         # Validate maintained structured data
-│   ├── reference-index.schema.json
-│   ├── check-catalog.schema.json
-│   ├── checklist-profile.schema.json
-│   ├── scope.schema.json
-│   ├── result.schema.json
-│   └── package.schema.json
-│
-├── evals/
-│   ├── cases/
-│   ├── fixtures/
-│   └── rubrics/
-│
-├── sources/
-│   ├── registry.json                # URLs, revisions, attribution, review dates
-│   └── adaptations.json             # Imported material and local interpretation
-│
-├── vendor/                          # Retained upstream source snapshots
-├── scripts/                         # Validation, packaging, site preparation
-│
-├── content/                         # Alloy website content
-├── layouts/
-├── static/
-├── data/                            # Existing site data during transition
-│
-└── dist/                            # Generated distribution; never hand-edited
-    ├── skills/
-    └── bundles/
+├── plugins/
+│   └── a11y-review/                 # One installable plugin
+│       ├── .claude-plugin/plugin.json
+│       ├── .cursor-plugin/plugin.json
+│       ├── LICENSE
+│       ├── NOTICE
+│       ├── skills/                  # Three implemented modal-only drafts
+│       │   ├── a11y-source-audit/SKILL.md
+│       │   ├── a11y-keyboard-test/SKILL.md
+│       │   └── a11y-report/SKILL.md
+│       ├── library/                 # Shared canonical expectations
+│       │   ├── foundations/
+│       │   └── patterns/
+│       ├── methods/
+│       ├── contracts/
+│       │   ├── scope.md
+│       │   ├── results.md
+│       │   ├── coverage.md
+│       │   └── handoffs.md
+│       ├── checks/catalog.json
+│       ├── recipes/modal-review.md
+│       └── sources/registry.json
+├── docs/                            # Plans and contributor documentation
+├── scripts/                         # Manifest and reference validation
+└── evals/                           # Contributor tests and behavioral cases
+    ├── cases/
+    ├── fixtures/
+    └── tests/
 ```
+
+Future runtime/provider references, checklist profiles, additional methods, and recipes from the inventory below belong inside the relevant plugin. Add schemas or further plugins only when their implementation needs them.
 
 `library/` contains expectations. `methods/` contains procedures. `contracts/` defines how work is recorded. Keeping those separate prevents every skill from accumulating its own audit methodology.
 
@@ -379,7 +333,7 @@ Discover this information from the request, repository, and existing records fir
 
 ### Result unit and evidence
 
-A result measures one **check ID + target/state or transition + method + environment + revision** within a scope. Give each observation a result ID and run/time so repeated observations remain distinguishable. Record check/reference/package versions as provenance. Use explicit unknown values where necessary, and qualify reproducibility rather than inventing environment or revision details.
+A result measures one **check ID + target/state or transition + method + environment + revision** within a scope. Give each observation a result ID and run/time so repeated observations remain distinguishable. Record check/reference versions and plugin commit as provenance. Use explicit unknown values where necessary, and qualify reproducibility rather than inventing environment or revision details.
 
 Results preserve expected versus actual behavior, evidence, source, confidence, and retest history. Environment includes relevant browser/AT/tool versions and conditions such as viewport or preferences. Revision identifies the evaluated source, build, or design version as available.
 
@@ -405,34 +359,15 @@ Low confidence does not turn an unresolved observation into a pass. Use Inconclu
 
 Normative violations, pattern deviations, provider requirements, and inclusive-design/editorial recommendations remain distinguishable. Keep impact separate from certainty and release priority. Source inspection, automated results, browser observations, and human AT results retain their distinct evidence origins.
 
-## 9. Packaging and website boundaries
+## 9. Plugin distribution and website boundaries
 
-Maintain each reference once, then generate:
+The installable unit is a plugin containing related skills and all canonical supporting resources. The first is plugins/a11y-review/. Maintain identical Claude/Cursor plugin manifests and repository marketplace catalogs. More plugins can be added when their scope warrants separate installation.
 
-- Individual skills containing their required references and methods.
-- Optional bundles for design, development, QA, or comprehensive review.
-- Human-readable website pages.
-- Checklist views.
+No individual-skill ZIPs, dependency-copying build, path rewriting, or dist/ directory are required. Keep required local references inside the plugin boundary, and validate their existence after copying only the plugin into a clean installed location. Optional reading can remain external. Shipping resources together does not mean loading every reference for every task; retain task-specific loading triggers.
 
-### Package dependencies and optional reading
+Prove plugin portability during the first workflow. Also test actual host discovery separately: a filesystem-copy test cannot establish that the client loaded or invoked the plugin correctly. Keep behavioral evaluation distinct from both structural and host-loading checks.
 
-Individual downloads must work independently. Resource metadata and package manifests distinguish:
-
-- **Required dependencies:** Local contracts, methods, checks, references, scripts, and assets needed to execute the skill, including resources required only for supported conditional branches. Packaging includes their transitive required dependencies.
-- **Optional related reading:** Background and adjacent topics that are not necessary to execute the skill. These links do not expand the package dependency graph. Optional local links must be rewritten to stable published destinations or omitted when the resource is not shipped; leave no broken paths in the download.
-- **External sources and capability requirements:** Authoritative documentation and tools/services used when available. Declare required live lookups and their fallbacks explicitly. A self-contained instruction package does not imply bundled browser tools, MCP access, or a fully offline audit.
-
-Do not infer package dependencies from every Markdown link. Validate the declared dependency graph, required files, and installed link targets, including cycles and accidental references to the source checkout.
-
-### Shipping versus loading
-
-A package ships the resources necessary for all supported branches. For an individual task, the assistant loads only the shared entry contracts and the references selected by actual scope, patterns, runtime, and provider. Each conditional resource has a clear loading trigger. Shipping a file does not instruct the assistant to read it on every invocation.
-
-### Early installation proof
-
-During Phase 4, generate standalone packages and extract/install them into a clean workspace outside the source repository. Run against copied fixtures with the source checkout unavailable to the evaluation. Verify that contracts, required references, relative paths, and handoffs work from the installed packages. Repeat this packaging check for releases; website integration can follow later.
-
-Keep platform-specific manifests outside the canonical knowledge. A future AI Helpers contribution can adapt packaging and naming without creating a competing copy of the guidance.
+A future website may consume the canonical plugin resources. It must not own a competing copy of guidance or become a prerequisite for plugin installation. No site is included in this skills/plugin phase.
 
 ## 10. Plan of action
 
@@ -444,7 +379,7 @@ Deliverable: An inventory with disposition decisions and source ownership.
 
 ### Phase 2: Agree on the model
 
-Review this directory map, skill boundaries, naming, reference format, minimal scope/result contract, dependency types, and evaluation criteria. Keep the existing site working during the transition.
+Review this directory map, skill boundaries, naming, reference format, minimal scope/result contract, plugin boundaries, and evaluation criteria. Keep the existing site working during the transition.
 
 Deliverable: An agreed architecture and one reference-writing template. Planned files stay in the backlog until needed; do not generate empty scaffolds for the whole inventory.
 
@@ -458,21 +393,21 @@ Deliverable: One reviewed modal-dialog module, its checks, and the minimal share
 
 Build `a11y-source-audit`, `a11y-keyboard-test`, and `a11y-report` around the modal-dialog slice. Use a PF example and a Web Component example to test the same expectations across runtimes/providers without expanding into a full form audit.
 
-Generate and install the standalone packages in a clean workspace outside the source repository, with no access to source-only resources. Execute the source-review → keyboard-test → report workflow against copied fixtures. Also invoke each skill independently to verify minimal scope initialization and package completeness.
+Install the complete a11y-review plugin in a clean workspace outside the source repository, with no access to source-only resources, and verify actual host discovery separately. Execute the source-review → keyboard-test → report workflow against copied fixtures. Also invoke each skill independently to verify minimal scope initialization and plugin completeness.
 
-Deliverable: A repeatable installed-package workflow with useful evidence, intact handoffs, and no dependencies on the authoring checkout.
+Deliverable: A repeatable installed-plugin workflow with useful evidence, intact handoffs, and no dependencies on the authoring checkout.
 
 ### Phase 5: Evaluate behavior
 
 Use broken examples, valid alternatives, missing capabilities, and mixed runtimes. Check missed issues, false positives, evidence quality, and overclaiming.
 
-Compare skill-on and skill-off runs on the same tasks, fixtures, model configuration, and tool capabilities. Record package versions, prompts, outputs, and adjudicated outcomes. Assess correct findings, missed defects, false positives, evidence fidelity, and coverage reporting. Define expected outcomes and acceptance criteria before running the comparison; do not tune the rubric to the generated wording.
+Compare skill-on and skill-off runs on the same tasks, fixtures, model configuration, and tool capabilities. Record plugin commits, prompts, outputs, and adjudicated outcomes. Assess correct findings, missed defects, false positives, evidence fidelity, and coverage reporting. Define expected outcomes and acceptance criteria before running the comparison; do not tune the rubric to the generated wording.
 
 Test routing for overlapping requests: design versus source review, automated testing versus test generation, pattern versus component review, and planning versus direct invocation. Verify that selection follows the requested task and that it does not expand into unrelated actions.
 
 ### Evaluation release gate
 
-Before expanding the pilot or releasing a skill package:
+Before expanding the pilot or releasing a plugin:
 
 - Every required packaging, scope, status, conflict-handling, and handoff case must pass.
 - No evaluated case may fabricate runtime/AT evidence, claim unsupported conformance, turn missing or inconclusive evidence into a pass, or lose an unresolved finding during consolidation. Any such occurrence blocks release until fixed and retested.
@@ -498,16 +433,16 @@ Deliverable: Incrementally validated coverage, with remaining gaps visible.
 
 ### Phase 8: Integrate distribution and the website
 
-Extend the packaging already proven in Phase 4, generate public views, and deliberately replace the old draft downloads. Rerun installed-package checks and the evaluation release gate for the distributed versions.
+Extend the plugin installation already proven in Phase 4. Website integration and any optional downloads remain deferred; generate public views only when website work resumes. Rerun installed-plugin checks and the evaluation release gate for the distributed versions.
 
 Deliverable: Self-contained downloads and a website using the same canonical sources.
 
 ### Phase 9: Pilot and release
 
-Test real workflows before advertising the complete candidate catalog. Require the evaluation release gate and installed-package checks to pass for the release artifacts. Contribute suitable PF improvements upstream independently.
+Test real workflows before advertising the complete candidate catalog. Require the evaluation release gate and installed-plugin checks to pass for the release artifacts. Contribute suitable PF improvements upstream independently.
 
 Deliverable: A supported initial release with documented scope and limitations.
 
 ## First deliverable
 
-The first reviewable content deliverable is **one modal-dialog reference, its check records, and a minimal scope/result contract**. The first executable proof is a packaged source-review → keyboard-test → report example running outside the source repository. Validate those relationships before expanding to eighteen candidate skills or the larger reference inventory.
+The first reviewable content deliverable is **one modal-dialog reference, its check records, and a minimal scope/result contract**. The first executable proof is a plugin-installed source-review → keyboard-test → report example running outside the source repository. Validate those relationships before expanding to eighteen candidate skills or the larger reference inventory.

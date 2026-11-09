@@ -1,0 +1,13 @@
+{
+  "name": "a11y-oop",
+  "owner": {
+    "name": "Mark Caron"
+  },
+  "plugins": [
+    {
+      "name": "a11y-review",
+      "source": "./plugins/a11y-review",
+      "description": "Draft modal-dialog accessibility reviews: source audit, keyboard testing, and consolidated reporting."
+    }
+  ]
+}

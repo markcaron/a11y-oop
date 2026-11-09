@@ -1,21 +1,21 @@
-# Evaluating the modal pilot
+# Evaluating the modal plugin
 
-## Automated packaging checks
+## Structural tests
 
-Run `python3 -m unittest discover -s evals/tests -v`. These check required dependency closures, missing declarations, cycles, portable paths, optional-reading exclusion, reproducible ZIPs, and installed file/link integrity after the temporary authoring checkout is deleted. These are structural tests, not assistant behavior evaluations.
+Run python3 -m unittest discover -s evals/tests -v. Tests copy only the complete plugins/a11y-review/ directory into a fresh installed location, delete the temporary authoring checkout, and validate manifests, three discoverable skill entrypoints, and local resource/check references. Negative cases cover missing references, path escapes, mismatched manifests, missing skills, and invalid marketplace sources. These tests do not invoke a real host plugin loader or evaluate assistant behavior.
 
 ## Behavioral cases
 
-Use cases/modal-workflow.json and fixtures/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing execution capabilities, consolidation conflicts, and routing. The HTML files are isolated test fixtures, not a replacement website. PatternFlyModal.tsx is source-only: no dependency installation or running PF build is implied. Native and Web Component fixtures can be served from a local static server for actual browser evaluation.
+Use cases/modal-workflow.json and fixtures/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing browser execution, consolidation conflicts, and routing. HTML files are isolated test fixtures, not a website. PatternFlyModal.tsx is source-only and does not bundle React/PF dependencies.
 
-For each case, install the generated skill in an isolated workspace alongside only the named fixture and required tools. Do not expose the source checkout or the expected-outcome rubric to the acting assistant. Record prompt, package hash/version, model configuration, capabilities, output, actual execution artifacts, and adjudication. Evaluate synthetic reporting records as supplied examples, not live observations.
+Install the complete plugin in an isolated workspace with the named fixture and required tools. Do not expose authoring-only files or the expected-outcome rubric to the acting assistant. Record prompt, plugin commit/content hash, model configuration, capabilities, output, execution artifacts, and adjudication. Evaluate synthetic reporting records as supplied examples, not live observations.
 
-Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tool capabilities. Freeze expected outcomes before the comparison. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures rather than only a score.
+Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tools. Freeze expected outcomes before comparison. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures.
 
 ## Release gate
 
-Required package/isolation cases must pass. The behavioral suite must detect seeded blocking defects, accept valid alternatives, initialize scope for independent invocation, retain unresolved findings/conflicts, and respect routing boundaries. Any fabricated runtime/AT evidence, unsupported conformance claim, missing-evidence Pass, or lost unresolved finding blocks release. Demonstrate benefit over skill-off in a preselected quality dimension without regressing required correctness. Passing a small suite does not prove universal correctness.
+Required manifest, installation-portability, and real host-loading checks must pass. Behavioral cases must detect seeded defects, accept valid alternatives, initialize scope independently, and retain unresolved findings/conflicts. Fabricated runtime/AT evidence, unsupported conformance, missing-evidence Pass, or a lost finding blocks release. Demonstrate benefit over skill-off without regressing required correctness. A small suite is not universal proof.
 
-Current status: draft. Behavioral matched runs and independent runtime/AT evaluation are not completed by the packaging tests. No release tag is authorized by a passing static check. The next validation step is to run the installed source → keyboard → report recipe on real fixtures and retain its evidence, then perform matched comparisons.
+Current status: draft. Matched behavioral comparisons, real host-loading checks, and independent runtime/AT evaluation remain pending. Static plugin-copy tests do not complete that gate. The next step is an installed-plugin source → keyboard → report exercise with retained evidence.
 
-The external skill-creator quick validator was attempted during implementation but could not start because PyYAML is unavailable. The project validator checks the pilot's single-line name/description frontmatter convention and package resources without that dependency; it is not a general YAML validator.
+The external skill-creator validator previously could not start because PyYAML is unavailable. The contributor validator checks this pilot's single-line name/description convention without that dependency; it is not a general YAML validator.
