@@ -17,6 +17,8 @@ Confirm the running target/build, opener, data/auth setup, and available input/f
 4. Exercise the task, relevant updates, and nested popup dismissal. Test Escape and visible closing/finishing controls; record intended alternatives.
 5. Observe whether focus returns to the invoker or reaches a logical next step; explain any alternative destination. Reopen to catch stale focus, content, or names. Test long content/removed invokers when applicable to scope.
 
+For unexpected native focus or boundary behavior, perform the [native-control attribution check](../../references/browser-coverage.md#attribute-unexpected-native-behavior) before assigning component responsibility.
+
 Repeat in required available browsers. Containment concerns background page content, not arbitrary browser chrome shortcuts. A focused shadow host alone does not prove focus escaped; use the [cross-root reference](../../references/web-components/cross-root-relationships.md) when needed.
 
 Use browser-driven key input, including browser automation that performs keyboard actions. Dispatching KeyboardEvent objects or walking elements with .focus() does not test native Tab order. For accessible open shadow roots, start with document.activeElement and repeatedly follow element.shadowRoot.activeElement while present; record the chain. If closed roots or tool limitations hide the endpoint, report that limitation instead of assuming escape or success.

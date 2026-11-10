@@ -12,11 +12,13 @@ Install the complete plugin in an isolated workspace with the named fixture and 
 
 Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tools. Freeze expected outcomes before comparison. Adjudicate additional findings by evidence and authority; an unseeded, substantiated finding is not automatically a false positive. Include installed competing skills in routing runs and record their names/versions; also retain isolated-plugin runs to distinguish routing interference. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures.
 
-## Retained runs
+## Evaluation evidence
 
-Store each real evaluation under evals/runs/<run-id>/ with metadata.json, prompt.txt, output.md, artifacts/, and adjudication.md. Create these only when a run occurs; never label a specification as executed. Metadata records case ID, skill-on/off mode, paired run ID, timestamp, fixture hash, plugin content hash (including uncommitted files), model/settings, capabilities, installed competing skills, browser/OS where relevant, and execution status. Mark unavailable values explicitly.
+Keep run outputs and artifacts outside this repository, in saved client chats or a private location of your choice. Formal reports and a prescribed directory or file format are not required. The repository holds reusable cases, fixtures, and validation code, not individual run records.
 
-Adjudication records each required/blocking outcome, acceptable additional findings with evidence, false positives, execution gaps, and pass/block rationale. Reference original artifacts and preserve failed runs. Keep sensitive artifacts out of version control; record an accessible evidence location and any redactions. A paired comparison states the preselected benefit dimension and results for detection, false positives, evidence fidelity, and handoffs separately.
+For comparisons, retain the prompts, original outputs (including failures), and available execution evidence. Keep a brief note identifying the case, skill-on/off pair, date, plugin revision or content hash for uncommitted changes, model/settings, capabilities, competing skills, and browser/OS when relevant. Mark unknowns explicitly; never label a specification as executed.
+
+Assess required/blocking outcomes, evidence-backed additional findings, false positives, and execution gaps against the rubric. A short note alongside the saved conversation is sufficient. Record the pass/block rationale and the preselected comparison dimension; distinguish detection, false positives, evidence fidelity, and handoff quality. Keep sensitive evidence private. Evaluation evidence must remain available to whoever makes the release decision, but does not need to be committed.
 
 ## Release gate
 

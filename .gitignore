@@ -3,3 +3,6 @@ node_modules/
 coverage/
 __pycache__/
 *.pyc
+
+# Individual evaluation outputs belong outside the repository.
+evals/runs/

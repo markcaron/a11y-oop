@@ -9,3 +9,9 @@ Create required result units per browser, check, state/transition, and method. R
 Compare functional semantics and behavior, not byte-identical trees. Differences in tree wrappers, serialization, or naming of platform properties may be harmless. Investigate whether the user-relevant role, name, state, relationship, or action is missing before calling a difference a defect. Preserve original observations and their environments.
 
 Record what each tool can expose: input, composed focus, computed name/role, states, relationship targets, and hidden/ignored nodes. A tool omitting a relationship is not proof of browser failure. When unsupported inspection prevents evaluation, use Not tested; when inspection was attempted but remains ambiguous, use Inconclusive. Never infer visual contrast or human AT announcements from a tree snapshot.
+
+## Attribute unexpected native behavior
+
+Before attributing unusual native-dialog focus or boundary behavior to a component, compare with a minimal native dialog in the same browser, OS, keyboard settings, and automation environment. Record automation version, browser build, and headed/headless mode; use matching supported binaries when available. If execution or a suitable control is unavailable, retain the observation and attribution gap rather than asserting a component defect. A headed repeat is useful when headless behavior is suspect, but does not by itself establish behavior outside automation.
+
+If the control reproduces the behavior, preserve the observed outcome and any applicable expectation failure, but withdraw unsupported component attribution. Do not automatically declare a browser bug or erase the observation. If the control behaves differently, investigate component-specific differences before assigning cause. When document focus is lost and the external destination is unknown, record that uncertainty; document.activeElement alone does not prove background-page focus escape.

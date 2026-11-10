@@ -13,7 +13,7 @@ Inventory supplied results, findings, evidence, methods, environments, revisions
 
 A source Pass cannot cancel a keyboard Fail. Preserve a substantiated failure as Fail even when a comparable repeat passes; mark the behavior intermittent and retain both observations. Use Inconclusive only when the evidence cannot establish whether a failure occurred. Newer passing results do not close older findings without matching retest evidence. Retain browser/state gaps and distinguish tool omissions or harmless tree differences from confirmed browser defects.
 
-Load the [modal reference](../../references/modal-dialog.md) only to resolve expectations or authority. Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly.
+Load the [modal reference](../../references/modal-dialog.md) only to resolve expectations or authority. Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly. Preserve corrections to component/browser/tool attribution without deleting the underlying observations. Keep source naming defects, browser-computed names, and supplied manual screen-reader results distinct.
 
 ## Return
 

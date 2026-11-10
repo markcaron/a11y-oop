@@ -48,6 +48,6 @@ A full audit can include detailed check IDs, environments, and coverage records.
 
 ## Limits
 
-The plugin is a draft. Structural and portability checks pass, but full behavioral and client-loading evaluation remains pending. It does not certify accessibility or replace human assistive-technology testing. Broader accessibility coverage—including content, pages, forms, navigation, visual design, components, and user journeys—is future work.
+The plugin is a draft. Structural and portability checks pass, but full behavioral and client-loading evaluation remains pending. It does not certify accessibility. Screen-reader testing remains a separate manual follow-up: the skills do not launch or configure screen readers, and browser accessibility trees do not establish announcements. Supplied manual results can be included with their evidence origin; otherwise applicable checks remain Not tested. Broader accessibility coverage—including content, pages, forms, navigation, visual design, components, and user journeys—is future work.
 
 [Back to the start](../README.md) · [Contribute improvements](../CONTRIBUTING.md)

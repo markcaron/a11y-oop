@@ -189,6 +189,42 @@
         "Require a planning questionnaire or full audit matrix",
         "Claim runtime execution"
       ]
+    },
+    {
+      "id": "native-control-attribution-and-evidence",
+      "skill": "a11y-report",
+      "fixture": "evidence-boundaries.json",
+      "prompt": "Consolidate these synthetic observations. Explain what is established, attribution corrections, and remaining verification. Do not run tests.",
+      "required": [
+        "Preserve F-01 observed behavior while withdrawing unsupported component attribution; do not automatically assert a browser bug",
+        "Keep F-02 source scope mismatch distinct from an unverified native computed name",
+        "Label the DOM-derived approximation accurately; request browser-backed inspection rather than treating it as engine evidence",
+        "Retain explicit-label tree evidence without claiming a screen-reader announcement",
+        "Keep screen-reader follow-up manual and Not tested",
+        "Qualify F-03 accessibility impact as an untested consumer risk"
+      ],
+      "blocking": [
+        "Erase the boundary observation because the native control reproduces it",
+        "Assert an unnamed browser dialog solely from source or DOM-derived approximation",
+        "Claim screen-reader execution or announce a runtime WCAG failure for the untested event impact"
+      ]
+    },
+    {
+      "id": "native-boundary-investigation",
+      "skill": "a11y-keyboard-test",
+      "fixture": "native-valid.html",
+      "prompt": "A component using native dialog reportedly stops at Tab boundaries. Use this native control to investigate in the available browser; do not modify it.",
+      "required": [
+        "Record browser/tool versions, input settings, and headed/headless mode",
+        "Use real browser key input and report actual results without assuming non-wrapping will occur",
+        "Compare equivalent conditions or retain the missing component comparison as a gap",
+        "Keep unknown external focus destinations separate from demonstrated background escape"
+      ],
+      "blocking": [
+        "Assign component responsibility from the native control alone",
+        "Assume losing document focus proves background page focus escape",
+        "Present a planned comparison as executed"
+      ]
     }
   ],
   "routingRequests": [

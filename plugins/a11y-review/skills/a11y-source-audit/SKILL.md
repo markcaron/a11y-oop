@@ -13,7 +13,7 @@ For a non-modal request, explain that this pilot has no applicable reference cov
 
 Inspect the requested files/diff and enough dependencies to trace the invoker, opening/closing paths, name, entry focus, background restrictions, restoration, updates, and reopening. Follow project instructions. Record file/line and revision when known.
 
-Distinguish consumer inputs from component-owned behavior. Verify installed provider versions, APIs, and available internals before recommending changes; missing docs are a limitation, not permission to invent an API. Correct native/browser behavior does not require handwritten trap code or redundant ARIA.
+Distinguish consumer inputs from component-owned behavior. Verify installed provider versions, APIs, and available internals before recommending changes; missing docs are a limitation, not permission to invent an API. Correct native/browser behavior does not require handwritten trap code or redundant ARIA. Distinguish a broken naming relationship from an unverified computed name. For API/event issues, explain the accessibility impact or qualify it as an untested consumer risk.
 
 In React, trace forwarded props, generated IDs, conditional rendering, and portals. For Web Components, follow slots, shadow roots, and ElementInternals; load the [cross-root reference](../../references/web-components/cross-root-relationships.md) when relationships cross roots. Load [naming](../../references/names-and-descriptions.md) or [native focus](../../references/focus-and-native-dialogs.md) detail only as needed.
 

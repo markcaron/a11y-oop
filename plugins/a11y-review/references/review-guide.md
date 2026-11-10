@@ -48,6 +48,10 @@ Use the catalog stateVocabulary for recorded states/transitions; applicability b
 
 Keep states, environments, revisions, and methods separate. A source Pass cannot cancel a keyboard Fail. A substantiated failure remains Fail when a comparable repeat passes: label it intermittent, retain both observations, and keep the finding open. Use Inconclusive when evidence quality or interpretation prevents establishing whether a failure occurred, not merely because a failure did not recur. A newer passing source revision does not prove an older runtime failure is fixed.
 
+Separate the observed outcome from responsibility for it. A native control reproducing a component observation can invalidate component attribution without resolving the behavior; retain the finding history and correction explicitly. API/event defects need an evidence-backed connection to accessibility impact; describe untested consumer effects as risks.
+
+Screen-reader testing is a manual follow-up outside this pilot’s execution scope. Preserve supplied manual results as supplied evidence; otherwise applicable checks remain Not tested. Browser trees cannot fill those results.
+
 Group common causes without losing occurrences or result IDs. Close findings only through an explicit evidence-backed disposition in the matching retest scope; nonreproduction alone is insufficient. Preserve unknown check IDs and unverified supplied claims rather than dropping them.
 
 Summarize required units by status/method/environment when that detail is needed. A check passes only when all required applicable units pass. A pass in one browser does not fill another's untested units. Distinguish harmless snapshot differences and inspection-tool gaps from confirmed defects. Checklist completion is not a conformance percentage; this pilot does not certify products.
