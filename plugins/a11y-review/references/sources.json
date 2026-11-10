@@ -36,6 +36,16 @@
       "id": "pfe-review-methodology",
       "url": "https://github.com/patternfly/patternfly-elements/blob/staging/pfv6/.claude/skills/review-a11y/SKILL.md",
       "authority": "methodology inspiration, not normative guidance; dated support tables are not adopted"
+    },
+    {
+      "id": "accname12",
+      "url": "https://www.w3.org/TR/accname-1.2/",
+      "authority": "name/description computation; record consulted revision and status"
+    },
+    {
+      "id": "aria12",
+      "url": "https://www.w3.org/TR/wai-aria-1.2/",
+      "authority": "normative ARIA semantics"
     }
   ]
 }

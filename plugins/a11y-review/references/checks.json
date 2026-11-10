@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-draft.2",
+  "version": "0.1.0-draft.3",
   "scope": "Modal pilot only; not an exhaustive WCAG catalog.",
   "checks": [
     {
@@ -15,11 +15,10 @@
         "4.1.2"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
-        "closed-baseline",
         "open",
-        "interaction-update-when-applicable",
+        "interaction-update",
         "reopen"
       ]
     },
@@ -30,14 +29,16 @@
       "appliesWhen": "Target is intended as a modal dialog.",
       "methods": [
         "source",
-        "keyboard"
+        "keyboard",
+        "browser-semantics",
+        "assistive-technology"
       ],
       "relatedCriteria": [
         "2.1.1",
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
         "open",
         "close",
@@ -57,10 +58,10 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
-        "opening",
-        "reopening"
+        "open",
+        "reopen"
       ]
     },
     {
@@ -77,10 +78,10 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
         "open",
-        "interaction-update-when-applicable",
+        "interaction-update",
         "reopen"
       ]
     },
@@ -98,10 +99,10 @@
         "2.1.2"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
-        "open-to-closed",
-        "nested-popup-dismissal-when-applicable"
+        "close",
+        "nested-popup-dismissal"
       ]
     },
     {
@@ -117,9 +118,9 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
-        "closing"
+        "close"
       ]
     },
     {
@@ -129,17 +130,17 @@
       "appliesWhen": "Target is intended as a modal dialog.",
       "methods": [
         "source",
-        "keyboard"
+        "visual"
       ],
       "relatedCriteria": [
         "2.4.7",
         "2.4.11"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md",
+      "reference": "modal-dialog.md",
       "states": [
         "open",
-        "interaction-update-when-applicable",
+        "interaction-update",
         "reopen"
       ]
     }
@@ -149,10 +150,20 @@
     "states": [
       "closed-baseline",
       "open",
-      "interaction-update-when-applicable",
+      "interaction-update",
+      "nested-popup-dismissal",
       "close",
       "reopen"
     ],
-    "comparison": "Compare functional results rather than serialized-tree identity. Scope method and tool capabilities independently."
-  }
+    "comparison": "Compare functional results rather than serialized-tree identity. Scope method and tool capabilities independently.",
+    "applicability": "Select applicable states before counting coverage; interaction-update and nested-popup-dismissal apply only when supported. Open, close, and reopen include their transitions."
+  },
+  "stateVocabulary": [
+    "closed-baseline",
+    "open",
+    "interaction-update",
+    "nested-popup-dismissal",
+    "close",
+    "reopen"
+  ]
 }

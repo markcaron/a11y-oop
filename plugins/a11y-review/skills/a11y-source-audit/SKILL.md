@@ -1,22 +1,24 @@
 ---
 name: a11y-source-audit
-description: Review source or a diff for accessibility defects and implementation risks. This draft covers modal dialogs and produces source findings plus a runtime verification queue; it does not execute browser tests.
+description: Review modal-dialog source or a diff for accessibility defects and implementation risks. This draft covers modal dialogs and produces source findings plus a runtime verification queue; it does not execute browser tests.
 ---
 
 # Review modal source
 
-## Scope and records
+Use the [shared review guide](../../references/review-guide.md); keep scope and output proportional to the request. Load the [modal reference](../../references/modal-dialog.md) for expectations and [check IDs](../../references/checks.json) when structured tracking is useful.
 
-Read [scope](../../contracts/scope.md), [results](../../contracts/results.md), and [handoffs](../../contracts/handoffs.md). Reuse scope or establish it yourself. This draft covers modals only; record other patterns as coverage gaps.
+For a non-modal request, explain that this pilot has no applicable reference coverage and route to an available general accessibility review capability, or offer ordinary source review with that limitation. Do not apply modal checks or imply pilot coverage. For mixed scope, review the modal portion and identify the remaining work.
 
-## Work
+## Review
 
-Read the [source method](../../methods/source-inspection.md). For modals, load the [modal reference](../../library/patterns/modal-dialog.md) and applicable IDs from the [catalog](../../checks/catalog.json). Load naming and native/focus support when those questions arise.
+Inspect the requested files/diff and enough dependencies to trace the invoker, opening/closing paths, name, entry focus, background restrictions, restoration, updates, and reopening. Follow project instructions. Record file/line and revision when known.
 
-Trace opening/closing, naming, state, and focus contracts. Resolve installed provider APIs before recommending changes. Distinguish missing consumer inputs from component-owned behavior. Preserve native and ElementInternals semantics; absent custom trap code alone does not prove a bug.
+Distinguish consumer inputs from component-owned behavior. Verify installed provider versions, APIs, and available internals before recommending changes; missing docs are a limitation, not permission to invent an API. Correct native/browser behavior does not require handwritten trap code or redundant ARIA.
+
+In React, trace forwarded props, generated IDs, conditional rendering, and portals. For Web Components, follow slots, shadow roots, and ElementInternals; load the [cross-root reference](../../references/web-components/cross-root-relationships.md) when relationships cross roots. Load [naming](../../references/names-and-descriptions.md) or [native focus](../../references/focus-and-native-dialogs.md) detail only as needed.
+
+For component-author reviews that include examples, inspect relevant demos/snippets for correct usage and state coverage. Do not expand a consumer request into unrelated documentation work.
 
 ## Return
 
-Give scope, file/line evidence, per-check source results, findings with authority/impact/confidence, limitations, and specific runtime steps. Preserve existing IDs. Do not label source inference as keyboard or AT execution. Apply [coverage rules](../../contracts/coverage.md) when summarizing. Suggest fixes without editing unless requested.
-
-For shadow-root relationships, load the [cross-root reference](../../library/runtimes/web-components/names-and-cross-root-relationships.md). Hand off required browser/state verification and inspected demo/doc coverage when component-author scope includes examples.
+Lead with evidence-backed findings and suggested changes, then list runtime checks still needed. Identify source inference as source inference; do not claim keyboard or AT execution. Preserve unresolved finding IDs. For a detailed audit or handoff, use the shared guide's record fields and [browser requirements](../../references/browser-coverage.md). Stay read-only unless fixes were requested.

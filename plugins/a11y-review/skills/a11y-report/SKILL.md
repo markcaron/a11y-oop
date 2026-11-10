@@ -3,22 +3,18 @@ name: a11y-report
 description: Consolidate supplied accessibility observations into a scoped report preserving findings, evidence origins, conflicts, and coverage gaps. This draft understands modal-dialog checks; it does not execute an audit or certify conformance.
 ---
 
-# Consolidate accessibility evidence
+# Summarize accessibility findings
 
-## Scope and records
+Use the [shared review guide](../../references/review-guide.md), especially its consolidation rules. Establish scope from the supplied work or validate the existing scope; do not require a separate planning task.
 
-Read [scope](../../contracts/scope.md), [results](../../contracts/results.md), and [handoffs](../../contracts/handoffs.md). Reuse scope or establish it yourself. This draft covers modals only; record other patterns as coverage gaps.
+## Consolidate
 
-## Work
+Inventory supplied results, findings, evidence, methods, environments, revisions, and missing artifacts. Group shared causes without losing occurrences, IDs, or unresolved findings. Preserve unknown check IDs with an unresolved mapping; use the [pilot catalog](../../references/checks.json) only when interpreting known IDs.
 
-Read [coverage and consolidation](../../contracts/coverage.md). Inventory supplied scope, results, findings, methods, environments, revisions, and missing artifacts. Establish minimal scope from the supplied work if absent. Preserve unknown check IDs as supplied with an unresolved mapping; do not discard observations outside the [pilot catalog](../../checks/catalog.json).
+A source Pass cannot cancel a keyboard Fail. Preserve a substantiated failure as Fail even when a comparable repeat passes; mark the behavior intermittent and retain both observations. Use Inconclusive only when the evidence cannot establish whether a failure occurred. Newer passing results do not close older findings without matching retest evidence. Retain browser/state gaps and distinguish tool omissions or harmless tree differences from confirmed browser defects.
 
-Group causes without merging distinct methods, states, environments, or revisions. Retain unresolved occurrences and original IDs. A source pass cannot cancel a keyboard failure. Comparable conflicts stay visible and unresolved. Do not infer closure from a newer pass without matching retest evidence.
-
-Load the [modal reference](../../library/patterns/modal-dialog.md) only to interpret an expectation or authority. Do not invent evidence, standards mappings, or impact. Label claims whose evidence cannot be checked as unverified.
+Load the [modal reference](../../references/modal-dialog.md) only to resolve expectations or authority. Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly.
 
 ## Return
 
-Provide scope/environment, concise outcome, required-unit coverage by status/method, grouped findings with retained occurrences, conflicts/limitations, and next actions. Separate failures, recommendations, and gaps. Explain denominators and remaining methods; no completion percentage proves product conformance. Save only when requested; reporting does not authorize publication or issue filing.
-
-Show required browser/state coverage explicitly. A pass in one environment does not fill another. Preserve inspection-tool limitations and distinguish functional browser defects from harmless snapshot differences. Keep unresolved cross-root relationships visible without treating absent tool fields as confirmed failures.
+Lead with the important findings and next actions. For a small request, a concise summary and limitations note are enough. For a full audit/handoff, include scope/environment, grouped findings with retained occurrences, method/browser/state coverage, conflicts, and remaining work using the shared guide's detailed record fields. Completion percentages do not establish product conformance. Save only when requested; reporting does not imply publishing or issue filing.

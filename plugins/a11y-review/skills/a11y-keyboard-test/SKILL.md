@@ -5,20 +5,24 @@ description: Test modal-dialog keyboard operation and focus in a running interfa
 
 # Test modal keyboard behavior
 
-## Scope and records
+Use the [shared review guide](../../references/review-guide.md) and [modal expectations](../../references/modal-dialog.md). Establish minimal scope yourself or reuse the supplied review. Select [browser coverage](../../references/browser-coverage.md) from project support needs; record unavailable environments as gaps.
 
-Read [scope](../../contracts/scope.md), [results](../../contracts/results.md), and [handoffs](../../contracts/handoffs.md). Reuse scope or establish it yourself. This draft covers modals only; record other patterns as coverage gaps.
+## Test
 
-## Work
+Confirm the running target/build, opener, data/auth setup, and available input/focus observation. Record browser/OS, keyboard settings, and other relevant conditions. Follow this sequence for each scoped modal:
 
-Read the [keyboard method](../../methods/keyboard-testing.md), [modal reference](../../library/patterns/modal-dialog.md), and [catalog](../../checks/catalog.json). Load naming and native/focus support only as needed.
+1. Reach and activate the invoker by keyboard; record focus before opening.
+2. Observe entry focus and why that destination fits the task.
+3. Tab and Shift+Tab through both boundaries. Inspect focus/composed focus and scrolled-content reachability. Record focus visibility as separate visual evidence from the rendered page or screenshots; keyboard movement alone cannot establish it.
+4. Exercise the task, relevant updates, and nested popup dismissal. Test Escape and visible closing/finishing controls; record intended alternatives.
+5. Observe whether focus returns to the invoker or reaches a logical next step; explain any alternative destination. Reopen to catch stale focus, content, or names. Test long content/removed invokers when applicable to scope.
 
-Identify opener, target, transitions, and input/focus capabilities. Execute the scoped sequence when possible and record actual focused elements and outcomes. Validate source handoffs against the running revision; retain findings when builds differ.
+Repeat in required available browsers. Containment concerns background page content, not arbitrary browser chrome shortcuts. A focused shadow host alone does not prove focus escaped; use the [cross-root reference](../../references/web-components/cross-root-relationships.md) when needed.
 
-Without execution, return applicable Not tested records and runnable manual steps. If attempted observation is ambiguous, use Inconclusive. Scripts, screenshots alone, or clean axe scans do not establish tested keyboard behavior.
+Use browser-driven key input, including browser automation that performs keyboard actions. Dispatching KeyboardEvent objects or walking elements with .focus() does not test native Tab order. For accessible open shadow roots, start with document.activeElement and repeatedly follow element.shadowRoot.activeElement while present; record the chain. If closed roots or tool limitations hide the endpoint, report that limitation instead of assuming escape or success.
+
+When computed semantics are in scope, use [rendered-semantic verification](../../references/rendered-semantics.md) and keep that evidence separate. Otherwise hand off those questions. Keyboard actions alone do not prove accessible relationships or human AT announcements.
 
 ## Return
 
-Give environment, action sequence, expected/observed focus, per-check results, findings, and remaining transitions. Apply [coverage rules](../../contracts/coverage.md). Keep browser evidence separate from human AT results. Do not modify the implementation unless requested.
-
-Use the [required browser matrix](../../methods/browser-coverage.md). Observe update/close/reopen transitions rather than only the initial open state. If semantic verification is requested, use [rendered semantics](../../methods/rendered-semantics.md); keep that evidence distinct from keyboard and AT observations.
+Give actual steps, observed behavior, findings, and gaps, with evidence proportionate to the task. If execution is unavailable, provide manual steps and Not tested results; ambiguous attempted observation is Inconclusive. Proposed scripts, screenshots alone, and clean axe scans are not keyboard execution evidence. Preserve source handoff findings when builds differ. Stop before unauthorized destructive actions; do not modify the implementation unless requested.

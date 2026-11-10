@@ -1,6 +1,6 @@
 # Focus and native dialogs
 
-A native dialog opened through showModal() supplies modal behavior; open or show() alone does not. Do not demand a handwritten focus trap, explicit role, or redundant aria-modal solely because the browser implements native behavior. Verify actual use and browser support.
+A native dialog opened through showModal() supplies modal behavior; open or show() alone does not. Do not demand a handwritten focus trap, explicit role, or redundant aria-modal solely because the browser implements native behavior. Verify actual use and browser support. Native dialog closing also has focus-restoration steps: absent custom restoration code is not a defect by itself. Verify the actual close path, prior focus, invoker availability, and resulting destination at runtime.
 
 Do not add tabindex to the native dialog itself. Choose an appropriate child for intentional entry focus. Inspect cancel/close handlers when they modify native behavior. A custom role or aria-modal alone does not implement modality.
 

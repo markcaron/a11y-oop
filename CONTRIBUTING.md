@@ -1,11 +1,32 @@
 # Contributing
 
-Improve the modal pilot before expanding the [architecture](docs/a11y-oop-architecture-plan.md). a11y-review is one plugin containing three skills; new skills do not automatically require new plugins.
+Start with the [usage guide](docs/usage.md) to understand the three supported tasks. Improve a small piece of the modal pilot before expanding its scope.
 
-Keep canonical resources inside their plugin root: skills/ for task instructions, library/ for expectations, methods/ for procedures, contracts/ for shared records, checks/ for stable check IDs, and recipes/ for workflows. Relative references may leave a skill folder but must stay inside the plugin. All resources ship together; each skill loads only the references relevant to its task. Optional external reading does not require copying upstream content.
+## Find what to edit
 
-Plugin manifests in .claude-plugin/plugin.json and .cursor-plugin/plugin.json must match. Register plugins in the repository's corresponding marketplace catalogs. Omit version and mcpServers fields from plugin manifests. Do not introduce runtime providers or external dependencies merely to package instructions.
+- **Task behavior:** plugins/a11y-review/skills/ contains the three entrypoints and their source/keyboard procedures.
+- **Shared guidance:** plugins/a11y-review/references/ contains one review guide plus modal, browser, naming, and Web Component detail. Read the relevant topic, not everything.
+- **Check IDs and sources:** references/checks.json and references/sources.json support tracking and provenance.
+- **Accuracy and portability:** [Evaluation guidance](evals/README.md) describes cases, tests, and the release gate. A wording improvement does not require learning the entire evaluation system; run the checks and add cases when behavior changes warrant them.
 
-Skills need matching name/description frontmatter, independent scope initialization, clear task boundaries, and selective reference loading. Record sources and review dates inside the plugin. Do not restore archived site snapshots or the historical checklist as canonical guidance.
+Keep references inside the installable plugin. Load detail only when the task needs it. New files or directories should solve a demonstrated maintenance problem; the design backlog is not a scaffolding checklist.
 
-Run python3 scripts/validate.py and python3 -m unittest discover -s evals/tests -v. Test an installed plugin outside the authoring checkout. Validate actual host loading separately, and retain behavioral outcomes using evals/README.md; static checks do not satisfy the behavioral release gate. No dist/ or individual-skill ZIP packaging is used.
+## Validate a change
+
+Contributor checks need Python 3.10+:
+
+```sh
+python3 scripts/validate.py
+python3 -m unittest discover -s evals/tests -v
+```
+
+These check manifests, local links, skill metadata, and plugin portability. They do not establish actual host loading, AI behavior, or runtime accessibility. Preserve the draft status until the relevant evaluation gate passes.
+
+Match Claude/Cursor plugin manifests and maintain both marketplace catalogs. Omit version and mcpServers fields from plugin manifests. Keep the plugin self-contained; no dist/ build is needed. Skills need matching name/description frontmatter and should preserve user scope, evidence origins, native semantics, unresolved findings, and unavailable-capability gaps.
+
+## Deeper design material
+
+- [Architecture and future inventory](docs/design/architecture.md) — maintainer design record; not required to use or make a small improvement.
+- [Future skill prompts](docs/design/future-skill-prompts.md) — examples for the broader proposed catalog.
+
+The website and original drafts remain on site-archive. Do not restore site content as part of ordinary plugin work.

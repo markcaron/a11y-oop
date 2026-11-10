@@ -10,7 +10,7 @@ Contain the tab sequence. Provide a visible closing control and test Escape. Res
 
 ## Inspection
 
-Use the [naming reference](../foundations/names-and-descriptions.md) and [native/focus reference](../foundations/focus-and-native-dialogs.md). A named native dialog opened with showModal() is a valid baseline; missing custom trap code is not a defect by itself. A custom role plus aria-modal supplies semantics, not interaction logic.
+Use the [naming reference](names-and-descriptions.md) and [native/focus reference](focus-and-native-dialogs.md). A named native dialog opened with showModal() is a valid baseline; missing custom trap code is not a defect by itself. A custom role plus aria-modal supplies semantics, not interaction logic. Prefer robust background restrictions such as inert for custom modals; verify keyboard/pointer restrictions and exposed modal semantics independently. Do not require aria-hidden solely because it is absent: aria-modal communicates background inertness to assistive technology. Browser semantics inspection does not prove screen-reader browsing or announcements; those require separate AT testing.
 
 Compare short/long content, multiple instances, closing paths, removed invokers, and rerenders when in scope. For example, aria-labelledby="heading" with an existing matching heading differs from a plain panel showing the same text without an association.
 
@@ -22,7 +22,7 @@ Sources: [APG modal pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-mod
 
 ## State and transition expectations
 
-Select applicable states before testing; do not demand expanded/checked/invalid states from a modal that does not support them. Evaluate these outcomes per required browser using the [browser](../../methods/browser-coverage.md) and [rendered-semantics](../../methods/rendered-semantics.md) methods:
+Select applicable states before testing; do not demand expanded/checked/invalid states from a modal that does not support them. Evaluate these outcomes per required browser using the [browser](browser-coverage.md) and [rendered-semantics](rendered-semantics.md) methods:
 
 - **Closed baseline:** The closed dialog's content is not available as an active dialog; its invoker remains usable. Inspect hidden/ignored output with the tool's capabilities in mind.
 - **Open:** The intended name, dialog semantics, and modality are exposed; actual background behavior agrees. Observe suitable entry focus and usable closing controls separately.

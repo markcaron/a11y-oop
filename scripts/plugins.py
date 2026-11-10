@@ -62,10 +62,17 @@ def validate_plugin(root):
                 check_link(root, path, target)
         if path.suffix == '.json':
             content = json.loads(path.read_text())
-            if path == root / 'checks/catalog.json':
+            if path == root / 'references/checks.json':
                 ids = [check['id'] for check in content['checks']]
                 if len(ids) != len(set(ids)):
                     raise ValueError('Duplicate check IDs')
+                vocabulary = content['stateVocabulary']
+                if not vocabulary or len(vocabulary) != len(set(vocabulary)):
+                    raise ValueError('Invalid state vocabulary')
+                state_lists = [content['coverageRequirements']['states']] + [check['states'] for check in content['checks']]
+                for states in state_lists:
+                    if not states or set(states) - set(vocabulary):
+                        raise ValueError('Unknown or missing catalog state')
                 for check in content['checks']:
                     check_link(root, path, check['reference'])
     for legal in ['LICENSE', 'NOTICE']:

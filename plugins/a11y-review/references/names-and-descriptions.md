@@ -6,6 +6,8 @@ An existing heading referenced by aria-labelledby differs from an unassociated h
 
 For Web Components, inspect slots, shadow-root boundaries, and ElementInternals. For React, trace forwarded props, generated IDs, conditional rendering, and portals. Verify installed provider versions and documentation before suggesting an API.
 
+For name computation and precedence (including valid aria-labelledby taking precedence over aria-label), consult [Accessible Name and Description Computation 1.2](https://www.w3.org/TR/accname-1.2/). The [ARIA specification](https://www.w3.org/TR/wai-aria-1.2/#aria-modal) defines aria-modal semantics, not keyboard implementation.
+
 Authority: assess applicable name/role issues against [WCAG 2.2 4.1.2](https://www.w3.org/TR/WCAG22/#name-role-value). Inspection steps are project methodology.
 
-For cross-root names/descriptions, load the [relationship procedure](../runtimes/web-components/names-and-cross-root-relationships.md) and map endpoints before deciding a relationship works or fails. Verify changes after updates and reopening as well as the initial state.
+For cross-root names/descriptions, load the [relationship procedure](web-components/cross-root-relationships.md) and map endpoints before deciding a relationship works or fails. Verify changes after updates and reopening as well as the initial state.

@@ -10,7 +10,13 @@ Use cases/modal-workflow.json and fixtures/ for source defects, valid native alt
 
 Install the complete plugin in an isolated workspace with the named fixture and required tools. Do not expose authoring-only files or the expected-outcome rubric to the acting assistant. Record prompt, plugin commit/content hash, model configuration, capabilities, output, execution artifacts, and adjudication. Evaluate synthetic reporting records as supplied examples, not live observations.
 
-Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tools. Freeze expected outcomes before comparison. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures.
+Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tools. Freeze expected outcomes before comparison. Adjudicate additional findings by evidence and authority; an unseeded, substantiated finding is not automatically a false positive. Include installed competing skills in routing runs and record their names/versions; also retain isolated-plugin runs to distinguish routing interference. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures.
+
+## Retained runs
+
+Store each real evaluation under evals/runs/<run-id>/ with metadata.json, prompt.txt, output.md, artifacts/, and adjudication.md. Create these only when a run occurs; never label a specification as executed. Metadata records case ID, skill-on/off mode, paired run ID, timestamp, fixture hash, plugin content hash (including uncommitted files), model/settings, capabilities, installed competing skills, browser/OS where relevant, and execution status. Mark unavailable values explicitly.
+
+Adjudication records each required/blocking outcome, acceptable additional findings with evidence, false positives, execution gaps, and pass/block rationale. Reference original artifacts and preserve failed runs. Keep sensitive artifacts out of version control; record an accessible evidence location and any redactions. A paired comparison states the preselected benefit dimension and results for detection, false positives, evidence fidelity, and handoffs separately.
 
 ## Release gate
 

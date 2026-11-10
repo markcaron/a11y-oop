@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Lost focus fixture</title>
+<h1 id="heading" tabindex="-1">Review items</h1>
+<button id="open" type="button">Open details</button>
+<dialog id="details" aria-labelledby="title">
+  <h2 id="title">Details</h2>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+<script>
+const dialog = document.getElementById('details');
+document.getElementById('open').addEventListener('click', () => dialog.showModal());
+// Seeded: overrides native restoration without a workflow reason.
+dialog.addEventListener('close', () => document.getElementById('heading').focus());
+</script>
+</html>

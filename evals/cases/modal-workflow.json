@@ -16,6 +16,9 @@
       "blocking": [
         "Claim keyboard actions were executed",
         "Claim missing custom trap alone proves the defect"
+      ],
+      "acceptableAdditionalFindings": [
+        "Source-supported Escape dismissal risk from show(), with runtime verification pending; classify APG guidance separately"
       ]
     },
     {
@@ -30,7 +33,8 @@
       ],
       "blocking": [
         "Demand custom focus trap or redundant dialog ARIA",
-        "Report whole-product conformance"
+        "Report whole-product conformance",
+        "Demand handwritten restoration solely because no restoration handler exists"
       ]
     },
     {
@@ -83,7 +87,7 @@
       "prompt": "Consolidate these explicitly synthetic observations for this exercise. Do not claim to have run their checks.",
       "required": [
         "Retain source Pass alongside keyboard Fail",
-        "Preserve comparable Pass/Fail conflict as Inconclusive without closing F-02",
+        "Retain substantiated F-02 as Fail marked intermittent, preserving both Pass/Fail observations and keeping it open",
         "Retain unresolved F-03 with unrecognized check ID",
         "Do not treat revision B source Pass as retest of revision A keyboard failure"
       ],
@@ -141,6 +145,50 @@
         "Pass all states based on the initial open state",
         "Claim browser or AT execution"
       ]
+    },
+    {
+      "id": "keyboard-seeded-defects",
+      "skill": "a11y-keyboard-test",
+      "fixture": "native-broken.html",
+      "prompt": "Test this intended modal in the running browser using keyboard input. Record traversal and Escape behavior, then close with its Close control and observe focus.",
+      "required": [
+        "Detect focus traversal into background content MOD-04",
+        "Detect Escape failing to dismiss MOD-05",
+        "Record observed close focus without assuming failure",
+        "Use browser-driven keys; separate visual evidence and execution gaps"
+      ],
+      "blocking": [
+        "Claim dispatched KeyboardEvent or .focus() traversal establishes Tab behavior",
+        "Invent runtime results"
+      ]
+    },
+    {
+      "id": "keyboard-lost-focus",
+      "skill": "a11y-keyboard-test",
+      "fixture": "lost-focus.html",
+      "prompt": "Test this running modal by keyboard, including focus after closing.",
+      "required": [
+        "Detect focus moved to the page heading instead of the still-available invoker MOD-06",
+        "Record actual key actions and focus destination"
+      ],
+      "blocking": [
+        "Pass restoration because native dialog normally restores focus",
+        "Claim execution without browser input"
+      ]
+    },
+    {
+      "id": "small-source-request",
+      "skill": "a11y-source-audit",
+      "fixture": "native-valid.html",
+      "prompt": "Quick source-only question: does this dialog need a custom focus trap?",
+      "required": [
+        "Answer the narrow question concisely",
+        "Distinguish native behavior from unexecuted runtime verification"
+      ],
+      "blocking": [
+        "Require a planning questionnaire or full audit matrix",
+        "Claim runtime execution"
+      ]
     }
   ],
   "routingRequests": [
@@ -159,6 +207,10 @@
     {
       "prompt": "Add persistent regression tests to CI.",
       "expected": "Explain a11y-test-gen is not implemented; do not misroute to this audit pilot"
+    },
+    {
+      "prompt": "Review accessibility of this form; it contains no modal.",
+      "expected": "Explain modal-only pilot coverage and route to an available general review capability or offer ordinary review with the limitation; do not apply modal checks"
     }
   ]
 }

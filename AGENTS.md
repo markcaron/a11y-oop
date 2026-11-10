@@ -1,11 +1,10 @@
 # Working on a11y-oop
 
-This is a plugin marketplace. The modal-only a11y-review plugin lives in plugins/a11y-review/. The site and original drafts remain on site-archive.
+This is a plugin marketplace with three modal-only draft skills. Start with README.md and docs/usage.md. The website and original drafts remain on site-archive.
 
-- Read the relevant skill and resources. The architecture is a backlog, not a command to scaffold every skill or plugin.
-- Keep task instructions, library/, methods/, contracts/, checks/, recipes/, and sources/ inside their plugin root. Shared references must resolve when only that plugin is installed.
-- Match Claude/Cursor plugin manifests and maintain both marketplace catalogs. Do not add version or mcpServers to plugin manifests. Do not create a dist/ build or individual-skill packaging pipeline.
-- Each skill initializes/reuses scope. Results identify check, target/state, method, environment, revision. Preserve unresolved findings and evidence origins; missing/inconclusive evidence is never a pass.
-- Distinguish standards, APG, provider requirements, and recommendations. Verify installed APIs and preserve native/ElementInternals semantics.
-- Run python3 scripts/validate.py and python3 -m unittest discover -s evals/tests -v. Plugin-copy tests do not establish real host discovery or behavioral accuracy.
-- The plugin stays draft until the behavioral gate in evals/README.md passes. Preserve user scope; reviews do not imply fixes, installs, or publishing.
+- Keep task instructions/procedures in plugins/a11y-review/skills/ and shared guidance in references/. Use references/review-guide.md for evidence and handoffs; keep ordinary responses proportional to the task.
+- Read only relevant topic detail. docs/design/ is a future inventory and maintainer record, not a scaffolding command or required user onboarding.
+- Preserve evidence origins, scope, native/ElementInternals semantics, and unresolved findings. Missing or inconclusive evidence is never a pass; source review cannot stand in for runtime execution.
+- Match Claude/Cursor manifests and marketplace catalogs; omit version and mcpServers in plugin manifests. Keep all skill references inside the plugin; no dist/ build.
+- Run python3 scripts/validate.py and python3 -m unittest discover -s evals/tests -v. Structural checks do not establish behavioral accuracy or real client loading; the plugin stays draft.
+- Respect user scope. Review does not imply fixes, tool installation, publication, or issue filing.

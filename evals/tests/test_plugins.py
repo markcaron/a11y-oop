@@ -34,7 +34,7 @@ class PluginTests(unittest.TestCase):
     def test_missing_reference_rejected(self):
         with tempfile.TemporaryDirectory() as folder:
             installed = self.copy_plugin(folder)
-            (installed / 'contracts/scope.md').unlink()
+            (installed / 'references/review-guide.md').unlink()
             with self.assertRaisesRegex(ValueError, 'Missing referenced'):
                 plugins.validate_plugin(installed)
 
@@ -71,6 +71,18 @@ class PluginTests(unittest.TestCase):
             path.write_text(path.read_text().replace('name: a11y-report', 'name: wrong'))
             with self.assertRaisesRegex(ValueError, 'name/description'):
                 plugins.validate_plugin(installed)
+
+    def test_unknown_catalog_states_rejected(self):
+        for location in ('check', 'coverage'):
+            with self.subTest(location=location), tempfile.TemporaryDirectory() as folder:
+                installed = self.copy_plugin(folder)
+                path = installed / 'references/checks.json'
+                value = json.loads(path.read_text())
+                target = value['checks'][0] if location == 'check' else value['coverageRequirements']
+                target['states'].append('opening-typo')
+                path.write_text(json.dumps(value))
+                with self.assertRaisesRegex(ValueError, 'catalog state'):
+                    plugins.validate_plugin(installed)
 
     def test_bad_marketplace_source_rejected(self):
         with tempfile.TemporaryDirectory() as folder:
