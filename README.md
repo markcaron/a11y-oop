@@ -4,7 +4,7 @@ Review accessibility in source code, test keyboard behavior, and turn findings i
 
 The project aims to support accessibility across content, page structure, forms, navigation, visual design, components, and complete user journeys.
 
-**Current pilot:** three draft skills using modal dialogs as the first test case. The broader accessibility coverage is planned, not implemented yet.
+**Current pilot:** draft skills using modal dialogs as the first test case. The broader accessibility coverage is planned, not implemented yet.
 
 ## Choose a task
 

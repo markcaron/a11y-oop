@@ -26,7 +26,9 @@ class PluginTests(unittest.TestCase):
             shutil.copytree(source / 'plugins/a11y-review', installed)
             shutil.rmtree(source)
             result = plugins.validate_plugin(installed)
-            self.assertEqual(set(result['skills']), {'a11y-source-audit','a11y-keyboard-test','a11y-report'})
+            expected = {path.parent.name for path in (ROOT / 'plugins/a11y-review/skills').glob('*/SKILL.md')}
+            self.assertTrue(expected)
+            self.assertEqual(set(result['skills']), expected)
 
     def test_marketplace_resolves_all_plugins(self):
         self.assertEqual([p['name'] for p in plugins.validate_marketplace(ROOT)], ['a11y-review'])

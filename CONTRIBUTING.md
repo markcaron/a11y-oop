@@ -1,11 +1,11 @@
 # Contributing
 
-Start with the [usage guide](docs/usage.md) to understand the three supported tasks. Improve a small piece of the modal pilot before expanding its scope.
+Start with the [usage guide](docs/usage.md) to understand the supported tasks. Improve a small piece of the modal pilot before expanding its scope.
 
 ## Find what to edit
 
-- **Task behavior:** plugins/a11y-review/skills/ contains the three entrypoints and their source/keyboard procedures.
-- **Shared guidance:** plugins/a11y-review/references/ contains one review guide plus modal, browser, naming, and Web Component detail. Read the relevant topic, not everything.
+- **Task behavior:** plugins/a11y-review/skills/ contains task entrypoints and their procedures.
+- **Shared guidance:** plugins/a11y-review/references/ contains shared review guidance and topic references. Read only the topics relevant to the change.
 - **Check IDs and sources:** references/checks.json and references/sources.json support tracking and provenance.
 - **Accuracy and portability:** [Evaluation guidance](evals/README.md) describes cases, tests, and the release gate. A wording improvement does not require learning the entire evaluation system; run the checks and add cases when behavior changes warrant them.
 

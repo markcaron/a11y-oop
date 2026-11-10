@@ -4,17 +4,17 @@ Status: Maintainer design record and future inventory, updated 2026-11-10. The s
 
 For using the plugin, start with the [README](../../README.md) and [usage guide](../usage.md). For editing a small piece, start with [Contributing](../../CONTRIBUTING.md). This plan is optional deeper reading, not user onboarding.
 
-The current a11y-review plugin contains three modal-only draft skills: a11y-source-audit, a11y-keyboard-test, and a11y-report. Structural/portability checks and behavioral case specifications are maintained in evals/. Behavioral scenarios remain unexecuted; actual client loading and behavioral accuracy still need verification.
+The current a11y-review plugin is a modal-only draft pilot. See the [usage guide](../usage.md) for supported tasks. Structural/portability checks and behavioral case specifications are maintained in evals/. Behavioral scenarios remain unexecuted; actual client loading and behavioral accuracy still need verification.
 
 The intended scope is broad accessibility across content, page structure, forms, navigation, visual design, interaction patterns, reusable components, and complete user journeys. Component-level review is one part of that scope. Modal dialogs are the first bounded test case for validating the skills and their handoffs, not the boundary of the project. The broader coverage remains planned until implemented and evaluated.
 
-AI Helpers’ PatternFly plugin stays separate. The Alloy site and original generated skills remain on site-archive. This work does not restore the site or adopt the old checklist. The 18-skill inventory below is a backlog, not a requirement to create every file or plugin.
+AI Helpers’ PatternFly plugin stays separate. The Alloy site and original generated skills remain on site-archive. This work does not restore the site or adopt the old checklist. The candidate skill inventory below is a backlog, not a requirement to create every file or plugin.
 
 ## 1. Architecture and progressive disclosure
 
-People encounter three levels:
+Documentation follows these levels:
 
-1. **Start:** README.md explains the three supported tasks, gives one prompt per task, and links to installation.
+1. **Start:** README.md explains supported tasks, gives one prompt per task, and links to installation.
 2. **Use:** docs/usage.md explains useful inputs, expected outputs, limitations, and how to combine the skills. docs/installation.md holds client-specific detail.
 3. **Maintain:** CONTRIBUTING.md leads to evaluations and this design inventory only when someone needs them.
 
@@ -239,13 +239,6 @@ references/providers/
 │   ├── content-authoring.md
 │   ├── gotchas.md
 │   └── documentation-and-mcp.md
-├── rhds/
-│   ├── index.md
-│   ├── consumer-responsibilities.md
-│   ├── component-author-responsibilities.md
-│   ├── content-authoring.md
-│   ├── gotchas.md
-│   └── documentation-and-mcp.md
 ├── pfe/
 │   ├── index.md
 │   └── compatibility-and-differences.md
@@ -277,7 +270,7 @@ The current modal pilot includes references/browser-coverage.md, references/rend
 
 ## 6. Proposed skill inventory
 
-Skill boundaries remain candidates: merge or split them based on routing evidence, not a target count. The inventory contains **18 skill names**. Three are implemented as modal-only drafts (a11y-source-audit, a11y-keyboard-test, a11y-report); the other 15 remain candidates. Every listed name corresponds to `skills/<name>/SKILL.md`.
+Skill boundaries remain candidates: merge or split them based on routing evidence, not a target count. This inventory describes possible tasks, not the installed skill set. See the [usage guide](../usage.md) for supported tasks and `plugins/a11y-review/skills/*/SKILL.md` for implemented entrypoints. Candidate names indicate potential `skills/<name>/SKILL.md` paths.
 
 Every independently invoked skill must reuse an applicable scope record or establish a minimal one before proceeding. `a11y-plan` provides fuller planning; it is not a prerequisite for using another skill. Scope and output follow references/review-guide.md: a focused request needs a brief scope and evidence-backed findings, while detailed IDs/coverage records support audits and handoffs. Neither should become a mandatory questionnaire.
 
@@ -368,15 +361,15 @@ Review the README, usage guide, and one illustrative result. Confirm that a pers
 
 Deliverable: An understandable local entry point and agreed content depth. The uncommitted restructuring is ready for this review.
 
-### Phase 2: Review the three skill boundaries
+### Phase 2: Review skill boundaries
 
 Review the task entrypoints, shared review guide, and modal reference. Keep task-specific procedures in their skills and conditional detail in references/. Avoid introducing new directories or formal outputs without a demonstrated need. Preserve scope, evidence, and handoff safeguards.
 
-Deliverable: A focused, maintainable three-skill pilot. Do not expand to all 18 skills during this step.
+Deliverable: A focused, maintainable pilot. Expand scope only when evaluation supports it.
 
 ### Phase 3: Verify installed-plugin discovery
 
-Structural and copy-portability tests pass. Next, load the complete plugin in a supported client and confirm all three skills are discoverable and can read their shared references. No website, build step, or contributor Python installation is required just to use the instructions; browser work needs host capabilities.
+Structural and copy-portability tests pass. Next, load the complete plugin in a supported client and confirm every installed skill is discoverable and can read their shared references. No website, build step, or contributor Python installation is required just to use the instructions; browser work needs host capabilities.
 
 Deliverable: Recorded real-client discovery/reference-loading evidence, distinct from filesystem checks.
 
@@ -438,4 +431,4 @@ Deliverable: A supported initial release with documented scope and limitations.
 
 ## Next milestone
 
-The modal reference and three skills already exist as drafts. The next milestone is an understandable entry point plus one real installed-plugin source → keyboard → report exercise, with clear evidence and limitations. Review the quality of that experience before adding reference categories or skills. Real-client loading and behavioral evaluation remain outstanding; passing structural tests does not complete this milestone.
+The modal reference and pilot skills already exist as drafts. The next milestone is an understandable entry point plus one real installed-plugin source → keyboard → report exercise, with clear evidence and limitations. Review the quality of that experience before adding reference categories or skills. Real-client loading and behavioral evaluation remain outstanding; passing structural tests does not complete this milestone.

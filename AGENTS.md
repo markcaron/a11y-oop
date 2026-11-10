@@ -1,6 +1,6 @@
 # Working on a11y-oop
 
-This is a plugin marketplace with three modal-only draft skills. Start with README.md and docs/usage.md. The website and original drafts remain on site-archive.
+This is a plugin marketplace with draft accessibility skills; the current pilot covers modal dialogs. Start with README.md and docs/usage.md. The website and original drafts remain on site-archive.
 
 - Keep task instructions/procedures in plugins/a11y-review/skills/ and shared guidance in references/. Use references/review-guide.md for evidence and handoffs; keep ordinary responses proportional to the task.
 - Read only relevant topic detail. docs/design/ is a future inventory and maintainer record, not a scaffolding command or required user onboarding.
