@@ -196,17 +196,26 @@
       "fixture": "evidence-boundaries.json",
       "prompt": "Consolidate these synthetic observations. Explain what is established, attribution corrections, and remaining verification. Do not run tests.",
       "required": [
-        "Preserve F-01 observed behavior while withdrawing unsupported component attribution; do not automatically assert a browser bug",
+        "Retain F-01 and both observations with cause unresolved: matching native behavior does not isolate cause, rule out component contributions, establish an engine/tool defect, or justify closure even after a matching headed repeat",
         "Keep F-02 source scope mismatch distinct from an unverified native computed name",
         "Label the DOM-derived approximation accurately; request browser-backed inspection rather than treating it as engine evidence",
         "Retain explicit-label tree evidence without claiming a screen-reader announcement",
         "Keep screen-reader follow-up manual and Not tested",
-        "Qualify F-03 accessibility impact as an untested consumer risk"
+        "Qualify F-03 accessibility impact as an untested consumer risk",
+        "Attribute no-background-focus evidence only to R-01; R-02 records boundary behavior and Escape, not containment or pointer/AT isolation",
+        "Keep evidence methods question-specific; missing screen-reader evidence does not invalidate supported source or keyboard observations",
+        "Request determination of the actual heading-labelled computed name and fallbacks, rather than confirmation of an assumed empty name",
+        "Do not invent original diagnoses or transfer result/environment fields; if counts are reported, there are six observations: two keyboard, two source, one DOM approximation, and one browser tree"
       ],
       "blocking": [
         "Erase the boundary observation because the native control reproduces it",
         "Assert an unnamed browser dialog solely from source or DOM-derived approximation",
-        "Claim screen-reader execution or announce a runtime WCAG failure for the untested event impact"
+        "Claim screen-reader execution or announce a runtime WCAG failure for the untested event impact",
+        "Assert that native reproduction excludes a component contribution or establishes an engine/native/tool cause",
+        "Recommend closing F-01 solely because headed native-control behavior matches",
+        "Claim R-02 background containment passed or infer complete modality from keyboard containment",
+        "Rank source, DOM approximation, browser tree, keyboard, and AT evidence on a universal strength ladder",
+        "Invent supplied observations, diagnoses, method counts, or evidence provenance"
       ]
     },
     {
