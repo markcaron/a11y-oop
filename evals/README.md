@@ -6,7 +6,7 @@ Run python3 -m unittest discover -s evals/tests -v. Tests copy only the complete
 
 ## Behavioral cases
 
-Use cases/modal-workflow.json and fixtures/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing browser execution, consolidation conflicts, and routing. HTML files are isolated test fixtures, not a website. PatternFlyModal.tsx is source-only and does not bundle React/PF dependencies.
+Use cases/modal-workflow.json and fixtures/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing browser execution, consolidation conflicts, cross-root positive/negative pairs, browser/tool gaps, stale naming on reopen, and routing. HTML files are isolated test fixtures, not a website. PatternFlyModal.tsx is source-only and does not bundle React/PF dependencies.
 
 Install the complete plugin in an isolated workspace with the named fixture and required tools. Do not expose authoring-only files or the expected-outcome rubric to the acting assistant. Record prompt, plugin commit/content hash, model configuration, capabilities, output, execution artifacts, and adjudication. Evaluate synthetic reporting records as supplied examples, not live observations.
 
@@ -19,3 +19,5 @@ Required manifest, installation-portability, and real host-loading checks must p
 Current status: draft. Matched behavioral comparisons, real host-loading checks, and independent runtime/AT evaluation remain pending. Static plugin-copy tests do not complete that gate. The next step is an installed-plugin source → keyboard → report exercise with retained evidence.
 
 The external skill-creator validator previously could not start because PyYAML is unavailable. The contributor validator checks this pilot's single-line name/description convention without that dependency; it is not a general YAML validator.
+
+New PFE-inspired cases remain not-run. The cross-root fixture pairs a same-tree relationship with an intentionally out-of-scope declarative relationship; it does not assert support for experimental APIs. Browser-observations.json contains invented inputs for reporting evaluation, not runtime results. Reopen-stale-name.html seeds an update missed by initial-state-only review. Required browser/state execution and comparison must still be performed and recorded.

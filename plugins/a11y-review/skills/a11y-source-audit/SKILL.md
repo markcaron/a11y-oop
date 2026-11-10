@@ -18,3 +18,5 @@ Trace opening/closing, naming, state, and focus contracts. Resolve installed pro
 ## Return
 
 Give scope, file/line evidence, per-check source results, findings with authority/impact/confidence, limitations, and specific runtime steps. Preserve existing IDs. Do not label source inference as keyboard or AT execution. Apply [coverage rules](../../contracts/coverage.md) when summarizing. Suggest fixes without editing unless requested.
+
+For shadow-root relationships, load the [cross-root reference](../../library/runtimes/web-components/names-and-cross-root-relationships.md). Hand off required browser/state verification and inspected demo/doc coverage when component-author scope includes examples.

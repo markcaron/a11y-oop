@@ -9,3 +9,5 @@ For conflicting comparable observations of the same unit, retain both, mark the 
 Group shared causes under stable finding IDs without losing affected occurrences or result IDs. Close findings only with explicit evidence-backed dispositions in matching retest scope. Nonreproduction alone does not prove a fix; retesting one environment does not establish all environments.
 
 A scoped check passes only when all required applicable units pass. Keep failures visible alongside gaps. Show status/method counts with the scope denominator. Checklist completion is not a conformance percentage; this pilot cannot certify a product.
+
+Keep required browser coverage explicit. A Chromium pass does not substitute for untested Firefox or WebKit units. Functional equivalence is the comparison target, not identical snapshot text. Report cross-browser differences with evidence and user impact; leave harmless serialization differences as observations. If one tool cannot expose a relation, preserve that capability gap separately from a confirmed browser defect.

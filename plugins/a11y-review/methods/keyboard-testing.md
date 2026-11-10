@@ -11,3 +11,7 @@ Use available browser input plus focus observation. Record URL/build, browser/OS
 Containment concerns background page content, not arbitrary browser chrome shortcuts. Do not confuse browser behavior with absent custom JavaScript. Missing focus observation can make an attempted transition Inconclusive.
 
 Without execution capability, provide manual steps and applicable Not tested records. A proposed script is not execution evidence. Snapshots are not human AT results. Stop before an unauthorized destructive action and document the untested transition.
+
+Repeat the scoped sequence in each required environment from the [browser matrix](browser-coverage.md). Check the modal's [state expectations](../library/patterns/modal-dialog.md), including update and reopen behavior. Preserve per-browser focus observations and missing capabilities; do not infer outcomes for unavailable browsers.
+
+When computed-semantic evidence is requested, use the separate [rendered-semantics method](rendered-semantics.md). Otherwise carry semantic questions forward as gaps; keyboard interaction alone does not establish a name or relationship. For shadow-root endpoints consult the [cross-root procedure](../library/runtimes/web-components/names-and-cross-root-relationships.md).

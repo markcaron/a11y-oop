@@ -14,3 +14,5 @@ Each result contains: scope ID/version; result ID; check ID/version; target; sta
 Evidence identifies file/line, inspected state, actual action sequence/output, or supplied artifact. Label source inference and testimony separately from first-hand execution. Synthetic examples are never runtime observations. Insufficient evidence is Inconclusive; confidence alone cannot justify Pass.
 
 Keep normative violations, pattern deviations, provider requirements, recommendations, and coverage gaps distinguishable. Related WCAG IDs are investigative mappings, not automatic failure classifications. Keep user impact, confidence, and release priority separate.
+
+For browser observations, identify the engine/version and inspection tool plus the capabilities used. Record both the expected semantic or focus outcome and the raw observed output for that transition. A snapshot that does not expose relationship targets cannot establish whether they resolve. Keep visual inspection, browser-tree evidence, and actual AT announcements separate.

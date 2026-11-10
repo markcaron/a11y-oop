@@ -7,3 +7,5 @@ Record scope ID/version, objective, requested action, targets, states/transition
 This draft covers modal dialogs only. Record other patterns as excluded or unassessed; do not imply a whole-page audit. Source review needs source/diff; keyboard testing needs a running target and input/focus observation; reporting needs supplied observations. Unavailable runtime capabilities leave applicable checks Not tested.
 
 Define required check/method/target/state combinations before counting coverage. Record scope changes explicitly. Review does not authorize fixes or publication. Preserve project setup instructions and user scope.
+
+For runtime work, select and record required browser/OS environments using the [browser-coverage method](../methods/browser-coverage.md). Each required environment has its own applicable check/state/method units. Record the baseline, transitions, and expected state outcomes before execution; unavailable required environments remain gaps. Source-only work carries these requirements as a verification queue.

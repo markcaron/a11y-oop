@@ -20,3 +20,5 @@ Load the [modal reference](../../library/patterns/modal-dialog.md) only to inter
 ## Return
 
 Provide scope/environment, concise outcome, required-unit coverage by status/method, grouped findings with retained occurrences, conflicts/limitations, and next actions. Separate failures, recommendations, and gaps. Explain denominators and remaining methods; no completion percentage proves product conformance. Save only when requested; reporting does not authorize publication or issue filing.
+
+Show required browser/state coverage explicitly. A pass in one environment does not fill another. Preserve inspection-tool limitations and distinguish functional browser defects from harmless snapshot differences. Keep unresolved cross-root relationships visible without treating absent tool fields as confirmed failures.

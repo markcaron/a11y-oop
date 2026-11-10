@@ -43,7 +43,7 @@ Follow the [modal recipe](plugins/a11y-review/recipes/modal-review.md) or invoke
 
 ## Status and layout
 
-Coverage is modal dialogs only; the other 15 proposed skills are not implemented. See [evaluation guidance](evals/README.md) for the outstanding behavioral release gate. The plugin remains a draft.
+Coverage is modal dialogs only; the other 15 proposed skills are not implemented. See [evaluation guidance](evals/README.md) for the outstanding behavioral release gate. The plugin remains a draft. The modal pilot now includes explicit browser coverage, state/transition expectations, and a cross-root relationship procedure. Required environments follow project support policy; unavailable browser/tool capabilities remain visible gaps.
 
 Canonical skill resources live inside plugins/a11y-review/. docs/ contains the [architecture](docs/a11y-oop-architecture-plan.md) and [future skill prompts](docs/a11y-oop-sample-prompts.md); evals/ and scripts/ are repository-level contributor tools. Future plugins can be added under plugins/ when their scope warrants a separate installable unit.
 

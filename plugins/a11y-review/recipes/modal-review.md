@@ -9,3 +9,5 @@ Each skill also works independently. Keyboard-only requests begin at step 2; rep
 Example: “Review this modal source, test it at [URL], and consolidate evidence. Keep source findings separate from observed behavior. Do not edit files.”
 
 Outputs are minimal scope, source records, keyboard records or explicit gaps, and a report. Keep actual environment/revision or unknowns. Human AT and further visual checks remain separate; this is not conformance certification.
+
+Before runtime execution, select the required browser matrix and applicable baseline/open/update/close/reopen expectations. Source review maps cross-root endpoints; keyboard review records transitions per required browser. Add rendered-semantic verification only where requested or required by scope. The final report retains missing-browser and inspection-capability gaps. Component-author reviews include the relevant demo/snippet coverage; future regression-test generation will trace critical state expectations and findings to tests or explicit human verification needs.

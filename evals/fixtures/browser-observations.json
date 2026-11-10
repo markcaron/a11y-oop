@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "note": "Invented evaluation inputs, not recorded browser runs. Browser/version labels are illustrative.",
+  "scope": {
+    "id": "S-BROWSER-EXAMPLE",
+    "target": "example modal",
+    "revision": "A",
+    "requiredBrowsers": ["Chromium-example", "Firefox-example"],
+    "requiredMethods": ["keyboard", "browser-semantics"],
+    "requiredStates": ["open", "close", "reopen"]
+  },
+  "observations": [
+    {"id": "B-01", "check": "MOD-03", "method": "keyboard", "state": "open", "browser": "Chromium-example", "status": "Pass", "evidence": "Synthetic entry-focus observation"},
+    {"id": "B-02", "check": "MOD-03", "method": "keyboard", "state": "open", "browser": "Firefox-example", "status": "Not tested", "limitation": "Required browser input unavailable"},
+    {"id": "B-03", "check": "MOD-01", "method": "browser-semantics", "state": "open", "browser": "Chromium-example", "status": "Inconclusive", "observed": "dialog named Review details", "capability": "Computed name/role available; relationship targets omitted", "limitation": "Snapshot cannot establish actual title relationship targets"},
+    {"id": "B-04", "check": "MOD-01", "method": "browser-semantics", "state": "open", "browser": "Firefox-example", "status": "Inconclusive", "observed": "Additional wrapper then dialog named Review details", "capability": "Computed name/role available; relationship targets omitted", "limitation": "Different serialization alone does not establish a defect"}
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-draft.1",
+  "version": "0.1.0-draft.2",
   "scope": "Modal pilot only; not an exhaustive WCAG catalog.",
   "checks": [
     {
@@ -15,7 +15,13 @@
         "4.1.2"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "closed-baseline",
+        "open",
+        "interaction-update-when-applicable",
+        "reopen"
+      ]
     },
     {
       "id": "MOD-02",
@@ -31,7 +37,12 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "open",
+        "close",
+        "reopen"
+      ]
     },
     {
       "id": "MOD-03",
@@ -46,7 +57,11 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "opening",
+        "reopening"
+      ]
     },
     {
       "id": "MOD-04",
@@ -62,7 +77,12 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "open",
+        "interaction-update-when-applicable",
+        "reopen"
+      ]
     },
     {
       "id": "MOD-05",
@@ -78,7 +98,11 @@
         "2.1.2"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "open-to-closed",
+        "nested-popup-dismissal-when-applicable"
+      ]
     },
     {
       "id": "MOD-06",
@@ -93,7 +117,10 @@
         "2.4.3"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "closing"
+      ]
     },
     {
       "id": "MOD-07",
@@ -109,7 +136,23 @@
         "2.4.11"
       ],
       "authority": "Evaluate against the reference; related criteria are not proof of violation.",
-      "reference": "../library/patterns/modal-dialog.md"
+      "reference": "../library/patterns/modal-dialog.md",
+      "states": [
+        "open",
+        "interaction-update-when-applicable",
+        "reopen"
+      ]
     }
-  ]
+  ],
+  "coverageRequirements": {
+    "environment": "Select supported browser/OS matrix before runtime work; unavailable required environments remain Not tested.",
+    "states": [
+      "closed-baseline",
+      "open",
+      "interaction-update-when-applicable",
+      "close",
+      "reopen"
+    ],
+    "comparison": "Compare functional results rather than serialized-tree identity. Scope method and tool capabilities independently."
+  }
 }

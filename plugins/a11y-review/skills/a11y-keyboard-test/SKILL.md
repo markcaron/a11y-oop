@@ -20,3 +20,5 @@ Without execution, return applicable Not tested records and runnable manual step
 ## Return
 
 Give environment, action sequence, expected/observed focus, per-check results, findings, and remaining transitions. Apply [coverage rules](../../contracts/coverage.md). Keep browser evidence separate from human AT results. Do not modify the implementation unless requested.
+
+Use the [required browser matrix](../../methods/browser-coverage.md). Observe update/close/reopen transitions rather than only the initial open state. If semantic verification is requested, use [rendered semantics](../../methods/rendered-semantics.md); keep that evidence distinct from keyboard and AT observations.

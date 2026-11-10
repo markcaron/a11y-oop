@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-09",
+  "reviewed": "2026-11-10",
   "note": "Original summaries; no RHDS site snapshots.",
   "sources": [
     {
@@ -26,6 +26,16 @@
       "id": "pf-modal",
       "url": "https://www.patternfly.org/components/modal/accessibility/",
       "authority": "provider docs; resolve installed version"
+    },
+    {
+      "id": "html-reflection",
+      "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflecting-content-attributes-in-idl-attributes",
+      "authority": "normative HTML; exact API/direction and browser support require verification"
+    },
+    {
+      "id": "pfe-review-methodology",
+      "url": "https://github.com/patternfly/patternfly-elements/blob/staging/pfv6/.claude/skills/review-a11y/SKILL.md",
+      "authority": "methodology inspiration, not normative guidance; dated support tables are not adopted"
     }
   ]
 }

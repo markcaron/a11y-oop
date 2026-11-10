@@ -250,6 +250,21 @@ Provider references contain verified exceptions and responsibilities, with versi
 
 Felt entries remain planned until actual documentation supports their contents. Do not assume its React architecture or invent component APIs.
 
+### Browser, state, and component verification requirements (PFE comparison, 2026-11-10)
+
+The [PFE review-a11y skill](https://github.com/patternfly/patternfly-elements/blob/staging/pfv6/.claude/skills/review-a11y/SKILL.md) identified requirements to make explicit within existing skills; no additional skill names are needed.
+
+- **Browser matrix:** Select required browsers/OS from supported environments and record availability per method. For Web Components without a policy, propose Chromium and Firefox as an assumption; include WebKit/Safari when the target platforms require it. A missing required environment is a gap, not an inherited pass. Compare functional semantics and behavior, not exact tree serialization.
+- **State/transition expectations:** Map each applicable state to expected names, roles, values, relationships, visibility, and focus, including return transitions and reopening. Distinguish keyboard, computed-semantics, visual, and AT evidence. Snapshot fields omitted by tooling do not establish browser defects or announcements.
+- **Cross-root procedure:** Map source/target endpoints, DOM roots, mechanism, expected outcome, actual computed evidence, and browser/tool versions. Distinguish declarative IDs, element reflection, native behavior, and ElementInternals. Verify current API scope/support and fallback behavior; do not copy dated support tables or prescribe universal live-region workarounds.
+- **Demos and documentation:** Component-author reviews include representative demos and copyable snippets, supported states, and consumer responsibilities. Keep project-specific InternalsController or public-attribute conventions in provider guidance. This does not automatically expand consumer audits into documentation reviews.
+- **Form-associated custom elements (planned):** Make submission values, validity/validation, reset, disabled propagation, label association, and state restoration explicit in Web Component form references and component-author checks. This remains outside the modal pilot.
+- **Regression traceability (planned):** Connect critical state/relationship expectations and findings to persistent tests, or explicit browser/human checks where automation cannot establish the outcome. Apply in a11y-test-gen, a11y-retest, and component-development handoffs. A snapshot test is not proof of human AT behavior.
+
+Avoid false universal rules: disabled composite-widget items may remain focusable; accordion regions are optional; provider controllers and particular MCPs are not universal prerequisites. Interpret expectations through the actual pattern and platform sources, including [APG disabled-control guidance](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_disabled_controls) and [APG accordion guidance](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
+
+The current modal pilot adds browser-coverage and rendered-semantics methods, a cross-root relationship reference, explicit modal state expectations, and evaluation cases. Real cross-browser/AT execution and behavioral comparison remain pending; authoring these cases does not establish that the plugin passed them.
+
 ## 6. Proposed skill inventory
 
 These are **18 candidate skills**. Only the first few should ship initially. Every listed name corresponds to `skills/<name>/SKILL.md`.
@@ -295,7 +310,7 @@ Recipes describe a sequence; they do not silently require a particular agent pla
 - **Design to development:** Plan → design review → content review → implementation checklist and handoff.
 - **Pull request review:** Source audit → relevant pattern/component review → targeted runtime checks → report.
 - **Existing experience audit:** Plan → automated, keyboard, semantics, visual, and AT testing → consolidated report.
-- **Component development:** Define contract → design/pattern review → source review → runtime checks → regression tests and documentation.
+- **Component development:** Define contract → design/pattern review → source and demo/snippet review → browser/state verification → traceable regression tests and documentation.
 - **Content publication:** Content review → authoring review where applicable → targeted rendered checks.
 - **Remediation and retest:** Report → remediation plan → requested fixes → tests → retest.
 - **Release review:** Select critical journeys → run applicable checks → retest known findings → summarize remaining risk and coverage.
@@ -402,6 +417,8 @@ Deliverable: A repeatable installed-plugin workflow with useful evidence, intact
 Use broken examples, valid alternatives, missing capabilities, and mixed runtimes. Check missed issues, false positives, evidence quality, and overclaiming.
 
 Compare skill-on and skill-off runs on the same tasks, fixtures, model configuration, and tool capabilities. Record plugin commits, prompts, outputs, and adjudicated outcomes. Assess correct findings, missed defects, false positives, evidence fidelity, and coverage reporting. Define expected outcomes and acceptance criteria before running the comparison; do not tune the rubric to the generated wording.
+
+Include browser coverage gaps, functional snapshot differences, hidden relationship fields, cross-root positive/negative pairs, and stale state after reopening in the evaluation suite. Do not mistake fixture authoring for execution.
 
 Test routing for overlapping requests: design versus source review, automated testing versus test generation, pattern versus component review, and planning versus direct invocation. Verify that selection follows the requested task and that it does not expand into unrelated actions.
 

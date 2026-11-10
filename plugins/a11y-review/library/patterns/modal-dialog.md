@@ -1,6 +1,6 @@
 # Modal dialog
 
-Version: 0.1.0-draft.1. Applies when a dialog blocks background interaction. Nonmodal panels and alert dialogs need separate scope decisions; appearance alone does not determine the pattern.
+Version: 0.1.0-draft.2. Applies when a dialog blocks background interaction. Nonmodal panels and alert dialogs need separate scope decisions; appearance alone does not determine the pattern.
 
 ## Expectations
 
@@ -19,3 +19,16 @@ Compare short/long content, multiple instances, closing paths, removed invokers,
 Interaction expectations are APG guidance. Classify normative violations separately against applicable criteria. Source review identifies structural defects and risks. Keyboard testing establishes observed focus transitions; browser-tree inspection establishes exposed semantics in that environment. Neither proves human AT announcements.
 
 Sources: [APG modal pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [example rationale](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/), and [HTML dialog](https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element). Original summaries; no imported source pages.
+
+## State and transition expectations
+
+Select applicable states before testing; do not demand expanded/checked/invalid states from a modal that does not support them. Evaluate these outcomes per required browser using the [browser](../../methods/browser-coverage.md) and [rendered-semantics](../../methods/rendered-semantics.md) methods:
+
+- **Closed baseline:** The closed dialog's content is not available as an active dialog; its invoker remains usable. Inspect hidden/ignored output with the tool's capabilities in mind.
+- **Open:** The intended name, dialog semantics, and modality are exposed; actual background behavior agrees. Observe suitable entry focus and usable closing controls separately.
+- **Interaction/update:** Relevant content, names, relationships, and supported child states reflect the update without stale or unintended associations. Preserve the intended focus path.
+- **Nested popup, when present:** Child interaction and dismissal leave the intended parent state and focus. Child dismissal does not automatically imply parent dismissal.
+- **Close:** Content becomes unavailable as an active modal, background access resumes, and focus reaches the invoker or justified next task.
+- **Reopen:** The intended current name/content/relationships are restored or refreshed, and entry focus works again. No stale hidden state, relationship target, or orphan focus remains.
+
+Record expected and actual outcomes; identical snapshot serialization is not required. Source review can establish an implementation risk but cannot fill browser execution rows. Human announcements and visual contrast remain separately verified methods.
