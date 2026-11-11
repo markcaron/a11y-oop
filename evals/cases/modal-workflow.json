@@ -5,7 +5,7 @@
     {
       "id": "source-seeded-defects",
       "skill": "a11y-source-audit",
-      "fixture": "native-broken.html",
+      "fixture": "modal/native-broken.html",
       "prompt": "Review this intended modal source. Do not modify it or run a browser.",
       "required": [
         "Identify dangling naming relationship MOD-01",
@@ -24,7 +24,7 @@
     {
       "id": "native-valid-alternative",
       "skill": "a11y-source-audit",
-      "fixture": "native-valid.html",
+      "fixture": "modal/native-valid.html",
       "prompt": "Review this modal source for accessibility risks without browser execution.",
       "required": [
         "Accept native showModal behavior",
@@ -40,7 +40,7 @@
     {
       "id": "shadow-focus",
       "skill": "a11y-keyboard-test",
-      "fixture": "web-component.html",
+      "fixture": "modal/shadow-focus.html",
       "prompt": "Test this running modal by keyboard, recording focused elements through its shadow root.",
       "required": [
         "Inspect composed focus before declaring escape",
@@ -54,7 +54,7 @@
     {
       "id": "provider-owned-behavior",
       "skill": "a11y-source-audit",
-      "fixture": "PatternFlyModal.tsx",
+      "fixture": "modal/patternfly-consumer.tsx",
       "prompt": "Review this PF consumer source. The fixture has no installed dependencies and no running build.",
       "required": [
         "Trace the explicit label relationship",
@@ -69,7 +69,7 @@
     {
       "id": "unavailable-browser",
       "skill": "a11y-keyboard-test",
-      "fixture": "native-valid.html",
+      "fixture": "modal/native-valid.html",
       "prompt": "Prepare a keyboard review. No running target, browser input, or focus observation is available; source is supplied only.",
       "required": [
         "Return applicable Not tested records and concrete manual steps",
@@ -83,7 +83,7 @@
     {
       "id": "report-conflict-and-handoff",
       "skill": "a11y-report",
-      "fixture": "report-observations.json",
+      "fixture": "modal/report-observations.json",
       "prompt": "Consolidate these explicitly synthetic observations for this exercise. Do not claim to have run their checks.",
       "required": [
         "Retain source Pass alongside keyboard Fail",
@@ -100,7 +100,7 @@
     {
       "id": "cross-root-pair",
       "skill": "a11y-source-audit",
-      "fixture": "cross-root-modal.html",
+      "fixture": "modal/cross-root-naming.html",
       "prompt": "Review the paired same-root/cross-root modal source. Map naming endpoints and roots, then give runtime verification steps; no browser execution is available.",
       "required": [
         "Accept the correctly scoped same-root relationship",
@@ -117,7 +117,7 @@
     {
       "id": "browser-and-tool-gaps",
       "skill": "a11y-report",
-      "fixture": "browser-observations.json",
+      "fixture": "modal/browser-observations.json",
       "prompt": "Consolidate these synthetic browser observations. Both browsers and open/close/reopen states are required. Do not run browsers or treat supplied records as live evidence.",
       "required": [
         "Retain untested Firefox keyboard coverage",
@@ -134,7 +134,7 @@
     {
       "id": "reopen-name-update",
       "skill": "a11y-source-audit",
-      "fixture": "reopen-stale-name.html",
+      "fixture": "modal/reopen-stale-name.html",
       "prompt": "Review the modal source across opening item A, closing, and reopening for item B. Do not execute a browser.",
       "required": [
         "Identify the fixed aria-label and updated visible title as a stale-name risk after reopening",
@@ -149,7 +149,7 @@
     {
       "id": "keyboard-seeded-defects",
       "skill": "a11y-keyboard-test",
-      "fixture": "native-broken.html",
+      "fixture": "modal/native-broken.html",
       "prompt": "Test this intended modal in the running browser using keyboard input. Record traversal and Escape behavior, then close with its Close control and observe focus.",
       "required": [
         "Detect focus traversal into background content MOD-04",
@@ -165,7 +165,7 @@
     {
       "id": "keyboard-lost-focus",
       "skill": "a11y-keyboard-test",
-      "fixture": "lost-focus.html",
+      "fixture": "modal/lost-focus.html",
       "prompt": "Test this running modal by keyboard, including focus after closing.",
       "required": [
         "Detect focus moved to the page heading instead of the still-available invoker MOD-06",
@@ -179,7 +179,7 @@
     {
       "id": "small-source-request",
       "skill": "a11y-source-audit",
-      "fixture": "native-valid.html",
+      "fixture": "modal/native-valid.html",
       "prompt": "Quick source-only question: does this dialog need a custom focus trap?",
       "required": [
         "Answer the narrow question concisely",
@@ -193,7 +193,7 @@
     {
       "id": "native-control-attribution-and-evidence",
       "skill": "a11y-report",
-      "fixture": "evidence-boundaries.json",
+      "fixture": "modal/evidence-boundaries.json",
       "prompt": "Consolidate these synthetic observations. Explain what is established, attribution corrections, and remaining verification. Do not run tests.",
       "required": [
         "Retain F-01 and both observations with cause unresolved: matching native behavior does not isolate cause, rule out component contributions, establish an engine/tool defect, or justify closure even after a matching headed repeat",
@@ -221,7 +221,7 @@
     {
       "id": "native-boundary-investigation",
       "skill": "a11y-keyboard-test",
-      "fixture": "native-valid.html",
+      "fixture": "modal/native-valid.html",
       "prompt": "A component using native dialog reportedly stops at Tab boundaries. Use this native control to investigate in the available browser; do not modify it.",
       "required": [
         "Record browser/tool versions, input settings, and headed/headless mode",
@@ -255,7 +255,11 @@
     },
     {
       "prompt": "Review accessibility of this form; it contains no modal.",
-      "expected": "Explain modal-only pilot coverage and route to an available general review capability or offer ordinary review with the limitation; do not apply modal checks"
+      "expected": "a11y-source-audit with ordinary-form reference; do not apply modal containment checks"
+    },
+    {
+      "prompt": "Review the accessibility of this authentication and file-upload flow.",
+      "expected": "Explain the current reference coverage limit; review supported ordinary-control portions without claiming complete flow coverage"
     }
   ]
 }

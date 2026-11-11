@@ -7,7 +7,7 @@
     {
       "name": "a11y-review",
       "source": "./plugins/a11y-review",
-      "description": "Draft modal-dialog accessibility reviews: source audit, keyboard testing, and consolidated reporting."
+      "description": "Draft accessibility reviews for modal dialogs and ordinary forms: source audit, keyboard testing, and consolidated reporting."
     }
   ]
 }

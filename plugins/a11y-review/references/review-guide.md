@@ -2,7 +2,7 @@
 
 ## Every review
 
-Start with the person's task, available files or running target, and relevant states. Reuse an existing scope or establish a brief one from the request and project context. Ask only for information that blocks useful work. This pilot covers modals; name broader exclusions. Follow project instructions and the requested action—review does not imply fixes or publication.
+Start with the person's task, available files or running target, and relevant states. Reuse an existing scope or establish a brief one from the request and project context. Ask only for information that blocks useful work. This pilot covers modals and ordinary-form labeling, grouping, validation, and recovery; name broader exclusions. Follow project instructions and the requested action—review does not imply fixes or publication.
 
 State what was inspected, what was found, the supporting evidence, and what still needs verification. A quick review can use a few findings and a short limitations note. Do not require a questionnaire, separate scope file, full catalog dump, or detailed result matrix for a small request. Keep enough evidence to reproduce findings and preserve existing IDs.
 

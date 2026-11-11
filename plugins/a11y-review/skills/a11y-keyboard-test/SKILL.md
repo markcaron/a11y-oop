@@ -1,21 +1,28 @@
 ---
 name: a11y-keyboard-test
-description: Test modal-dialog keyboard operation and focus in a running interface, or prepare explicit unexecuted steps when browser capabilities are unavailable. Use for live keyboard review rather than source-only analysis.
+description: Test modal-dialog and ordinary-form keyboard operation, validation recovery, and focus in a running interface, or prepare explicit unexecuted steps when browser capabilities are unavailable. Use for live keyboard review rather than source-only analysis.
 ---
 
-# Test modal keyboard behavior
+# Test keyboard behavior
 
-Use the [shared review guide](../../references/review-guide.md) and [modal expectations](../../references/modal-dialog.md). Establish minimal scope yourself or reuse the supplied review. Select [browser coverage](../../references/browser-coverage.md) from project support needs; record unavailable environments as gaps.
+Use the [shared review guide](../../references/review-guide.md). Select [modal expectations](../../references/modal-dialog.md), [form expectations](../../references/forms.md), or both for forms inside modals. Establish minimal scope yourself or reuse the supplied review. Select [browser coverage](../../references/browser-coverage.md) from project support needs; record unavailable environments as gaps.
 
 ## Test
 
-Confirm the running target/build, opener, data/auth setup, and available input/focus observation. Record browser/OS, keyboard settings, and other relevant conditions. Follow this sequence for each scoped modal:
+Confirm the running target/build, task, data/auth setup, and available input/focus observation. Record browser/OS, keyboard settings, and other relevant conditions. Follow this sequence for each scoped modal:
 
 1. Reach and activate the invoker by keyboard; record focus before opening.
 2. Observe entry focus and why that destination fits the task.
 3. Tab and Shift+Tab through both boundaries. Inspect focus/composed focus and scrolled-content reachability. Record focus visibility as separate visual evidence from the rendered page or screenshots; keyboard movement alone cannot establish it.
 4. Exercise the task, relevant updates, and nested popup dismissal. Test Escape and visible closing/finishing controls; record intended alternatives.
 5. Observe whether focus returns to the invoker or reaches a logical next step; explain any alternative destination. Reopen to catch stale focus, content, or names. Test long content/removed invokers when applicable to scope.
+
+For an ordinary form, use this sequence instead of modal entry/containment checks:
+
+1. Traverse controls in both directions using native keyboard interaction; select radios with arrow keys and toggle checkboxes with Space. Record focus visibility separately as visual evidence.
+2. Submit missing or invalid values with safe test data. Observe error discovery, focus destination, keyboard access to errors/summary links, and retained input. Do not submit real transactions without authorization.
+3. Correct individual and group errors, resubmit, and observe stale error removal, focus, and completion feedback. Accept usable native validation; do not require a custom summary, focus trap, or Escape dismissal.
+4. When semantics are in scope, inspect individual/group names, descriptions, required/invalid states, and feedback through the browser-backed method below. Keep that evidence separate from key actions.
 
 For unexpected native focus or boundary behavior, perform the [native-control attribution check](../../references/browser-coverage.md#attribute-unexpected-native-behavior) before assigning component responsibility.
 

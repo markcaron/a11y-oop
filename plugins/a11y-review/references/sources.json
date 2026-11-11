@@ -46,6 +46,31 @@
       "id": "aria12",
       "url": "https://www.w3.org/TR/wai-aria-1.2/",
       "authority": "normative ARIA semantics"
+    },
+    {
+      "id": "wai-forms-labels",
+      "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-grouping",
+      "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-validation",
+      "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-notifications",
+      "url": "https://www.w3.org/WAI/tutorials/forms/notifications/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "html-label",
+      "url": "https://html.spec.whatwg.org/multipage/forms.html#the-label-element",
+      "authority": "normative HTML label association"
     }
   ]
 }

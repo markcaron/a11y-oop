@@ -1,6 +1,6 @@
 ---
 name: a11y-report
-description: Consolidate supplied accessibility observations into a scoped report preserving findings, evidence origins, conflicts, and coverage gaps. This draft understands modal-dialog checks; it does not execute an audit or certify conformance.
+description: Consolidate supplied accessibility observations into a scoped report preserving findings, evidence origins, conflicts, and coverage gaps. This draft understands modal-dialog and ordinary-form checks; it does not execute an audit or certify conformance.
 ---
 
 # Summarize accessibility findings
@@ -13,7 +13,7 @@ Inventory supplied results, findings, evidence, methods, environments, revisions
 
 A source Pass cannot cancel a keyboard Fail. Preserve a substantiated failure as Fail even when a comparable repeat passes; mark the behavior intermittent and retain both observations. Use Inconclusive only when the evidence cannot establish whether a failure occurred. Newer passing results do not close older findings without matching retest evidence. Retain browser/state gaps and distinguish tool omissions or harmless tree differences from confirmed browser defects.
 
-Load the [modal reference](../../references/modal-dialog.md) only to resolve expectations or authority. Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly. Matching native-control behavior leaves cause unresolved; it does not rule out component contributions, prove an engine defect, or justify closure. Preserve attribution corrections and the underlying observations. Keep source naming defects, browser-computed names, and supplied manual screen-reader results distinct.
+Load the relevant [modal](../../references/modal-dialog.md) or [form](../../references/forms.md) reference only to resolve expectations or authority. Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly. Matching native-control behavior leaves cause unresolved; it does not rule out component contributions, prove an engine defect, or justify closure. Preserve attribution corrections and the underlying observations. Keep source naming defects, browser-computed names, and supplied manual screen-reader results distinct.
 
 ## Return
 

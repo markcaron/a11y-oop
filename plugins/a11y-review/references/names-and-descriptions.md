@@ -1,6 +1,6 @@
-# Modal names and descriptions
+# Names and descriptions
 
-Apply to the dialog and its controls. Inspect the computed name; visible text or a prop is not proof of a naming relationship. Trace references and verify IDs in the relevant tree. Check multiple instances for unintended shared names.
+Apply to dialogs, form controls, and their groups. For labels, fieldset/legend, and errors, use the [form reference](forms.md). Inspect the computed name; visible text or a prop is not proof of a naming relationship. Trace references and verify IDs in the relevant tree. Check multiple instances for unintended shared names.
 
 An existing heading referenced by aria-labelledby differs from an unassociated heading. Native semantics and component internals may supply correct behavior without duplicated ARIA. Review descriptions separately; adding one is not a universal improvement. Do not infer an actual screen-reader announcement from source or a browser snapshot.
 

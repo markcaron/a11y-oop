@@ -1,6 +1,6 @@
 # Contributing
 
-Start with the [usage guide](docs/usage.md) to understand the supported tasks. Improve a small piece of the modal pilot before expanding its scope.
+Start with the [usage guide](docs/usage.md) to understand the supported tasks. Improve a small piece of the supported pilot before expanding its scope.
 
 ## Find what to edit
 

@@ -4,7 +4,7 @@ Status: Maintainer design record and future inventory, updated 2026-11-10. The s
 
 For using the plugin, start with the [README](../../README.md) and [usage guide](../usage.md). For editing a small piece, start with [Contributing](../../CONTRIBUTING.md). This plan is optional deeper reading, not user onboarding.
 
-The current a11y-review plugin is a modal-only draft pilot. See the [usage guide](../usage.md) for supported tasks. Structural/portability checks and behavioral case specifications are maintained in evals/. Behavioral scenarios remain unexecuted; actual client loading and behavioral accuracy still need verification.
+The current a11y-review plugin is a draft pilot for modals and ordinary-form labels, groups, validation, and recovery. See the [usage guide](../usage.md) for supported tasks. Structural/portability checks and behavioral case specifications are maintained in evals/. Behavioral scenarios remain unexecuted; actual client loading and behavioral accuracy still need verification.
 
 The intended scope is broad accessibility across content, page structure, forms, navigation, visual design, interaction patterns, reusable components, and complete user journeys. Component-level review is one part of that scope. Modal dialogs are the first bounded test case for validating the skills and their handoffs, not the boundary of the project. The broader coverage remains planned until implemented and evaluated.
 

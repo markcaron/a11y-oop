@@ -1,16 +1,30 @@
-# Evaluating the modal plugin
+# Evaluating the accessibility review plugin
 
 ## Structural tests
 
 Run python3 -m unittest discover -s evals/tests -v. Tests copy only the complete plugins/a11y-review/ directory into a fresh installed location, delete the temporary authoring checkout, and validate manifests, all skill entrypoints discovered in the source plugin, and local resource/check references. Negative cases cover missing references, path escapes, mismatched manifests, missing skills, and invalid marketplace sources. These tests do not invoke a real host plugin loader or evaluate assistant behavior.
 
+## Fixture organization
+
+Group fixtures by the component or pattern under test. Case `fixture` paths are relative to `evals/fixtures/`; HTML pages and synthetic observation files live together within their pattern directory.
+
+```text
+fixtures/
+├── modal/     # Dialog behavior, naming, and reporting inputs
+└── form/      # Labels, groups, validation, and reporting inputs
+```
+
+When serving `evals/fixtures/`, use URLs such as `/modal/native-valid.html` or `/form/custom-validation-valid.html`. Renaming a fixture also requires updating its case path and any documentation links. Keep expected outcomes in the case rubric rather than adding them to the test prompt.
+
 ## Behavioral cases
 
-Use cases/modal-workflow.json and fixtures/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing browser execution, consolidation conflicts, cross-root positive/negative pairs, browser/tool gaps, stale naming on reopen, and routing. HTML files are isolated test fixtures, not a website. PatternFlyModal.tsx is source-only and does not bundle React/PF dependencies.
+Use cases/modal-workflow.json and fixtures/modal/ for source defects, valid native alternatives, shadow-root focus, PF consumer responsibilities, missing browser execution, consolidation conflicts, cross-root positive/negative pairs, browser/tool gaps, stale naming on reopen, and routing. HTML files are isolated test fixtures, not a website. fixtures/modal/patternfly-consumer.tsx is source-only and does not bundle React/PF dependencies.
 
 Install the complete plugin in an isolated workspace with the named fixture and required tools. Do not expose authoring-only files or the expected-outcome rubric to the acting assistant. Record prompt, plugin commit/content hash, model configuration, capabilities, output, execution artifacts, and adjudication. Evaluate synthetic reporting records as supplied examples, not live observations.
 
 Compare matched skill-on and skill-off runs using the same fixture, prompt, model, and tools. Freeze expected outcomes before comparison. Adjudicate additional findings by evidence and authority; an unseeded, substantiated finding is not automatically a false positive. Include installed competing skills in routing runs and record their names/versions; also retain isolated-plugin runs to distinguish routing interference. Measure seeded-defect detection, false positives, evidence fidelity, coverage, and routing; repeat unstable cases. Retain original outputs and failures.
+
+Use cases/forms-workflow.json for the ordinary-form slice. fixtures/form/custom-validation-valid.html covers explicit/wrapping labels, a valid span relationship, fieldset/legend, a named ARIA group, and custom error recovery. fixtures/form/custom-validation-broken.html keeps the valid span but seeds unrelated labels, missing group semantics, a dangling description, and unusable validation feedback/recovery. fixtures/form/native-validation-valid.html guards against demanding custom errors or fieldsets for standalone controls. Behavioral specifications remain separate from actual run results; screen-reader follow-up stays manual.
 
 ## Evaluation evidence
 
@@ -28,4 +42,4 @@ Current status: draft. Matched behavioral comparisons, real host-loading checks,
 
 The external skill-creator validator previously could not start because PyYAML is unavailable. The contributor validator checks this pilot's single-line name/description convention without that dependency; it is not a general YAML validator.
 
-New PFE-inspired cases remain not-run. The cross-root fixture pairs a same-tree relationship with an intentionally out-of-scope declarative relationship; it does not assert support for experimental APIs. Browser-observations.json contains invented inputs for reporting evaluation, not runtime results. Reopen-stale-name.html seeds an update missed by initial-state-only review. Required browser/state execution and comparison must still be performed and recorded.
+New PFE-inspired cases remain not-run. The cross-root fixture pairs a same-tree relationship with an intentionally out-of-scope declarative relationship; it does not assert support for experimental APIs. fixtures/modal/browser-observations.json contains invented inputs for reporting evaluation, not runtime results. fixtures/modal/reopen-stale-name.html seeds an update missed by initial-state-only review. Required browser/state execution and comparison must still be performed and recorded.

@@ -1,0 +1,120 @@
+{
+  "status": "not-run",
+  "note": "Behavioral specifications, not run results. Freeze rubric before matched comparisons.",
+  "cases": [
+    {
+      "id": "form-source-seeded-defects",
+      "skill": "a11y-source-audit",
+      "fixture": "form/custom-validation-broken.html",
+      "prompt": "Review this form source for accessibility. Do not modify it or run a browser.",
+      "required": [
+        "Find unassociated Email span FRM-01 while accepting the referenced Reference code span",
+        "Find shared Yes/No question lacks group relationship FRM-02; native radio name alone is not a group label",
+        "Find dangling email help description FRM-03",
+        "Find missing textual validation errors FRM-04 and data reset/unrelated heading focus recovery risks FRM-05",
+        "Identify stale visual error and unexposed success status risks; preserve source origin and runtime queue"
+      ],
+      "blocking": [
+        "Flag every span as invalid labeling",
+        "Claim keyboard or browser-tree execution",
+        "Demand modal trapping or Escape dismissal for the form",
+        "Call every recovery recommendation a demonstrated WCAG failure"
+      ]
+    },
+    {
+      "id": "form-valid-alternatives",
+      "skill": "a11y-source-audit",
+      "fixture": "form/custom-validation-valid.html",
+      "prompt": "Review this form source, including labels, groups, and custom validation. Do not execute a browser or change files.",
+      "required": [
+        "Accept explicit and wrapping labels and correctly referenced span",
+        "Accept fieldset/legend plus individual radio labels",
+        "Accept named ARIA checkbox group and standalone checkbox without fieldset",
+        "Trace custom errors, summary links, retained help, invalid-state cleanup and resubmission",
+        "Retain browser and manual AT verification limits"
+      ],
+      "blocking": [
+        "Demand fieldset around every control or require native label for a correctly named span alternative",
+        "Demand role=alert for the focused error summary",
+        "Claim source establishes actual announcements"
+      ]
+    },
+    {
+      "id": "form-native-validation",
+      "skill": "a11y-source-audit",
+      "fixture": "form/native-validation-valid.html",
+      "prompt": "Review this native form source for labels and validation. Do not run tests or modify files.",
+      "required": [
+        "Accept native required/type validation as a candidate valid mechanism without custom aria-invalid or summary",
+        "Accept independently labeled checkbox without fieldset",
+        "Queue actual native error focus/message verification"
+      ],
+      "blocking": [
+        "Report missing custom aria-invalid, error summary, or alert alone as a defect",
+        "Infer runtime validation passed from source"
+      ]
+    },
+    {
+      "id": "form-keyboard-recovery",
+      "skill": "a11y-keyboard-test",
+      "fixture": "form/custom-validation-valid.html",
+      "prompt": "Test this running form by keyboard using invalid data and then correct it. Inspect browser-backed semantics if available. Do not change files.",
+      "required": [
+        "Use real keyboard input for traversal, radio selection, invalid submission, summary link activation, correction, and resubmission",
+        "Observe actual focus, retained optional input, and feedback instead of assuming success",
+        "Keep group/name/invalid-state tree evidence separate from keyboard and manual screen-reader checks"
+      ],
+      "blocking": [
+        "Treat browser tree as announcement evidence",
+        "Require every radio to be a separate Tab stop",
+        "Apply modal containment to the ordinary form"
+      ]
+    },
+    {
+      "id": "form-keyboard-broken",
+      "skill": "a11y-keyboard-test",
+      "fixture": "form/custom-validation-broken.html",
+      "prompt": "Test this running form through invalid submission, correction, and resubmission. Keep optional Reference code data while correcting errors. Do not change files.",
+      "required": [
+        "Detect optional input loss and unrelated heading focus after invalid submission",
+        "Observe missing textual error feedback and retain naming questions for browser inspection",
+        "Keep source, keyboard, visual, and tree claims separate"
+      ],
+      "blocking": [
+        "Claim unexecuted checks pass",
+        "Treat field/group name as proven by keyboard movement alone"
+      ]
+    },
+    {
+      "id": "form-report-handoff",
+      "skill": "a11y-report",
+      "fixture": "form/report-observations.json",
+      "prompt": "Consolidate these synthetic form observations. Preserve findings and explain remaining verification. Do not run tests or modify files.",
+      "required": [
+        "Retain source labeling and group issues without inventing browser names",
+        "Retain input loss evidence without claiming a specific WCAG failure solely from reset",
+        "Keep native-validation evidence distinct from custom-form targets",
+        "Preserve manual screen-reader gaps and supplied provenance"
+      ],
+      "blocking": [
+        "Apply modal checks to form-only records",
+        "Close source naming issue using keyboard success on another target",
+        "Fabricate browser computed names or screen-reader announcements"
+      ]
+    }
+  ],
+  "routingRequests": [
+    {
+      "prompt": "Check whether these spans label their inputs and whether the Yes/No group needs a legend.",
+      "expected": "a11y-source-audit with forms.md; inspect actual relationships"
+    },
+    {
+      "prompt": "Test keyboard correction and resubmission on this form.",
+      "expected": "a11y-keyboard-test with form sequence"
+    },
+    {
+      "prompt": "Summarize existing form accessibility findings.",
+      "expected": "a11y-report"
+    }
+  ]
+}

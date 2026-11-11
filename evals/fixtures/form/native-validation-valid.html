@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Newsletter signup</title>
+<h1>Newsletter signup</h1>
+<form>
+  <p><label for="email">Email (required)</label>
+    <input id="email" name="email" type="email" autocomplete="email" required></p>
+  <p><label><input id="updates" type="checkbox"> Send monthly updates (optional)</label></p>
+  <button type="submit">Sign up</button>
+  <p id="status" role="status"></p>
+</form>
+<script>
+document.querySelector('form').addEventListener('submit', event => {
+  event.preventDefault();
+  document.getElementById('status').textContent = 'Signed up for this demonstration. No data was sent.';
+});
+</script>
+</html>
