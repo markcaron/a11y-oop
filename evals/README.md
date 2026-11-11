@@ -4,6 +4,38 @@
 
 Run python3 -m unittest discover -s evals/tests -v. Tests copy only the complete plugins/a11y-review/ directory into a fresh installed location, delete the temporary authoring checkout, and validate manifests, all skill entrypoints discovered in the source plugin, and local resource/check references. Negative cases cover missing references, path escapes, mismatched manifests, missing skills, and invalid marketplace sources. These tests do not invoke a real host plugin loader or evaluate assistant behavior.
 
+## Batch source and reporting cases
+
+Use `python3 scripts/run_evals.py --list` to see eligible cases. The runner reads existing case definitions and supports source-audit and report tasks only. Browser interaction, installed-plugin discovery, and automatic skill routing remain separate checks.
+
+Prepare the form cases without calling a model:
+
+```sh
+python3 scripts/run_evals.py --suite form
+```
+
+Execute them with an authenticated Codex CLI and an explicit model available to your account:
+
+```sh
+python3 scripts/run_evals.py --suite form --execute --model MODEL_ID
+```
+
+Replace `MODEL_ID` with the model selected for the evaluation. The runner does not install or authenticate Codex. Execution consumes model usage. It ignores the user CLI config for consistent execution; authentication still uses the existing Codex credentials. Unsupported CLI flags, unavailable models, and authentication failures are execution errors, not evaluation failures.
+
+For a matched skill-on/off comparison or a focused regression:
+
+```sh
+python3 scripts/run_evals.py --case native-control-attribution-and-evidence --mode both --execute --model MODEL_ID
+```
+
+Repeat `--case` to select several cases, or omit `--suite` and `--case` for all eligible cases. Use `--reasoning low|medium|high` consistently across compared runs. `--dimension` records the comparison dimension selected before execution (default: evidence fidelity). Each case has a timeout, configurable with `--timeout` in seconds.
+
+The runner prints the location of one `summary.md`. By default, results go into a unique directory under the system temporary directory’s `a11y-evals` folder; use `--output-dir /absolute/private/path` for durable retention. Repository output paths are rejected. Preparation creates prompts, rubric copies, input/plugin snapshots, configuration metadata, and a summary without model calls. Execution additionally captures the response, JSONL tool events, stderr, and exit status. Temporary case workspaces are removed afterward; raw results remain. Temporary storage can be cleaned by the OS, so retain important runs in a private durable location.
+
+Each case/mode uses a fresh Codex session and workspace containing only its fixture and, for skill-on, a copy of the complete plugin. Rubrics stay in the result folder outside the acting workspace. The prompt directs the agent to read explicit skill files and not search for rubrics or other runs. Read-only sandboxing prevents workspace edits; it does **not** guarantee filesystem read isolation or disable every globally available skill/integration. Inspect tool events for contamination before crediting comparisons; mark contaminated runs invalid and repeat in a suitably isolated environment. These runs do not establish installed-skill discovery.
+
+A successful process is marked **needs review**, never automatically Pass. Review `response.md` and `events.jsonl` against that case’s `rubric.json`, including required outcomes, blocking errors, additional supported findings, false positives, and evidence origins. Record Pass/Fail/Inconclusive and a brief rationale alongside the saved summary. Preserve initial errors even when follow-up corrects them. Compare paired runs on the recorded dimension; a sound baseline is not a failure. Missing responses, timeouts, and process failures remain ungraded execution gaps. Preparation and mock-runner tests do not establish real model behavior.
+
 ## Fixture organization
 
 Group fixtures by the component or pattern under test. Case `fixture` paths are relative to `evals/fixtures/`; HTML pages and synthetic observation files live together within their pattern directory.
