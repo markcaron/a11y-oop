@@ -4,8 +4,11 @@ Use this method when rendered-semantic verification is part of the requested sco
 
 ## Identify the inspection layer
 
-- Record whether the tool reads the browser engine's accessibility tree, the OS accessibility API, or computes a DOM-derived approximation. A tool named “ARIA snapshot” does not necessarily expose the browser tree.
-- Verify the API and installed version; keep approximations labeled as such and leave native-tree verification Not tested when unavailable.
+- Record whether the tool reads the browser engine's accessibility tree, the OS accessibility API, or computes a DOM-derived approximation. API names such as “AX state” or “ARIA snapshot,” role-like output, and use of a real browser do not establish the inspection layer.
+- Verify the actual inspection path for the current tab or surface using tool documentation, capability metadata, or implementation evidence. Record the API/tool version when available. If an API can fall back to DOM snapshots, establish which path this capture used before calling it browser-backed or native AX.
+- When the path cannot be established, label the capture “inspection output; provenance unverified.” Do not relabel it as definitely DOM-derived either. Browser-computed name/role/relationship verification remains Not tested; conclusions based on the ambiguous capture are Inconclusive.
+- An omitted name or group in unverified output does not establish an unnamed control or absent browser-exposed group. Preserve independent DOM relationship defects, keyboard observations, and visual findings.
+- Accept a documented engine-tree or OS accessibility capture within its actual target, fields, and environment; it does not establish screen-reader output. Keep verified DOM approximations labeled as approximations.
 - Use a browser-backed inspection mechanism independently for each engine required by the [browser matrix](browser-coverage.md); results do not transfer between engines.
 - Do not require a particular automation package or deprecated API.
 

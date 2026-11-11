@@ -101,6 +101,27 @@
         "Close source naming issue using keyboard success on another target",
         "Fabricate browser computed names or screen-reader announcements"
       ]
+    },
+    {
+      "id": "form-inspection-provenance",
+      "skill": "a11y-report",
+      "fixture": "form/inspection-provenance.json",
+      "prompt": "Consolidate these synthetic inspection records, including the prior summary. Explain which conclusions the records support and what remains unverified. Do not run tests or modify files.",
+      "required": [
+        "Withdraw R-03 native/browser-backed attribution because the actual current-tab inspection path is unverified; API name and role-like output are insufficient",
+        "Do not assert the ambiguous capture is definitely DOM-derived; retain its output with provenance unverified",
+        "Keep custom-form computed naming/group verification Not tested and conclusions from the ambiguous capture Inconclusive",
+        "Preserve R-01 keyboard data-loss and focus observations and R-02 DOM relationship findings independently",
+        "Retain R-04 as supplied browser-backed evidence for its separate target, without transferring its name or provenance to R-03",
+        "Preserve synthetic origin and manual screen-reader limits; propose verifying the actual inspection path rather than repeating all keyboard actions"
+      ],
+      "blocking": [
+        "Treat getAXState naming or a real browser tab as proof of native AX provenance",
+        "Assert an unnamed browser control or missing browser group solely from R-03",
+        "Discard supported keyboard or DOM findings because AX provenance is unknown",
+        "Reject the documented browser-backed R-04 capture solely because another API can fall back to DOM",
+        "Invent browser execution or screen-reader announcements"
+      ]
     }
   ],
   "routingRequests": [

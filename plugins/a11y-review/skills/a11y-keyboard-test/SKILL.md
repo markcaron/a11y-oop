@@ -23,7 +23,7 @@ Confirm the running target/build, task, data/auth setup, and available input/foc
 - Use browser-driven key input, including browser automation that performs keyboard actions. Dispatching KeyboardEvent objects or walking elements with .focus() does not test native Tab order.
 - For accessible open shadow roots, start with document.activeElement and repeatedly follow element.shadowRoot.activeElement while present; record the chain. If closed roots or tool limitations hide the endpoint, report that limitation instead of assuming escape or success.
 
-When computed semantics are in scope, use [rendered-semantic verification](../../references/rendered-semantics.md) and keep that evidence separate. Otherwise hand off those questions. Keyboard actions alone do not prove accessible relationships or human AT announcements.
+When computed semantics are in scope, use [rendered-semantic verification](../../references/rendered-semantics.md), establish the current capture’s inspection layer before claiming browser-computed results, and keep that evidence separate. Otherwise hand off those questions. Keyboard actions alone do not prove accessible relationships or human AT announcements.
 
 ## Return
 

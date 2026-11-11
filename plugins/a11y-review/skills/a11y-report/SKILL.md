@@ -16,7 +16,7 @@ Use the [shared review guide](../../references/review-guide.md), especially its 
 - Apply the [consolidation rules](../../references/review-guide.md#combining-results) for statuses, conflicting results, attribution, retests, and coverage gaps. Preserve unresolved findings and their supporting observations.
 - Load the relevant [modal](../../references/modal-dialog.md) or [form](../../references/forms.md) reference only to resolve expectations or authority.
 - Do not invent evidence, standards mappings, or impact; label unverifiable supplied claims accordingly.
-- Keep source naming defects, browser-computed names, and supplied manual screen-reader results distinct.
+- Keep source naming defects, browser-computed names, and supplied manual screen-reader results distinct. If supplied inspection provenance is ambiguous or contradictory, apply the [inspection-layer guidance](../../references/rendered-semantics.md#identify-the-inspection-layer) before accepting a browser-tree claim.
 
 ## Return
 

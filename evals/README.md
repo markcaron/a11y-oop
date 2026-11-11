@@ -58,6 +58,8 @@ Compare matched skill-on and skill-off runs using the same fixture, prompt, mode
 
 Use cases/forms-workflow.json for the ordinary-form slice. fixtures/form/custom-validation-valid.html covers explicit/wrapping labels, a valid span relationship, fieldset/legend, a named ARIA group, and custom error recovery. fixtures/form/custom-validation-broken.html keeps the valid span but seeds unrelated labels, missing group semantics, a dangling description, and unusable validation feedback/recovery. fixtures/form/native-validation-valid.html guards against demanding custom errors or fieldsets for standalone controls. Behavioral specifications remain separate from actual run results; screen-reader follow-up stays manual.
 
+The `form-inspection-provenance` reporting case checks ambiguous AX-style output against a separately documented engine capture. Run it with `python3 scripts/run_evals.py --case form-inspection-provenance --execute --model MODEL_ID`. This synthetic regression verifies consolidation behavior; it does not establish that live keyboard testing identifies the inspection path correctly. Retest that claim in a future browser run when available, without requiring the full form suite again.
+
 ## Evaluation evidence
 
 Keep run outputs and artifacts outside this repository, in saved client chats or a private location of your choice. Formal reports and a prescribed directory or file format are not required. The repository holds reusable cases, fixtures, and validation code, not individual run records.
