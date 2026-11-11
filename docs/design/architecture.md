@@ -1,14 +1,52 @@
 # a11y-oop: architecture and action plan
 
-Status: Maintainer design record and future inventory, updated 2026-11-10. The simplified layout is the current draft pilot.
+Status: Maintainer design record and future inventory, updated 2026-11-11. The current draft pilot expands toward AI Helpers accessibility parity before broader roadmap work.
 
 For using the plugin, start with the [README](../../README.md) and [usage guide](../usage.md). For editing a small piece, start with [Contributing](../../CONTRIBUTING.md). This plan is optional deeper reading, not user onboarding.
 
-The current a11y-review plugin is a draft pilot for modals and ordinary-form labels, groups, validation, and recovery. See the [usage guide](../usage.md) for supported tasks. Structural/portability checks and behavioral case specifications are maintained in evals/. Behavioral scenarios remain unexecuted; actual client loading and behavioral accuracy still need verification.
+The current a11y-review plugin is a draft pilot for modals and ordinary-form labels, groups, validation, and recovery. See the [usage guide](../usage.md) for supported tasks. Structural/portability checks and behavioral case specifications are maintained in evals/. Selected live fixture runs, synthetic-report evaluations, and installed-client skill/reference loading have been reported during development. These are partial evidence, not proof that the complete evaluation gate passed. Reconcile saved runs against required cases and revisions before deciding which checks need execution; do not treat all cases as either passed or unexecuted.
 
 The intended scope is broad accessibility across content, page structure, forms, navigation, visual design, interaction patterns, reusable components, and complete user journeys. Component-level review is one part of that scope. Modal dialogs are the first bounded test case for validating the skills and their handoffs, not the boundary of the project. The broader coverage remains planned until implemented and evaluated.
 
 AI Helpers’ PatternFly plugin stays separate. The Alloy site and original generated skills remain on site-archive. This work does not restore the site or adopt the old checklist. The candidate skill inventory below is a backlog, not a requirement to create every file or plugin.
+
+## First expansion milestone: AI Helpers accessibility parity
+
+Reach framework-neutral capability parity with AI Helpers’ UXD and PatternFly accessibility guidance before expanding beyond it. The broader inventories below remain a backlog; they are not instructions to implement everything now. Improvements needed for correctness, evidence quality, maintainability, portability, or useful task completion are allowed while building toward parity. Tie such improvements to a concrete requirement or observed failure rather than adding unrelated scope.
+
+### Comparison baseline
+
+Use the AI Helpers checkout reviewed on 2026-11-11 at commit `d44c37adbf1c7d20db0c711a488b6ed070ddae94` as the initial baseline:
+
+- `plugins/patternfly/pf-a11y/skills/`: source audit, keyboard testing, combined runtime review, regression-test generation, and their references.
+- `plugins/uxd-research/skills/uxd-evaluate-code-heuristics/references/a11y-checklist.md`: framework-neutral source-check coverage.
+- `plugins/uxd-research/skills/uxd-evaluate-design-heuristics/`: accessibility-relevant design inspection and its rubric.
+
+Parity concerns supported accessibility tasks and coverage, not matching skill names, file counts, tools, provider APIs, or heuristic scores. It does not include reproducing unrelated UX research, visual-design critique, prototype creation, or all AI Helpers plugins. Revisit the baseline explicitly when useful; upstream changes do not silently enlarge this milestone.
+
+Adapt and verify guidance instead of copying it wholesale. Preserve native alternatives, pattern-specific exceptions, authority distinctions, and a11y-oop’s evidence safeguards. Treat the UXD checklist as an interim coverage inventory. Keep provider-specific prop mappings conditional and version-aware; do not introduce RHDS content. Screen-reader execution remains outside scope: prepare manual follow-up and preserve supplied results without launching or configuring assistive technology.
+
+### Parity work packages, in implementation order
+
+1. **Page foundations and general keyboard behavior.** Extend source and rendered review to page titles, headings, landmarks, lists, static tables, meaningful/decorative images, links/buttons, and hidden content. Cover reading/focus order, skip navigation, sequential navigation, activation, scrollable regions, and focus across separated DOM contexts. Keep the existing modal/form coverage and valid alternatives.
+2. **Automated and visual runtime methods.** Add stateful axe scanning, incomplete-result triage, evidence capture, and scoped suppression handling using available project tooling. Add contrast, color-independent information, focus visibility, text resize, zoom/reflow, target sizing, forced colors, reduced motion, and supported themes. Keep viewport width, zoom, text resize, and device pixel ratio distinct. Define measurable expectations and capability limits before claiming coverage.
+3. **Interaction patterns and dynamic feedback.** Add common disclosures, tabs, menus/select interactions, tooltips, popovers, and notifications/status/loading updates. Then cover the baseline’s more complex examples: calendar interaction, trees, drilldown/flyout navigation, additional actions within menus, in-page navigation/back-to-top, and drag-and-drop alternatives. Distinguish nonmodal behavior from modal requirements. Source and browser semantics do not establish human announcements.
+4. **Regression tests and design review.** Generate persistent tests using the target repository’s framework, libraries, and conventions, with explicit limits for simulated DOM, real browser, visual, and manual checks. Review supplied designs for observable accessibility issues and implementation requirements; do not turn screenshot scores into conformance or claim unobserved interaction. Include component-author versus consumer responsibilities and version-aware documentation lookup where relevant.
+5. **Integrated review and reporting.** Compose the available source, automated, keyboard, semantic, and visual methods into a scoped page/flow review. Preserve state/environment coverage, findings, evidence, and gaps across handoffs. Add concise impact definitions while keeping tool severity, confidence, and release priority distinct. Build these handoffs alongside each work package, then verify the complete workflow.
+
+Most new expectations belong in references used by existing skills. Add task entrypoints only when a distinct request needs them, such as test generation or design review. Combined review can begin as a documented workflow; a new orchestration skill is optional and depends on routing evidence.
+
+### Parity acceptance
+
+- Maintain a capability-to-check/evaluation mapping for the baseline areas above as each package is implemented; mark implemented, evaluated, blocked, and deferred coverage distinctly. References alone do not establish parity.
+- Require relevant positive and negative cases, valid native alternatives, missing-capability behavior, and evidence-boundary checks for each package. Keep existing required cases passing and apply the evaluation gate below before advancing.
+- Demonstrate supported task discovery and reference loading from the installed plugin, plus a combined review and generated tests that run in a representative target project. Design review must identify what remains unverified.
+- Retain the comparison evidence and a brief pass/block rationale outside the repository as described in [evaluation guidance](../../evals/README.md). No tracked run reports or prescribed run directory are required.
+- Declare parity only after the baseline capabilities are evaluated or a specific exclusion is explicitly agreed. A missing capability is a gap, not silently waived by a documented limitation. This milestone is not a claim of full WCAG coverage or product conformance.
+
+### After parity
+
+Defer broader authoring-tool workflows, comprehensive audio/video and complex-graphic alternatives, advanced authentication/multistep forms, form-associated custom-element internals, additional provider catalogs, and patterns beyond the baseline until parity is accepted. Existing support remains available. Small enabling improvements may be included earlier under the rule above; substantial additions require an explicit scope decision.
 
 ## 1. Architecture and progressive disclosure
 
@@ -22,8 +60,8 @@ The AI tool running a skill selects references and handles review bookkeeping. A
 
 The implementation has two main content areas:
 
-- **skills/:** Task entrypoints, including procedures specific to that task. The source-review and keyboard procedures live directly in their respective SKILL.md files.
-- **references/:** Shared expectations and conditional detail. review-guide.md consolidates scope, results, coverage, and handoffs. Other files support modal expectations, naming, focus, browser coverage, rendered semantics, cross-root relationships, check IDs, and source provenance.
+- **skills/:** Task entrypoints, including procedures specific to that task. Shared source-review and keyboard workflows live in SKILL.md; pattern-specific sequences live in their selected references.
+- **references/:** Shared expectations and conditional detail. review-guide.md consolidates scope, results, coverage, and handoffs. Other files own pattern expectations, general inspection methods, conditional technical detail, check IDs, and source provenance. Keep detailed rules in one authoritative location and use short safeguards and links at entrypoints.
 
 Methods, checklists, and recipes remain useful concepts without requiring top-level directories. A substantial reused method can be a reference. Checklists can be views of checks.json. User-facing workflow recipes live in the usage guide; add separate workflow guides only when their size or reuse warrants it.
 
@@ -60,6 +98,7 @@ a11y-oop/
 │   └── references/
 │       ├── review-guide.md
 │       ├── modal-dialog.md
+│       ├── forms.md
 │       ├── names-and-descriptions.md
 │       ├── focus-and-native-dialogs.md
 │       ├── browser-coverage.md
@@ -72,18 +111,18 @@ a11y-oop/
 │   └── plugins.py
 └── evals/
     ├── README.md
-    ├── cases/modal-workflow.json
-    ├── fixtures/
+    ├── cases/                         # Pattern workflow specifications
+    ├── fixtures/                      # Grouped by pattern
     └── tests/test_plugins.py
 ```
 
-The four separate contracts are replaced by references/review-guide.md. The former source/keyboard method files are merged into their skills. The modal recipe is explained in docs/usage.md. The separate library/, methods/, contracts/, checks/, sources/, and recipes/ directories are no longer part of the plugin layout.
+The four separate contracts are replaced by references/review-guide.md. Shared source/keyboard workflows are in their skills; conditional pattern sequences are in references. The modal recipe is explained in docs/usage.md. The separate library/, methods/, contracts/, checks/, sources/, and recipes/ directories are no longer part of the plugin layout.
 
 Keep shared files flat while the pilot is small. Introduce topic subfolders only when enough material exists to make discovery easier. The proposed paths below show possible grouping, not empty scaffolds to generate.
 
 ## 3. Reference library: foundations
 
-These are candidate topics used across design systems and frameworks. references/names-and-descriptions.md and references/focus-and-native-dialogs.md already support the pilot. The remaining entries below are planned; deeper detail should be added only when it changes a skill’s decisions.
+These are candidate topics used across design systems and frameworks. references/names-and-descriptions.md and references/focus-and-native-dialogs.md already support the pilot. The remaining entries below are planned; select parity-relevant topics first and add deeper detail only when it changes a skill’s decisions.
 
 ```text
 references/
@@ -261,16 +300,16 @@ The [PFE review-a11y skill](https://github.com/patternfly/patternfly-elements/bl
 - **State/transition expectations:** Map each applicable state to expected names, roles, values, relationships, visibility, and focus, including return transitions and reopening. Distinguish keyboard, computed-semantics, visual, and AT evidence. Snapshot fields omitted by tooling do not establish browser defects or announcements.
 - **Cross-root procedure:** Map source/target endpoints, DOM roots, mechanism, expected outcome, actual computed evidence, and browser/tool versions. Distinguish declarative IDs, element reflection, native behavior, and ElementInternals. Verify current API scope/support and fallback behavior; do not copy dated support tables or prescribe universal live-region workarounds.
 - **Demos and documentation:** Component-author reviews include representative demos and copyable snippets, supported states, and consumer responsibilities. Keep project-specific InternalsController or public-attribute conventions in provider guidance. This does not automatically expand consumer audits into documentation reviews.
-- **Form-associated custom elements (planned):** Make submission values, validity/validation, reset, disabled propagation, label association, and state restoration explicit in Web Component form references and component-author checks. This remains outside the modal pilot.
+- **Form-associated custom elements (planned):** Make submission values, validity/validation, reset, disabled propagation, label association, and state restoration explicit in Web Component form references and component-author checks. This remains outside the current pilot and is deferred beyond parity unless an explicit scope decision makes it necessary.
 - **Regression traceability (planned):** Connect critical state/relationship expectations and findings to persistent tests, or explicit browser/human checks where automation cannot establish the outcome. Apply in a11y-test-gen, a11y-retest, and component-development handoffs. A snapshot test is not proof of human AT behavior.
 
 Avoid false universal rules: disabled composite-widget items may remain focusable; accordion regions are optional; provider controllers and particular MCPs are not universal prerequisites. Interpret expectations through the actual pattern and platform sources, including [APG disabled-control guidance](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_disabled_controls) and [APG accordion guidance](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/).
 
-The current modal pilot includes references/browser-coverage.md, references/rendered-semantics.md, references/web-components/cross-root-relationships.md, modal state expectations, and evaluation cases. Task-specific procedures remain in the source and keyboard skills. Real cross-browser/AT execution and behavioral comparison remain pending; authoring these cases does not establish that the plugin passed them.
+The current pilot includes browser coverage, rendered semantics, cross-root relationships, modal/form expectations, and evaluation cases. Shared workflows remain in skills and pattern-specific procedures in references. Selected runtime and reporting runs have been supplied; reconcile their scope, revision, and evidence before crediting coverage. Authoring cases does not establish that the plugin passed them. Screen-reader follow-up remains manual.
 
 ## 6. Proposed skill inventory
 
-Skill boundaries remain candidates: merge or split them based on routing evidence, not a target count. This inventory describes possible tasks, not the installed skill set. See the [usage guide](../usage.md) for supported tasks and `plugins/a11y-review/skills/*/SKILL.md` for implemented entrypoints. Candidate names indicate potential `skills/<name>/SKILL.md` paths.
+Skill boundaries remain candidates: merge or split them based on routing evidence, not a target count. This inventory describes possible tasks, not the installed skill set or a requirement to ship every entrypoint for parity. See the [usage guide](../usage.md) for supported tasks and `plugins/a11y-review/skills/*/SKILL.md` for implemented entrypoints. Candidate names indicate potential `skills/<name>/SKILL.md` paths.
 
 Every independently invoked skill must reuse an applicable scope record or establish a minimal one before proceeding. `a11y-plan` provides fuller planning; it is not a prerequisite for using another skill. Scope and output follow references/review-guide.md: a focused request needs a brief scope and evidence-backed findings, while detailed IDs/coverage records support audits and handoffs. Neither should become a mandatory questionnaire.
 
@@ -294,7 +333,7 @@ Every independently invoked skill must reuse an applicable scope record or estab
 - **`a11y-keyboard-test`** — Exercise user tasks, focus order, activation, composite controls, containment, and restoration. Uses its keyboard-testing procedure, interaction references, and matching pattern references.
 - **`a11y-semantics-review`** — Inspect rendered names, roles, relationships, states, structure, and updates using available browser evidence. Uses shared rendered-semantics guidance and relevant foundation/runtime references.
 - **`a11y-visual-review`** — Evaluate contrast, zoom, reflow, spacing, focus visibility, preferences, and pointer/touch conditions. Uses visual-and-preference methods and matching visual/interaction foundations.
-- **`a11y-at-test`** — Prepare and document assistive-technology testing; execute supported interactions when capabilities exist and distinguish human results from browser inspection. Uses AT methods and relevant task/pattern expectations.
+- **`a11y-at-test`** — Prepare manual assistive-technology test steps and document supplied human results. Do not launch or configure screen readers or substitute browser-tree inspection for announcements. A dedicated entrypoint is optional; manual follow-up can remain part of existing workflows.
 
 ### Remediation and maintenance
 
@@ -359,7 +398,7 @@ A future website may consume the canonical plugin resources. It must not own a c
 
 Review the README, usage guide, and one illustrative result. Confirm that a person can choose a task, supply useful input, and understand the output without opening contributor or design material. Keep the full roadmap behind contributor links.
 
-Deliverable: An understandable local entry point and agreed content depth. The uncommitted restructuring is ready for this review.
+Deliverable: An understandable local entry point and agreed content depth. Review the current documented experience; do not infer completion from a historical restructuring status.
 
 ### Phase 2: Review skill boundaries
 
@@ -369,13 +408,13 @@ Deliverable: A focused, maintainable pilot. Expand scope only when evaluation su
 
 ### Phase 3: Verify installed-plugin discovery
 
-Structural and copy-portability tests pass. Next, load the complete plugin in a supported client and confirm every installed skill is discoverable and can read their shared references. No website, build step, or contributor Python installation is required just to use the instructions; browser work needs host capabilities.
+Structural and copy-portability checks exist, and selected real-client invocations/reference reads have been reported. Match that evidence to the evaluated revision and installed skills; verify any uncovered client or entrypoint rather than repeating or crediting all checks indiscriminately. No website, build step, or contributor Python installation is required just to use the instructions; browser work needs host capabilities.
 
 Deliverable: Recorded real-client discovery/reference-loading evidence, distinct from filesystem checks.
 
 ### Phase 4: Prove one complete workflow
 
-Exercise the existing `a11y-source-audit`, `a11y-keyboard-test`, and `a11y-report` modal drafts. Use a PF example and a Web Component example to test the same expectations across runtimes/providers without expanding into a full form audit.
+Exercise the existing `a11y-source-audit`, `a11y-keyboard-test`, and `a11y-report` modal drafts. Use a PF example and a Web Component example to test the same expectations across runtimes/providers and include the implemented ordinary-form slice in the required evaluation scope.
 
 Install the complete a11y-review plugin in a clean workspace outside the source repository, with no access to source-only resources, and verify actual host discovery separately. Execute the source-review → keyboard-test → report workflow against copied fixtures. Also invoke each skill independently to verify minimal scope initialization, proportional output, and plugin completeness. Include a small request that should not trigger a formal audit report.
 
@@ -405,17 +444,17 @@ These are gates for the declared evaluation suite, not proof of universal correc
 
 Deliverable: Evaluation cases, matched baseline comparisons, and an explicit pass/block decision supported by retained results.
 
-### Phase 6: Expand foundations and runtime coverage
+### Phase 6: Build parity foundations and runtime methods
 
-Add content, visual conditions, rendered semantics, automation, and corresponding skills.
+After the current evaluation gate is satisfied, implement parity work packages 1 and 2 in bounded slices. Add their checks, valid/broken fixtures, capability-gap cases, and useful task routing together. Extend reporting and integrated-review handoffs as each method becomes available.
 
-Deliverable: A tested core library and a small usable skill collection.
+Deliverable: Evaluated page foundations, general keyboard coverage, automated scanning, and visual/environmental methods.
 
-### Phase 7: Expand patterns and providers
+### Phase 7: Complete and evaluate AI Helpers parity
 
-Write references as representative examples become available. Introduce complex grids, trees, and authoring workflows later.
+Implement parity work packages 3 through 5, with common patterns before complex interactions. Complete regression-test generation, design-stage accessibility review, and the combined runtime workflow. Use the parity acceptance criteria and existing release gate; reconcile coverage against the fixed baseline before declaring success.
 
-Deliverable: Incrementally validated coverage, with remaining gaps visible.
+Deliverable: A framework-neutral accessibility capability set at parity with the reviewed AI Helpers baseline, backed by accessible evaluation evidence and explicit exclusions agreed before acceptance.
 
 ### Phase 8: Refine plugin documentation and distribution
 
@@ -423,12 +462,20 @@ Keep manifests, marketplace discovery, and installation/usage guides aligned wit
 
 Deliverable: A plugin people can discover, install, and use without studying its internal records. Website integration and optional downloads remain outside this work until explicitly resumed.
 
-### Phase 9: Pilot and release
+### Phase 9: Parity release
 
 Test real workflows before advertising the complete candidate catalog. Require the evaluation release gate and installed-plugin checks to pass for the release artifacts. Contribute suitable PF improvements upstream independently.
 
-Deliverable: A supported initial release with documented scope and limitations.
+Deliverable: A supported parity release with documented scope and limitations.
+
+### Phase 10: Expand beyond parity
+
+After parity acceptance, select additional foundation, pattern, provider, media, authoring, and workflow capabilities from the broader inventory based on actual demand. Continue incremental evaluation and conditional loading; do not generate the entire backlog.
+
+Deliverable: Separately scoped, evaluated additions beyond the AI Helpers baseline.
 
 ## Next milestone
 
-The modal reference and pilot skills already exist as drafts. The next milestone is an understandable entry point plus one real installed-plugin source → keyboard → report exercise, with clear evidence and limitations. Review the quality of that experience before adding reference categories or skills. Real-client loading and behavioral evaluation remain outstanding; passing structural tests does not complete this milestone.
+Reconcile the selected installed-client and behavioral runs already supplied with the current modal/form cases and plugin revisions. Identify passed cases, unresolved failures, missing comparisons, and unavailable environments without inventing execution evidence. Complete the outstanding evaluation gate, keeping run records outside the repository.
+
+Then begin parity work package 1: page foundations and general keyboard behavior. AI Helpers parity is the first expansion target; the rest of the inventory remains deferred unless needed to make that target correct and usable.

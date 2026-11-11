@@ -4,6 +4,8 @@ These examples use the **proposed skill names** from the [architecture and actio
 
 See the [usage guide](../usage.md) for implemented tasks and current pattern coverage. The broader skill names and examples below remain candidates; they do not imply implemented coverage.
 
+Implementation follows the [AI Helpers parity milestone](architecture.md#first-expansion-milestone-ai-helpers-accessibility-parity) first. These prompts are an inventory, not an implementation order: broader authoring, advanced-form, and provider work remains deferred. Distinct skill names are candidates; existing skills or documented workflows may serve the task. Screen-reader testing remains manual.
+
 Replace bracketed placeholders with the relevant URLs, paths, or findings.
 
 ## Planning and design
