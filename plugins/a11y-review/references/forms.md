@@ -4,9 +4,14 @@ Scope: ordinary inputs, selects, textareas, native radios/checkboxes, and submis
 
 ## Labels and names
 
-Identify each control's purpose and naming mechanism. Prefer an explicit `<label for="id">` pointing to a unique, labelable control or a wrapping label. Verify the actual target, not proximity or styling. A span beside an input provides no association by itself. Placeholder text is not a persistent visible label. Where visible text labels a control, compare it with the accessible name; overriding it with unrelated aria-label text can break label-in-name expectations.
-
-Accept a span correctly referenced by aria-labelledby: the relationship, not the tag, supplies the name. Unlike a native label, that span does not automatically activate its control when clicked. Keep a native-label recommendation separate from a demonstrated naming failure. An aria-label can name a control without supplying visible instructions. Use [name computation](names-and-descriptions.md) and [cross-root tracing](web-components/cross-root-relationships.md) as applicable; source inference is not a captured browser name.
+- Identify each control's purpose and naming mechanism.
+- Prefer an explicit `<label for="id">` pointing to a unique, labelable control or a wrapping label. Verify the actual target, not proximity or styling.
+- A span beside an input provides no association by itself.
+- Placeholder text is not a persistent visible label.
+- Where visible text labels a control, compare it with the accessible name; overriding it with unrelated aria-label text can break label-in-name expectations.
+- Accept a span correctly referenced by aria-labelledby: the relationship, not the tag, supplies the name. Unlike a native label, that span does not automatically activate its control when clicked. Keep a native-label recommendation separate from a demonstrated naming failure.
+- An aria-label can name a control without supplying visible instructions.
+- Use [name computation](names-and-descriptions.md) and [cross-root tracing](web-components/cross-root-relationships.md) as applicable; source inference is not a captured browser name.
 
 ```html
 <label for="email">Email</label><input id="email" type="email">
@@ -17,21 +22,33 @@ Accept a span correctly referenced by aria-labelledby: the relationship, not the
 
 ## Group labels
 
-Use fieldset with a descriptive first-child legend for related options whose meaning depends on a shared question, such as Yes/No radios. Each option still needs an individual label; legend does not replace those labels. Sharing a radio name controls selection behavior, not the group's accessible name. A nearby heading or border alone does not establish a semantic group.
-
-Accept an appropriately named ARIA group or radiogroup when its semantics and interaction are correct. Do not require fieldset around every field, every standalone checkbox, or every visually adjacent set of self-explanatory controls. Evaluate whether the shared question is necessary to understand the choices. Check repeated/nested groups for correct ownership and names. Prefer native grouping without declaring every alternative a WCAG failure.
+- Use fieldset with a descriptive first-child legend for related options whose meaning depends on a shared question, such as Yes/No radios. Each option still needs an individual label; legend does not replace those labels.
+- Sharing a radio name controls selection behavior, not the group's accessible name.
+- A nearby heading or border alone does not establish a semantic group.
+- Accept an appropriately named ARIA group or radiogroup when its semantics and interaction are correct.
+- Do not require fieldset around every field, every standalone checkbox, or every visually adjacent set of self-explanatory controls. Evaluate whether the shared question is necessary to understand the choices.
+- Check repeated/nested groups for correct ownership and names.
+- Prefer native grouping without declaring every alternative a WCAG failure.
 
 ## Instructions, errors, and recovery
 
-Expose required status and any necessary format instructions before submission. Native required participates in validation; aria-required communicates semantics but does not enforce validation. Connect relevant help/error text, commonly with aria-describedby; descriptions supplement names. Check ID resolution and preserve help when adding error descriptions.
-
-For detected errors, identify the affected field/group in text and explain correction when known. Color alone, “Invalid” without a clear target, or invalid state without an explanation is insufficient feedback. For custom validation, check error associations and invalid states on the affected controls, then their removal/update after correction and resubmission. Do not report missing aria-invalid alone as a defect where native validation already exposes invalidity; inspect the mechanism and actual result. Client-side feedback does not establish server-side validation.
-
-On unsuccessful submit, observe a usable route to errors and correction without losing unrelated input. A focused error summary with links or focus on an invalid field are useful strategies, not universal mandatory destinations. Verify keyboard reachability, summary links, group selection, and resubmission. Native validation UI can be valid without a custom summary or alert. For success/error status updates that do not take focus, inspect applicable status-message semantics; do not prescribe role=alert everywhere. Actual announcements remain manual and Not tested unless supplied.
+- Expose required status and any necessary format instructions before submission. Native required participates in validation; aria-required communicates semantics but does not enforce validation.
+- Connect relevant help/error text, commonly with aria-describedby; descriptions supplement names. Check ID resolution and preserve help when adding error descriptions.
+- For detected errors, identify the affected field/group in text and explain correction when known. Color alone, “Invalid” without a clear target, or invalid state without an explanation is insufficient feedback.
+- For custom validation, check error associations and invalid states on the affected controls, then their removal/update after correction and resubmission.
+- Do not report missing aria-invalid alone as a defect where native validation already exposes invalidity; inspect the mechanism and actual result.
+- Client-side feedback does not establish server-side validation.
+- On unsuccessful submit, observe a usable route to errors and correction without losing unrelated input. A focused error summary with links or focus on an invalid field are useful strategies, not universal mandatory destinations.
+- Verify keyboard reachability, summary links, group selection, and resubmission.
+- Native validation UI can be valid without a custom summary or alert.
+- For success/error status updates that do not take focus, inspect applicable status-message semantics; do not prescribe role=alert everywhere. Actual announcements remain manual and Not tested unless supplied.
 
 ## States and evidence
 
-Use initial, invalid-submit, correction, and valid-submit as applicable. Inspect names, group relationships, descriptions, required/invalid state, error visibility, retained values, focus, and feedback after updates. Record source, browser-tree, keyboard, and visual observations separately. Browser trees do not establish announcements; keyboard testing does not establish names. Use [rendered semantics](rendered-semantics.md) for browser-backed inspection.
+- Use initial, invalid-submit, correction, and valid-submit as applicable.
+- Inspect names, group relationships, descriptions, required/invalid state, error visibility, retained values, focus, and feedback after updates.
+- Record source, browser-tree, keyboard, and visual observations separately. Browser trees do not establish announcements; keyboard testing does not establish names.
+- Use [rendered semantics](rendered-semantics.md) for browser-backed inspection.
 
 ## Authority
 

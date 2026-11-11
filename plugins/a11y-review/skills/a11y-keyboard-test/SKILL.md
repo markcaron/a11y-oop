@@ -5,7 +5,11 @@ description: Test modal-dialog and ordinary-form keyboard operation, validation 
 
 # Test keyboard behavior
 
-Use the [shared review guide](../../references/review-guide.md). Select [modal expectations](../../references/modal-dialog.md), [form expectations](../../references/forms.md), or both for forms inside modals. Establish minimal scope yourself or reuse the supplied review. Select [browser coverage](../../references/browser-coverage.md) from project support needs; record unavailable environments as gaps.
+Use the [shared review guide](../../references/review-guide.md).
+
+- Select [modal expectations](../../references/modal-dialog.md), [form expectations](../../references/forms.md), or both for forms inside modals.
+- Establish minimal scope yourself or reuse the supplied review.
+- Select [browser coverage](../../references/browser-coverage.md) from project support needs; record unavailable environments as gaps.
 
 ## Test
 
@@ -26,12 +30,19 @@ For an ordinary form, use this sequence instead of modal entry/containment check
 
 For unexpected native focus or boundary behavior, perform the [native-control attribution check](../../references/browser-coverage.md#attribute-unexpected-native-behavior) before assigning component responsibility.
 
-Repeat in required available browsers. Containment concerns background page content, not arbitrary browser chrome shortcuts. A focused shadow host alone does not prove focus escaped; use the [cross-root reference](../../references/web-components/cross-root-relationships.md) when needed.
-
-Use browser-driven key input, including browser automation that performs keyboard actions. Dispatching KeyboardEvent objects or walking elements with .focus() does not test native Tab order. For accessible open shadow roots, start with document.activeElement and repeatedly follow element.shadowRoot.activeElement while present; record the chain. If closed roots or tool limitations hide the endpoint, report that limitation instead of assuming escape or success.
+- Repeat in required available browsers.
+- Containment concerns background page content, not arbitrary browser chrome shortcuts.
+- A focused shadow host alone does not prove focus escaped; use the [cross-root reference](../../references/web-components/cross-root-relationships.md) when needed.
+- Use browser-driven key input, including browser automation that performs keyboard actions. Dispatching KeyboardEvent objects or walking elements with .focus() does not test native Tab order.
+- For accessible open shadow roots, start with document.activeElement and repeatedly follow element.shadowRoot.activeElement while present; record the chain. If closed roots or tool limitations hide the endpoint, report that limitation instead of assuming escape or success.
 
 When computed semantics are in scope, use [rendered-semantic verification](../../references/rendered-semantics.md) and keep that evidence separate. Otherwise hand off those questions. Keyboard actions alone do not prove accessible relationships or human AT announcements.
 
 ## Return
 
-Give actual steps, observed behavior, findings, and gaps, with evidence proportionate to the task. If execution is unavailable, provide manual steps and Not tested results; ambiguous attempted observation is Inconclusive. Proposed scripts, screenshots alone, and clean axe scans are not keyboard execution evidence. Preserve source handoff findings when builds differ. Stop before unauthorized destructive actions; do not modify the implementation unless requested.
+Give actual steps, observed behavior, findings, and gaps, with evidence proportionate to the task.
+
+- If execution is unavailable, provide manual steps and Not tested results; ambiguous attempted observation is Inconclusive.
+- Proposed scripts, screenshots alone, and clean axe scans are not keyboard execution evidence.
+- Preserve source handoff findings when builds differ.
+- Stop before unauthorized destructive actions; do not modify the implementation unless requested.
