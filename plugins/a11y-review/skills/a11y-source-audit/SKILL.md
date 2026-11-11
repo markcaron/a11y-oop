@@ -16,12 +16,11 @@ Use the [shared review guide](../../references/review-guide.md); keep scope and 
 
 Inspect requested files/diffs and enough dependencies to trace relevant behavior.
 
-- For modals, follow the invoker, opening/closing paths, name, entry focus, background restrictions, restoration, updates, and reopening.
-- For forms, trace individual/group labels, instructions, required and invalid states, submission handlers, error feedback, correction, resubmission, and retained input. A span alone is not an input label, but a correctly referenced span can supply its name.
+- Trace the relationships, handlers, and state transitions needed to assess the selected pattern expectations.
 - Follow project instructions; record file/line and revision when known.
 - Distinguish consumer inputs from component-owned behavior.
 - Verify installed provider versions, APIs, and available internals before recommending changes; missing docs are a limitation, not permission to invent an API.
-- Correct native/browser behavior does not require handwritten trap code or redundant ARIA.
+- Account for native/browser-provided behavior before identifying missing implementation code or ARIA as a defect.
 - Distinguish a broken naming relationship from an unverified computed name.
 - For API/event issues, explain the accessibility impact or qualify it as an untested consumer risk.
 - In React, trace forwarded props, generated IDs, conditional rendering, and portals.

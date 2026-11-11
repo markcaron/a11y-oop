@@ -43,10 +43,18 @@ Scope: ordinary inputs, selects, textareas, native radios/checkboxes, and submis
 - Native validation UI can be valid without a custom summary or alert.
 - For success/error status updates that do not take focus, inspect applicable status-message semantics; do not prescribe role=alert everywhere. Actual announcements remain manual and Not tested unless supplied.
 
+## Keyboard sequence
+
+1. Traverse controls in both directions using native keyboard interaction; select radios with arrow keys and toggle checkboxes with Space. Record focus visibility separately as visual evidence.
+2. Submit missing or invalid values with safe test data. Observe error discovery, focus destination, keyboard access to errors/summary links, and retained input. Do not submit real transactions without authorization.
+3. Correct individual and group errors, resubmit, and observe stale error removal, focus, and completion feedback. Accept usable native validation; do not require a custom summary, focus trap, or Escape dismissal.
+4. When semantics are in scope, inspect individual/group names, descriptions, required/invalid states, and feedback using [rendered semantics](rendered-semantics.md). Keep that evidence separate from key actions.
+
 ## States and evidence
 
 - Use initial, invalid-submit, correction, and valid-submit as applicable.
-- Inspect names, group relationships, descriptions, required/invalid state, error visibility, retained values, focus, and feedback after updates.
+- In each required environment, inspect control and group names, group relationships, help/error descriptions, required/invalid state, and feedback updates. Verify group names separately from individual option names; a legend does not replace each option’s name.
+- Observe error visibility, retained values, and focus after submission and correction using the corresponding visual and keyboard methods.
 - Record source, browser-tree, keyboard, and visual observations separately. Browser trees do not establish announcements; keyboard testing does not establish names.
 - Use [rendered semantics](rendered-semantics.md) for browser-backed inspection.
 

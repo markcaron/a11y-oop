@@ -18,12 +18,24 @@ Version: 0.1.0-draft.2. Applies when a dialog blocks background interaction. Non
 Use the [naming reference](names-and-descriptions.md) and [native/focus reference](focus-and-native-dialogs.md).
 
 - A named native dialog opened with showModal() is a valid baseline; missing custom trap code is not a defect by itself.
-- A custom role plus aria-modal supplies semantics, not interaction logic.
+- A custom role plus aria-modal supplies semantics, not interaction logic; see the [ARIA definition](https://www.w3.org/TR/wai-aria-1.2/#aria-modal).
+- For browser-backed inspection, capture the dialog’s computed role, name, description relationships, modal state, and hidden/ignored state across the applicable transitions below. Native semantics may supply these without explicit ARIA attributes.
+- A declared modal state in the tree does not prove background interaction is blocked; verify actual keyboard and pointer behavior separately.
 - Prefer robust background restrictions such as inert for custom modals; verify keyboard/pointer restrictions and exposed modal semantics independently.
 - Do not require aria-hidden solely because it is absent: aria-modal communicates background inertness to assistive technology.
 - Browser semantics inspection does not prove screen-reader browsing or announcements; those require separate AT testing.
 
 Compare short/long content, multiple instances, closing paths, removed invokers, and rerenders when in scope. For example, aria-labelledby="heading" with an existing matching heading differs from a plain panel showing the same text without an association.
+
+## Keyboard sequence
+
+1. Reach and activate the invoker by keyboard; record focus before opening.
+2. Observe entry focus and why that destination fits the task.
+3. Tab and Shift+Tab through both boundaries. Inspect focus/composed focus and scrolled-content reachability. Record focus visibility as separate visual evidence from the rendered page or screenshots; keyboard movement alone cannot establish it.
+4. Exercise the task, relevant updates, and nested popup dismissal. Test Escape and visible closing/finishing controls; record intended alternatives.
+5. Observe whether focus returns to the invoker or reaches a logical next step; explain any alternative destination. Reopen to catch stale focus, content, or names. Test long content/removed invokers when applicable to scope.
+
+For unexpected native focus or boundary behavior, perform the [native-control attribution check](focus-and-native-dialogs.md#attribute-unexpected-native-behavior) before assigning component responsibility.
 
 ## Authority and evidence
 
