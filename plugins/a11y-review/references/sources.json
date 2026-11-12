@@ -1,0 +1,76 @@
+{
+  "reviewed": "2026-11-10",
+  "note": "Original summaries; linked materials retain their applicable terms and attribution.",
+  "sources": [
+    {
+      "id": "apg-modal",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/",
+      "authority": "informative"
+    },
+    {
+      "id": "apg-example",
+      "url": "https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/examples/dialog/",
+      "authority": "informative"
+    },
+    {
+      "id": "html-dialog",
+      "url": "https://html.spec.whatwg.org/multipage/interactive-elements.html#the-dialog-element",
+      "authority": "normative HTML"
+    },
+    {
+      "id": "wcag22",
+      "url": "https://www.w3.org/TR/WCAG22/",
+      "authority": "normative WCAG; applicability required"
+    },
+    {
+      "id": "pf-modal",
+      "url": "https://www.patternfly.org/components/modal/accessibility/",
+      "authority": "provider docs; resolve installed version"
+    },
+    {
+      "id": "html-reflection",
+      "url": "https://html.spec.whatwg.org/multipage/common-dom-interfaces.html#reflecting-content-attributes-in-idl-attributes",
+      "authority": "normative HTML; exact API/direction and browser support require verification"
+    },
+    {
+      "id": "pfe-review-methodology",
+      "url": "https://github.com/patternfly/patternfly-elements/blob/staging/pfv6/.claude/skills/review-a11y/SKILL.md",
+      "authority": "methodology inspiration, not normative guidance; dated support tables are not adopted"
+    },
+    {
+      "id": "accname12",
+      "url": "https://www.w3.org/TR/accname-1.2/",
+      "authority": "name/description computation; record consulted revision and status"
+    },
+    {
+      "id": "aria12",
+      "url": "https://www.w3.org/TR/wai-aria-1.2/",
+      "authority": "normative ARIA semantics"
+    },
+    {
+      "id": "wai-forms-labels",
+      "url": "https://www.w3.org/WAI/tutorials/forms/labels/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-grouping",
+      "url": "https://www.w3.org/WAI/tutorials/forms/grouping/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-validation",
+      "url": "https://www.w3.org/WAI/tutorials/forms/validation/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "wai-forms-notifications",
+      "url": "https://www.w3.org/WAI/tutorials/forms/notifications/",
+      "authority": "informative WAI tutorial; implementation guidance, not a required technique"
+    },
+    {
+      "id": "html-label",
+      "url": "https://html.spec.whatwg.org/multipage/forms.html#the-label-element",
+      "authority": "normative HTML label association"
+    }
+  ]
+}

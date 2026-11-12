@@ -1,0 +1,54 @@
+{
+  "synthetic": true,
+  "note": "Invented evaluation inputs, not retained runtime results. No product attribution is implied.",
+  "observations": [
+    {
+      "id": "R-01",
+      "finding": "F-01",
+      "method": "keyboard",
+      "target": "custom component wrapping native dialog",
+      "environment": "engine E; headless; matching automation/browser versions",
+      "actual": "Repeated Tab stays on final control; Escape closes; no background control receives focus",
+      "expectation": "APG cyclic tab sequence",
+      "status": "Fail"
+    },
+    {
+      "id": "R-02",
+      "finding": "F-01",
+      "method": "keyboard",
+      "target": "minimal native dialog without shadow DOM",
+      "environment": "same as R-01",
+      "actual": "Same boundary behavior and successful Escape",
+      "status": "Fail"
+    },
+    {
+      "id": "R-03",
+      "finding": "F-02",
+      "method": "source",
+      "target": "heading-labelled dialog",
+      "actual": "String aria-labelledby reference crosses a shadow boundary; fallback semantics not inspected",
+      "status": "Fail"
+    },
+    {
+      "id": "R-04",
+      "method": "DOM-derived semantic approximation",
+      "target": "heading-labelled dialog",
+      "environment": "engine E",
+      "actual": "Tool reports an empty name; no browser-backed accessibility tree captured"
+    },
+    {
+      "id": "R-05",
+      "method": "browser accessibility tree",
+      "target": "explicit-label control",
+      "environment": "engine E",
+      "actual": "Dialog name is Explicit label; no screen reader was used"
+    },
+    {
+      "id": "R-06",
+      "finding": "F-03",
+      "method": "source",
+      "target": "video variant",
+      "actual": "Lifecycle event bypasses consumer hook; consumer focus behavior not exercised"
+    }
+  ]
+}

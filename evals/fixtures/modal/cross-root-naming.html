@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cross-root modal comparison fixture</title>
+<h1>Cross-root modal comparison</h1>
+<h2 id="external-title">External title in the document tree</h2>
+<p>These paired fixtures differ only in the dialog naming relationship.</p>
+<root-map-dialog data-case="same-root"></root-map-dialog>
+<root-map-dialog data-case="cross-root"></root-map-dialog>
+<button type="button">Background action</button>
+<script type="module">
+customElements.define('root-map-dialog', class extends HTMLElement {
+  connectedCallback() {
+    if (this.shadowRoot) return;
+    const root = this.attachShadow({mode: 'open'});
+    const crossRoot = this.dataset.case === 'cross-root';
+    // The negative case deliberately references a document ID from shadow DOM.
+    // No element reflection or alternative name is supplied.
+    root.innerHTML = `<button id="open" type="button">Open ${crossRoot ? 'cross-root' : 'same-root'} example</button>
+      <dialog aria-labelledby="${crossRoot ? 'external-title' : 'local-title'}">
+        <h2 id="local-title">Review details</h2>
+        <p>Only the same-root example has a correctly scoped declarative name.</p>
+        <form method="dialog"><button autofocus>Close</button></form>
+      </dialog>`;
+    root.getElementById('open').addEventListener('click', () => root.querySelector('dialog').showModal());
+  }
+});
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Web Component modal fixture</title>
+<h1>Shadow-root modal fixture</h1>
+<review-dialog></review-dialog>
+<button type="button">Background action</button>
+<script type="module">
+customElements.define('review-dialog', class extends HTMLElement {
+  constructor() {
+    super();
+    const root = this.attachShadow({mode: 'open'});
+    root.innerHTML = `<button type="button" id="open">Review details</button>
+      <dialog aria-labelledby="heading"><h2 id="heading">Review details</h2>
+      <p>The title and dialog are in the same shadow root.</p>
+      <form method="dialog"><button autofocus>Close</button></form></dialog>`;
+    root.getElementById('open').addEventListener('click', () => root.querySelector('dialog').showModal());
+  }
+});
+</script>
+</html>

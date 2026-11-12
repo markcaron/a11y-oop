@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Intentionally stale modal name fixture</title>
+<h1>Review item details</h1>
+<p>After closing item A, the same button opens item B.</p>
+<button id="open" type="button">Review current item</button>
+<!-- Seeded defect: the fixed accessible name is not updated for item B. -->
+<dialog id="details" aria-label="Details for item A">
+  <h2 id="title">Details for item A</h2>
+  <form method="dialog"><button autofocus>Close</button></form>
+</dialog>
+<script>
+const details = document.getElementById('details');
+let item = 'A';
+document.getElementById('open').addEventListener('click', () => {
+  document.getElementById('title').textContent = `Details for item ${item}`;
+  details.showModal();
+});
+details.addEventListener('close', () => { item = 'B'; });
+</script>
+</html>

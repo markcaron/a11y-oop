@@ -1,0 +1,317 @@
+{
+  "version": "0.2.0-draft.1",
+  "scope": "Modals and ordinary-form labels, groups, validation, and recovery; not an exhaustive WCAG catalog.",
+  "checks": [
+    {
+      "id": "MOD-01",
+      "title": "Name and role",
+      "expectation": "Exposed semantics identify the dialog and its name.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "browser-semantics"
+      ],
+      "relatedCriteria": [
+        "4.1.2"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "open",
+        "interaction-update",
+        "reopen"
+      ]
+    },
+    {
+      "id": "MOD-02",
+      "title": "Actual modality",
+      "expectation": "Declared modality agrees with background interaction restrictions.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard",
+        "browser-semantics",
+        "assistive-technology"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "open",
+        "close",
+        "reopen"
+      ]
+    },
+    {
+      "id": "MOD-03",
+      "title": "Entry focus",
+      "expectation": "Opening places focus appropriately inside.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "open",
+        "reopen"
+      ]
+    },
+    {
+      "id": "MOD-04",
+      "title": "Navigation",
+      "expectation": "Keyboard users traverse the modal without entering background content.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "open",
+        "interaction-update",
+        "reopen"
+      ]
+    },
+    {
+      "id": "MOD-05",
+      "title": "Dismissal",
+      "expectation": "Keyboard users can close or complete; evaluate Escape and closing controls.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.1.2"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "close",
+        "nested-popup-dismissal"
+      ]
+    },
+    {
+      "id": "MOD-06",
+      "title": "Exit focus",
+      "expectation": "Closing restores the invoker or a justified next task.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "keyboard"
+      ],
+      "relatedCriteria": [
+        "2.4.3"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "close"
+      ]
+    },
+    {
+      "id": "MOD-07",
+      "title": "Focus indication",
+      "expectation": "Focused controls are identifiable and not entirely obscured by author content.",
+      "appliesWhen": "Target is intended as a modal dialog.",
+      "methods": [
+        "source",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "2.4.7",
+        "2.4.11"
+      ],
+      "authority": "Evaluate against the reference; related criteria are not proof of violation.",
+      "reference": "modal-dialog.md",
+      "states": [
+        "open",
+        "interaction-update",
+        "reopen"
+      ]
+    },
+    {
+      "id": "FRM-01",
+      "title": "Individual labels",
+      "expectation": "Each control has an appropriate programmatic name and visible label/instructions; visible label text is included in its name where applicable.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "browser-semantics",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "1.3.1",
+        "2.5.3",
+        "3.3.2",
+        "4.1.2"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "initial",
+        "invalid-submit",
+        "correction",
+        "valid-submit"
+      ]
+    },
+    {
+      "id": "FRM-02",
+      "title": "Group relationships",
+      "expectation": "Options requiring a shared question have a programmatically associated group name as well as individual option labels.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "browser-semantics"
+      ],
+      "relatedCriteria": [
+        "1.3.1",
+        "3.3.2"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "initial",
+        "invalid-submit",
+        "correction",
+        "valid-submit"
+      ]
+    },
+    {
+      "id": "FRM-03",
+      "title": "Instructions and required state",
+      "expectation": "Necessary format/help and required status are available and correctly associated using applicable native or ARIA semantics.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "browser-semantics",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "1.3.1",
+        "3.3.2",
+        "4.1.2"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "initial",
+        "invalid-submit",
+        "correction",
+        "valid-submit"
+      ]
+    },
+    {
+      "id": "FRM-04",
+      "title": "Error identification and correction",
+      "expectation": "Detected errors identify affected fields/groups in text, expose applicable invalid/error relationships, and provide correction guidance when known; stale errors clear after correction.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "browser-semantics",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "1.3.1",
+        "3.3.1",
+        "3.3.3",
+        "4.1.2"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "invalid-submit",
+        "correction",
+        "valid-submit"
+      ]
+    },
+    {
+      "id": "FRM-05",
+      "title": "Keyboard recovery",
+      "expectation": "Controls, error navigation, correction, and resubmission are keyboard-operable with a meaningful focus path; inspect preservation of unrelated input.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "keyboard",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "2.1.1",
+        "2.4.3",
+        "2.4.7",
+        "2.4.11"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "initial",
+        "invalid-submit",
+        "correction",
+        "valid-submit"
+      ]
+    },
+    {
+      "id": "FRM-06",
+      "title": "Submission feedback",
+      "expectation": "Users can determine the submission outcome; applicable non-focused status messages expose appropriate semantics.",
+      "appliesWhen": "Ordinary form controls or validation/recovery behavior are in scope; apply only to supported states and mechanisms.",
+      "methods": [
+        "source",
+        "browser-semantics",
+        "visual"
+      ],
+      "relatedCriteria": [
+        "4.1.3"
+      ],
+      "authority": "Evaluate applicability against forms.md. Related criteria are not proof of violation; preferred focus and input-preservation strategies are recommendations unless separately established.",
+      "reference": "forms.md",
+      "states": [
+        "invalid-submit",
+        "valid-submit"
+      ]
+    }
+  ],
+  "coverageRequirements": {
+    "environment": "Select supported browser/OS matrix before runtime work; unavailable required environments remain Not tested.",
+    "states": [
+      "closed-baseline",
+      "open",
+      "interaction-update",
+      "nested-popup-dismissal",
+      "close",
+      "reopen",
+      "initial",
+      "invalid-submit",
+      "correction",
+      "valid-submit"
+    ],
+    "comparison": "Compare functional results rather than serialized-tree identity. Scope method and tool capabilities independently.",
+    "applicability": "Select applicable pattern states before counting coverage. Modal transitions and form submission states are not required for unrelated targets. Optional updates and nested popups apply only when supported."
+  },
+  "stateVocabulary": [
+    "closed-baseline",
+    "open",
+    "interaction-update",
+    "nested-popup-dismissal",
+    "close",
+    "reopen",
+    "initial",
+    "invalid-submit",
+    "correction",
+    "valid-submit"
+  ]
+}

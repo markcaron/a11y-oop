@@ -1,0 +1,16 @@
+{
+  "name": "a11y-review",
+  "description": "Draft accessibility reviews for modal dialogs and ordinary forms: source audit, keyboard testing, and consolidated reporting.",
+  "author": {
+    "name": "Mark Caron"
+  },
+  "repository": "https://github.com/markcaron/a11y-oop",
+  "license": "Apache-2.0",
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "modal",
+    "review",
+    "forms"
+  ]
+}

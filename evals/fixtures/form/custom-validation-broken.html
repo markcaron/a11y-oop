@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact preferences</title>
+<style>
+body { font: 1rem/1.5 system-ui; max-width: 40rem; margin: 2rem auto; padding: 1rem; }
+.field, .group { margin-block: 1rem; }
+.bad { border: 3px solid #a40000; }
+</style>
+<h1 id="title" tabindex="-1">Contact preferences</h1>
+<form novalidate>
+  <div class="field">
+    <span>Email (required)</span>
+    <p id="email-help">Use an address such as name@example.com.</p>
+    <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="missing-help">
+  </div>
+  <div class="field">
+    <span id="reference-label">Reference code (optional)</span>
+    <input id="reference" name="reference" aria-labelledby="reference-label">
+  </div>
+  <div class="group">
+    <p>Would you like a reply? (required)</p>
+    <label><input id="reply-yes" name="reply" value="yes" type="radio" required> Yes</label>
+    <label><input id="reply-no" name="reply" value="no" type="radio" required> No</label>
+  </div>
+  <label><input id="copy" name="copy" type="checkbox"> Send me a copy (optional)</label>
+  <p><button type="submit">Save preferences</button></p>
+  <p id="status"></p>
+</form>
+<script>
+const form = document.querySelector('form');
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  const email = document.getElementById('email');
+  const yes = document.getElementById('reply-yes');
+  if (!email.validity.valid || !yes.validity.valid) {
+    // Deliberately omits textual error feedback and discards unrelated input.
+    email.classList.add('bad');
+    form.reset();
+    document.getElementById('title').focus();
+  } else {
+    // Deliberately leaves the prior visual error and has no status semantics.
+    document.getElementById('status').textContent = 'Preferences saved for this demonstration.';
+  }
+});
+</script>
+</html>

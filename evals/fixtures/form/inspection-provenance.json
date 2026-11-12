@@ -1,0 +1,49 @@
+{
+  "synthetic": true,
+  "note": "Invented tool records for evaluating evidence handling. No real browser test was run.",
+  "records": [
+    {
+      "id": "R-01",
+      "target": "custom form",
+      "method": "keyboard",
+      "environment": "in-app browser, engine/build unknown",
+      "evidence": "Current-focus browser key input submitted invalid values. Focus moved to the page heading and optional Reference code REF-742 was cleared."
+    },
+    {
+      "id": "R-02",
+      "target": "custom form email and reply group",
+      "method": "DOM inspection",
+      "evidence": "The Email span has no association with the input. aria-describedby points to missing-help, which does not exist. The reply question is a paragraph in a plain div; individually labeled radios share name=reply."
+    },
+    {
+      "id": "R-03",
+      "target": "custom form email and reply group",
+      "method_claimed": "native AX output",
+      "tool_call": "tab.getAXState()",
+      "tab_creation": "cua.createBrowserTab(\"iab\", local_url)",
+      "documentation_excerpt": "getAXState() returns a DOM snapshot for DOM-only tabs.",
+      "capture_metadata": {
+        "inspection_path": null,
+        "tool_version": null
+      },
+      "output": "4 text Email (required)\n5 text Use an address such as name@example.com.\n6 text field (settable)\n7 text Reference code (optional)\n8 text field (settable) Reference code (optional), ID: reference\n9 text Would you like a reply? (required)\n10 radio button Description: Yes, ID: reply-yes\n11 radio button Description: No, ID: reply-no",
+      "prior_summary": "Native AX proves Email is unnamed and the reply group has no exposed group name."
+    },
+    {
+      "id": "R-04",
+      "target": "separate explicit-label control",
+      "method": "browser accessibility tree",
+      "tool_call": "Accessibility.getFullAXTree",
+      "capture_metadata": {
+        "inspection_path": "direct browser-engine accessibility protocol response",
+        "provenance_evidence": "Supplied adapter trace records a direct engine AX request and response for this target, with no DOM fallback.",
+        "environment": "synthetic engine E, build 1; adapter version 1"
+      },
+      "output": {
+        "role": "textbox",
+        "name": "Reference code"
+      },
+      "screen_reader_used": false
+    }
+  ]
+}

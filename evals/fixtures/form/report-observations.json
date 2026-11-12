@@ -1,0 +1,47 @@
+{
+  "synthetic": true,
+  "note": "Invented handoff records, not retained runtime observations.",
+  "observations": [
+    {
+      "id": "R-01",
+      "finding": "F-01",
+      "check": "FRM-01",
+      "target": "custom form email",
+      "state": "initial",
+      "method": "source",
+      "status": "Fail",
+      "evidence": "Visible span beside email input has no label association; final browser name unverified."
+    },
+    {
+      "id": "R-02",
+      "finding": "F-02",
+      "check": "FRM-02",
+      "target": "custom form reply group",
+      "state": "initial",
+      "method": "source",
+      "status": "Fail",
+      "evidence": "Yes/No options have individual labels but their shared question is not associated with a group."
+    },
+    {
+      "id": "R-03",
+      "finding": "F-03",
+      "check": "FRM-05",
+      "target": "custom form",
+      "state": "invalid-submit",
+      "method": "keyboard",
+      "environment": "synthetic browser E",
+      "status": "Fail",
+      "evidence": "Previously typed optional reference value disappears; focus moves to page heading. Data-preservation recommendation failed; normative classification not established."
+    },
+    {
+      "id": "R-04",
+      "check": "FRM-05",
+      "target": "separate native form",
+      "state": "invalid-submit",
+      "method": "keyboard",
+      "environment": "synthetic browser E",
+      "status": "Pass",
+      "evidence": "Empty submit focuses the email input; correction and resubmission remain keyboard-operable."
+    }
+  ]
+}

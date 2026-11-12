@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Native modal evaluation fixture</title>
+<h1>Native modal fixture</h1>
+<button id="open" type="button">Review details</button>
+<button type="button">Background action</button>
+<dialog id="details" aria-labelledby="heading">
+  <h2 id="heading" tabindex="-1" autofocus>Review details</h2>
+  <p>Read these details before continuing.</p>
+  <ul><li>This fixture uses native modal behavior.</li><li>It has no custom tab trap.</li></ul>
+  <form method="dialog"><button value="cancel">Cancel</button><button value="continue">Continue</button></form>
+</dialog>
+<script>
+const modal = document.getElementById('details');
+document.getElementById('open').addEventListener('click', () => modal.showModal());
+</script>
+</html>

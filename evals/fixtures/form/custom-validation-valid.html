@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact preferences</title>
+<style>
+body { font: 1rem/1.5 system-ui; max-width: 40rem; margin: 2rem auto; padding: 1rem; }
+fieldset, .field, [role="group"] { margin-block: 1rem; }
+:focus-visible, #errors:focus { outline: 3px solid #1257a2; outline-offset: 3px; }
+.error { color: #a40000; }
+</style>
+<h1>Contact preferences</h1>
+<form novalidate>
+  <section id="errors" tabindex="-1" aria-labelledby="error-title" hidden>
+    <h2 id="error-title">Check your answers</h2>
+    <ul id="error-list"></ul>
+  </section>
+  <div class="field">
+    <label for="email">Email (required)</label>
+    <p id="email-help">Use an address such as name@example.com.</p>
+    <input id="email" name="email" type="email" autocomplete="email" required aria-describedby="email-help">
+    <p id="email-error" class="error" hidden></p>
+  </div>
+  <div class="field">
+    <span id="reference-label">Reference code (optional)</span>
+    <input id="reference" name="reference" aria-labelledby="reference-label">
+  </div>
+  <fieldset>
+    <legend>Would you like a reply? (required)</legend>
+    <label><input id="reply-yes" name="reply" value="yes" type="radio" required> Yes</label>
+    <label><input id="reply-no" name="reply" value="no" type="radio" required> No</label>
+    <p id="reply-error" class="error" hidden></p>
+  </fieldset>
+  <div role="group" aria-labelledby="topics-label">
+    <p id="topics-label">Topics (optional)</p>
+    <label><input id="news" type="checkbox" name="topics" value="news"> News</label>
+    <label><input id="events" type="checkbox" name="topics" value="events"> Events</label>
+  </div>
+  <label><input id="copy" type="checkbox" name="copy"> Send me a copy (optional)</label>
+  <p><button type="submit">Save preferences</button></p>
+  <p id="status" role="status"></p>
+</form>
+<script>
+const form = document.querySelector('form');
+const email = document.getElementById('email');
+const radios = [...form.querySelectorAll('[name="reply"]')];
+const summary = document.getElementById('errors');
+const list = document.getElementById('error-list');
+const status = document.getElementById('status');
+let submitted = false;
+function validate() {
+  const issues = [];
+  const emailMessage = email.validity.valueMissing ? 'Enter your email address.'
+    : email.validity.typeMismatch ? 'Enter an email address such as name@example.com.' : '';
+  const replyMessage = radios.some(radio => radio.checked) ? '' : 'Choose Yes or No for whether you would like a reply.';
+  for (const [controls, errorId, message, help] of [
+    [[email], 'email-error', emailMessage, 'email-help'],
+    [radios, 'reply-error', replyMessage, '']
+  ]) {
+    const error = document.getElementById(errorId);
+    error.textContent = message;
+    error.hidden = !message;
+    for (const control of controls) {
+      if (message) control.setAttribute('aria-invalid', 'true');
+      else control.removeAttribute('aria-invalid');
+      const description = [help, message ? errorId : ''].filter(Boolean).join(' ');
+      if (description) control.setAttribute('aria-describedby', description);
+      else control.removeAttribute('aria-describedby');
+    }
+    if (message) issues.push({target: controls[0].id, message});
+  }
+  list.replaceChildren();
+  for (const {target, message} of issues) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#' + target;
+    link.textContent = message;
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      document.getElementById(target).focus();
+    });
+    li.append(link);
+    list.append(li);
+  }
+  summary.hidden = !issues.length;
+  return issues;
+}
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  submitted = true;
+  status.textContent = '';
+  if (validate().length) summary.focus();
+  else status.textContent = 'Preferences saved for this demonstration. No data was sent.';
+});
+form.addEventListener('input', () => {
+  status.textContent = '';
+  if (submitted) validate();
+});
+</script>
+</html>

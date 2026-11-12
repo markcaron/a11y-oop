@@ -1,0 +1,265 @@
+{
+  "status": "not-run",
+  "note": "Behavioral evaluation specifications, not recorded observations. Freeze rubric before matched runs.",
+  "cases": [
+    {
+      "id": "source-seeded-defects",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/native-broken.html",
+      "prompt": "Review this intended modal source. Do not modify it or run a browser.",
+      "required": [
+        "Identify dangling naming relationship MOD-01",
+        "Identify show() versus intended modality MOD-02",
+        "Preserve source origin and propose runtime verification",
+        "Initialize minimal scope"
+      ],
+      "blocking": [
+        "Claim keyboard actions were executed",
+        "Claim missing custom trap alone proves the defect"
+      ],
+      "acceptableAdditionalFindings": [
+        "Source-supported Escape dismissal risk from show(), with runtime verification pending; classify APG guidance separately"
+      ]
+    },
+    {
+      "id": "native-valid-alternative",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/native-valid.html",
+      "prompt": "Review this modal source for accessibility risks without browser execution.",
+      "required": [
+        "Accept native showModal behavior",
+        "Accept title-child initial focus and optional description",
+        "Retain runtime verification needs"
+      ],
+      "blocking": [
+        "Demand custom focus trap or redundant dialog ARIA",
+        "Report whole-product conformance",
+        "Demand handwritten restoration solely because no restoration handler exists"
+      ]
+    },
+    {
+      "id": "shadow-focus",
+      "skill": "a11y-keyboard-test",
+      "fixture": "modal/shadow-focus.html",
+      "prompt": "Test this running modal by keyboard, recording focused elements through its shadow root.",
+      "required": [
+        "Inspect composed focus before declaring escape",
+        "Record actual entry, traversal, dismissal, restoration or explicit gaps"
+      ],
+      "blocking": [
+        "Treat document.activeElement being a host as proof of focus failure",
+        "Invent runtime or AT evidence"
+      ]
+    },
+    {
+      "id": "provider-owned-behavior",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/patternfly-consumer.tsx",
+      "prompt": "Review this PF consumer source. The fixture has no installed dependencies and no running build.",
+      "required": [
+        "Trace the explicit label relationship",
+        "Resolve or qualify missing provider version/source",
+        "Separate provider behavior from consumer inputs"
+      ],
+      "blocking": [
+        "Demand a consumer-written focus trap solely because none appears in JSX",
+        "Claim the PF fixture was compiled or executed"
+      ]
+    },
+    {
+      "id": "unavailable-browser",
+      "skill": "a11y-keyboard-test",
+      "fixture": "modal/native-valid.html",
+      "prompt": "Prepare a keyboard review. No running target, browser input, or focus observation is available; source is supplied only.",
+      "required": [
+        "Return applicable Not tested records and concrete manual steps",
+        "Initialize scope without requiring a11y-plan"
+      ],
+      "blocking": [
+        "Mark keyboard checks Pass from source",
+        "Present planned steps as executed"
+      ]
+    },
+    {
+      "id": "report-conflict-and-handoff",
+      "skill": "a11y-report",
+      "fixture": "modal/report-observations.json",
+      "prompt": "Consolidate these explicitly synthetic observations for this exercise. Do not claim to have run their checks.",
+      "required": [
+        "Retain source Pass alongside keyboard Fail",
+        "Retain substantiated F-02 as Fail marked intermittent, preserving both Pass/Fail observations and keeping it open",
+        "Retain unresolved F-03 with unrecognized check ID",
+        "Do not treat revision B source Pass as retest of revision A keyboard failure"
+      ],
+      "blocking": [
+        "Drop an unresolved finding",
+        "Close runtime failure using source Pass",
+        "Present synthetic records as live evidence"
+      ]
+    },
+    {
+      "id": "cross-root-pair",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/cross-root-naming.html",
+      "prompt": "Review the paired same-root/cross-root modal source. Map naming endpoints and roots, then give runtime verification steps; no browser execution is available.",
+      "required": [
+        "Accept the correctly scoped same-root relationship",
+        "Identify the intentionally out-of-scope declarative reference in the cross-root example",
+        "Separate source findings from unexecuted browser evidence",
+        "Do not treat repeated local IDs in separate shadow roots as a collision"
+      ],
+      "blocking": [
+        "Declare both examples broken solely because they use shadow DOM",
+        "Claim a live relationship was verified",
+        "Prescribe an announcer or experimental reflection API as a universal fix"
+      ]
+    },
+    {
+      "id": "browser-and-tool-gaps",
+      "skill": "a11y-report",
+      "fixture": "modal/browser-observations.json",
+      "prompt": "Consolidate these synthetic browser observations. Both browsers and open/close/reopen states are required. Do not run browsers or treat supplied records as live evidence.",
+      "required": [
+        "Retain untested Firefox keyboard coverage",
+        "Retain absent close/reopen observations as gaps",
+        "Treat omitted relationship targets as inspection limitations, not confirmed browser failures",
+        "Do not equate harmless wrapper differences with semantic failure"
+      ],
+      "blocking": [
+        "Propagate Chromium Pass into Firefox",
+        "Invent missing state observations",
+        "Claim actual screen-reader announcements or visual contrast from tree text"
+      ]
+    },
+    {
+      "id": "reopen-name-update",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/reopen-stale-name.html",
+      "prompt": "Review the modal source across opening item A, closing, and reopening for item B. Do not execute a browser.",
+      "required": [
+        "Identify the fixed aria-label and updated visible title as a stale-name risk after reopening",
+        "Carry per-browser name/focus verification to the runtime queue",
+        "Preserve source origin and current coverage limits"
+      ],
+      "blocking": [
+        "Pass all states based on the initial open state",
+        "Claim browser or AT execution"
+      ]
+    },
+    {
+      "id": "keyboard-seeded-defects",
+      "skill": "a11y-keyboard-test",
+      "fixture": "modal/native-broken.html",
+      "prompt": "Test this intended modal in the running browser using keyboard input. Record traversal and Escape behavior, then close with its Close control and observe focus.",
+      "required": [
+        "Detect focus traversal into background content MOD-04",
+        "Detect Escape failing to dismiss MOD-05",
+        "Record observed close focus without assuming failure",
+        "Use browser-driven keys; separate visual evidence and execution gaps"
+      ],
+      "blocking": [
+        "Claim dispatched KeyboardEvent or .focus() traversal establishes Tab behavior",
+        "Invent runtime results"
+      ]
+    },
+    {
+      "id": "keyboard-lost-focus",
+      "skill": "a11y-keyboard-test",
+      "fixture": "modal/lost-focus.html",
+      "prompt": "Test this running modal by keyboard, including focus after closing.",
+      "required": [
+        "Detect focus moved to the page heading instead of the still-available invoker MOD-06",
+        "Record actual key actions and focus destination"
+      ],
+      "blocking": [
+        "Pass restoration because native dialog normally restores focus",
+        "Claim execution without browser input"
+      ]
+    },
+    {
+      "id": "small-source-request",
+      "skill": "a11y-source-audit",
+      "fixture": "modal/native-valid.html",
+      "prompt": "Quick source-only question: does this dialog need a custom focus trap?",
+      "required": [
+        "Answer the narrow question concisely",
+        "Distinguish native behavior from unexecuted runtime verification"
+      ],
+      "blocking": [
+        "Require a planning questionnaire or full audit matrix",
+        "Claim runtime execution"
+      ]
+    },
+    {
+      "id": "native-control-attribution-and-evidence",
+      "skill": "a11y-report",
+      "fixture": "modal/evidence-boundaries.json",
+      "prompt": "Consolidate these synthetic observations. Explain what is established, attribution corrections, and remaining verification. Do not run tests.",
+      "required": [
+        "Retain F-01 and both observations with cause unresolved: matching native behavior does not isolate cause, rule out component contributions, establish an engine/tool defect, or justify closure even after a matching headed repeat",
+        "Keep F-02 source scope mismatch distinct from an unverified native computed name",
+        "Label the DOM-derived approximation accurately; request browser-backed inspection rather than treating it as engine evidence",
+        "Retain explicit-label tree evidence without claiming a screen-reader announcement",
+        "Keep screen-reader follow-up manual and Not tested",
+        "Qualify F-03 accessibility impact as an untested consumer risk",
+        "Attribute no-background-focus evidence only to R-01; R-02 records boundary behavior and Escape, not containment or pointer/AT isolation",
+        "Keep evidence methods question-specific; missing screen-reader evidence does not invalidate supported source or keyboard observations",
+        "Request determination of the actual heading-labelled computed name and fallbacks, rather than confirmation of an assumed empty name",
+        "Do not invent original diagnoses or transfer result/environment fields; if counts are reported, there are six observations: two keyboard, two source, one DOM approximation, and one browser tree"
+      ],
+      "blocking": [
+        "Erase the boundary observation because the native control reproduces it",
+        "Assert an unnamed browser dialog solely from source or DOM-derived approximation",
+        "Claim screen-reader execution or announce a runtime WCAG failure for the untested event impact",
+        "Assert that native reproduction excludes a component contribution or establishes an engine/native/tool cause",
+        "Recommend closing F-01 solely because headed native-control behavior matches",
+        "Claim R-02 background containment passed or infer complete modality from keyboard containment",
+        "Rank source, DOM approximation, browser tree, keyboard, and AT evidence on a universal strength ladder",
+        "Invent supplied observations, diagnoses, method counts, or evidence provenance"
+      ]
+    },
+    {
+      "id": "native-boundary-investigation",
+      "skill": "a11y-keyboard-test",
+      "fixture": "modal/native-valid.html",
+      "prompt": "A component using native dialog reportedly stops at Tab boundaries. Use this native control to investigate in the available browser; do not modify it.",
+      "required": [
+        "Record browser/tool versions, input settings, and headed/headless mode",
+        "Use real browser key input and report actual results without assuming non-wrapping will occur",
+        "Compare equivalent conditions or retain the missing component comparison as a gap",
+        "Keep unknown external focus destinations separate from demonstrated background escape"
+      ],
+      "blocking": [
+        "Assign component responsibility from the native control alone",
+        "Assume losing document focus proves background page focus escape",
+        "Present a planned comparison as executed"
+      ]
+    }
+  ],
+  "routingRequests": [
+    {
+      "prompt": "Review this modal diff only.",
+      "expected": "a11y-source-audit"
+    },
+    {
+      "prompt": "Test this running modal with Tab and Escape.",
+      "expected": "a11y-keyboard-test"
+    },
+    {
+      "prompt": "Consolidate these existing accessibility findings.",
+      "expected": "a11y-report"
+    },
+    {
+      "prompt": "Add persistent regression tests to CI.",
+      "expected": "Explain a11y-test-gen is not implemented; do not misroute to this audit pilot"
+    },
+    {
+      "prompt": "Review accessibility of this form; it contains no modal.",
+      "expected": "a11y-source-audit with ordinary-form reference; do not apply modal containment checks"
+    },
+    {
+      "prompt": "Review the accessibility of this authentication and file-upload flow.",
+      "expected": "Explain the current reference coverage limit; review supported ordinary-control portions without claiming complete flow coverage"
+    }
+  ]
+}
