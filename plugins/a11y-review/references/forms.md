@@ -41,6 +41,7 @@ Scope: ordinary inputs, selects, textareas, native radios/checkboxes, and submis
 - On unsuccessful submit, observe a usable route to errors and correction without losing unrelated input. A focused error summary with links or focus on an invalid field are useful strategies, not universal mandatory destinations.
 - Verify keyboard reachability, summary links, group selection, and resubmission.
 - Native validation UI can be valid without a custom summary or alert.
+- Recovery applies to native and custom validation alike. Native validation blocking the submit handler does not make recovery Not applicable: verify invalid submission → correction → successful resubmission, including preservation of unrelated entered values and selections. In a source-only review, carry this sequence into the runtime queue as Not tested.
 - For success/error status updates that do not take focus, inspect applicable status-message semantics; do not prescribe role=alert everywhere. Actual announcements remain manual and Not tested unless supplied.
 
 ## Keyboard sequence
