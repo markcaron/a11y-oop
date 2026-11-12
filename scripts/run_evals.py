@@ -13,13 +13,30 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = {'a11y-source-audit', 'a11y-report'}
 
 
-def digest(path):
+def snapshot(path):
+    return {file.relative_to(path): file.read_bytes()
+            for file in sorted(path.rglob('*'))
+            if file.is_file() and '__pycache__' not in file.parts}
+
+
+def digest_files(files):
     h = hashlib.sha256()
-    for file in sorted(p for p in path.rglob('*') if p.is_file() and '__pycache__' not in p.parts):
-        h.update(file.relative_to(path).as_posix().encode())
+    for relative, content in sorted(files.items()):
+        h.update(relative.as_posix().encode())
         h.update(b'\0')
-        h.update(file.read_bytes())
+        h.update(content)
     return h.hexdigest()
+
+
+def digest(path):
+    return digest_files(snapshot(path))
+
+
+def write_snapshot(path, files):
+    for relative, content in files.items():
+        destination = path / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(content)
 
 
 def cases(root):
@@ -55,7 +72,10 @@ def fixture_path(root, relative):
 def prompt_for(case, mode):
     instruction = (
         f'Read and follow plugin/skills/{case["skill"]}/SKILL.md. '
-        'Read its supporting references as needed.' if mode == 'on' else
+        'Read its supporting references as needed. Resolve Markdown links relative to the '
+        'file containing each link, not the workspace root; the skill links resolve under '
+        'plugin/references/ (for example ../../references/rendered-semantics.md from '
+        'the skill file resolves to plugin/references/rendered-semantics.md).' if mode == 'on' else
         'This is a skill-off baseline. Do not invoke accessibility skills or read '
         'their instructions or references. Use only the supplied fixture for the review.'
     )
@@ -110,22 +130,25 @@ def run(args, root=ROOT):
     parent.mkdir(parents=True, exist_ok=True)
     run_dir = Path(tempfile.mkdtemp(prefix='a11y-eval-', dir=parent))
     plugin = root / 'plugins/a11y-review'
+    plugin_files = snapshot(plugin)
     revision = subprocess.run(['git', '-C', str(root), 'rev-parse', 'HEAD'], capture_output=True, text=True)
     version = subprocess.run([binary, '--version'], capture_output=True, text=True).stdout.strip() if binary else None
     metadata = {'created': datetime.now(timezone.utc).isoformat(), 'revision': revision.stdout.strip() or None,
-                'plugin_sha256': digest(plugin), 'model': args.model, 'reasoning': args.reasoning,
+                'plugin_sha256': digest_files(plugin_files), 'model': args.model, 'reasoning': args.reasoning,
                 'codex_version': version, 'mode': args.mode, 'execute': args.execute,
                 'comparison_dimension': args.dimension, 'method': 'explicit-file',
                 'limitations': 'No installed discovery or browser testing. User skills and filesystem reads are not fully isolated.'}
     (run_dir / 'metadata.json').write_text(json.dumps(metadata, indent=2) + '\n')
-    shutil.copytree(plugin, run_dir / 'plugin-snapshot', ignore=shutil.ignore_patterns('__pycache__'))
+    # Keep grading material in memory until every case/mode has exited.
+    # Publishing after each case would still expose it to later baseline runs.
+    pending_rubrics = []
     records = []
     try:
         for case in selected:
             for mode in (['on', 'off'] if args.mode == 'both' else [args.mode]):
                 folder = run_dir / case['id'] / mode
                 folder.mkdir(parents=True)
-                (folder / 'rubric.json').write_text(json.dumps(case, indent=2) + '\n')
+                pending_rubrics.append((folder, case))
                 prompt = prompt_for(case, mode)
                 (folder / 'prompt.txt').write_text(prompt)
                 source = fixture_path(root, case['fixture'])
@@ -135,13 +158,14 @@ def run(args, root=ROOT):
                           'fixture_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
                           'artifacts': str(folder)}
                 records.append(record)
-                # Workspaces are siblings of the artifacts, never inside the authoring repo.
-                with tempfile.TemporaryDirectory(prefix='a11y-case-', dir=parent) as temporary:
-                    work = Path(temporary)
-                    (work / 'fixture').mkdir()
+                # Use a separate temporary container, not the artifact output directory.
+                # This reduces accidental discovery; read-only is not read isolation.
+                with tempfile.TemporaryDirectory(prefix='a11y-work-') as temporary:
+                    work = outside_repo(Path(temporary) / 'case', root)
+                    (work / 'fixture').mkdir(parents=True)
                     shutil.copy2(source, work / 'fixture' / source.name)
                     if mode == 'on':
-                        shutil.copytree(plugin, work / 'plugin', ignore=shutil.ignore_patterns('__pycache__'))
+                        write_snapshot(work / 'plugin', plugin_files)
                     command = [binary or args.codex, 'exec', '--ignore-user-config', '--ephemeral',
                                '--skip-git-repo-check', '--sandbox', 'read-only', '--color', 'never',
                                '--json', '-C', str(work), '-o', str(folder / 'response.md')]
@@ -166,6 +190,10 @@ def run(args, root=ROOT):
                                 record.update(execution='timeout', grade='not graded')
                     write_summary(run_dir, records)
     finally:
+        # subprocess.run has exited (or killed/waited for a timed-out child).
+        for folder, case in pending_rubrics:
+            (folder / 'rubric.json').write_text(json.dumps(case, indent=2) + '\n')
+        write_snapshot(run_dir / 'plugin-snapshot', plugin_files)
         write_summary(run_dir, records)
         print(f'Run summary: {run_dir / "summary.md"}')
     return 1 if any(r['execution'] in {'error', 'timeout', 'interrupted'} for r in records) else 0

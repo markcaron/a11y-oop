@@ -23,8 +23,9 @@ Inspect requested files/diffs and enough dependencies to trace relevant behavior
 - Account for native/browser-provided behavior before identifying missing implementation code or ARIA as a defect.
 - Distinguish a broken naming relationship from an unverified computed name.
 - For API/event issues, explain the accessibility impact or qualify it as an untested consumer risk.
-- In React, trace forwarded props, generated IDs, conditional rendering, and portals.
+- Inspect only the runtime paths present in the target. In React/Next, trace forwarded props, generated IDs, conditional rendering, and portals; in Vue/Nuxt, trace attribute forwarding, slots, and teleported content. Inspect server/client rendering and hydration only when relevant to the relationship or state under review.
 - For Web Components, follow slots, shadow roots, and ElementInternals; load the [cross-root reference](../../references/web-components/cross-root-relationships.md) when relationships cross roots.
+- For Drupal, trace the relevant render data and Twig template through to output attributes and any attached client behavior. Distinguish CMS-authored content, theme overrides, and component-owned semantics; request rendered evidence where the source path cannot settle the result.
 - Load [naming](../../references/names-and-descriptions.md) or [native focus](../../references/focus-and-native-dialogs.md) detail only as needed.
 
 For component-author reviews that include examples, inspect relevant demos/snippets for correct usage and state coverage. Do not expand a consumer request into unrelated documentation work.

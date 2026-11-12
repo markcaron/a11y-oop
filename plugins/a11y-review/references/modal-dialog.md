@@ -1,6 +1,6 @@
 # Modal dialog
 
-Version: 0.1.0-draft.2. Applies when a dialog blocks background interaction. Nonmodal panels and alert dialogs need separate scope decisions; appearance alone does not determine the pattern.
+Applies when a dialog blocks background interaction. Nonmodal panels and alert dialogs need separate scope decisions; appearance alone does not determine the pattern.
 
 ## Expectations
 

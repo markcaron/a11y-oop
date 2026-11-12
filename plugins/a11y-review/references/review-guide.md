@@ -13,6 +13,9 @@ State what was inspected, what was found, the supporting evidence, and what stil
 - A quick review can use a few findings and a short limitations note.
 - Do not require a questionnaire, separate scope file, full catalog dump, or detailed result matrix for a small request.
 - Keep enough evidence to reproduce findings and preserve existing IDs.
+- For a diff review, start with changed accessibility-relevant code and follow only dependencies needed to resolve a concrete question. Expand beyond that scope only when evidence warrants it; identify deferred coverage.
+- Load each relevant reference once and follow additional links only to settle an unresolved expectation or mechanism. Batch independent searches/reads; stop investigating a claim once its evidence and verification gap are clear.
+- Reuse supplied environment/version facts when adequate. Avoid whole-repository scans, repeated documentation lookups, or browser setup for a source-only request.
 - Separate source inference, automated output, browser observation, visual inspection, supplied testimony, and human AT evidence.
 - Missing or inconclusive evidence is never a pass.
 - A tree snapshot cannot establish visual contrast or what a screen reader announced.
@@ -39,7 +42,7 @@ State what was inspected, what was found, the supporting evidence, and what stil
 - Use [check IDs](checks.json) for structured tracking.
 - Give observations result IDs and run/time.
 - Record expected versus actual, evidence/limitation, confidence, authority, affected file/target, and related finding ID.
-- Record evaluated revision, browser/engine/OS/tool capabilities, and check/plugin provenance when known; label unknowns instead of inventing details.
+- Record evaluated revision, browser/engine/OS/tool capabilities, and check/plugin provenance when known; label unknowns instead of inventing details. Identify plugin and reference content by repository commit or content hash. The version in checks.json identifies the check catalog only, not a separate version for every pattern note.
 - Markdown is sufficient unless machine-readable output is requested.
 - Carry scope, results, finding IDs, artifacts, unresolved questions, and next verification steps.
 - Include browser/state requirements and cross-root endpoint maps when relevant.

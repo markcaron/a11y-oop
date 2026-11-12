@@ -48,7 +48,7 @@ class RunnerTests(unittest.TestCase):
             self.assertTrue(all(r['grade'] == 'not reviewed' for r in results))
             self.assertFalse(list(Path(output).glob('a11y-case-*')))
 
-    def test_execution_has_fresh_workspaces_and_hidden_rubrics(self):
+    def test_batch_defers_all_rubrics_and_snapshots_until_execution_ends(self):
         seen = []
         def fake_cli(command, **kwargs):
             if command[0] == 'git':
@@ -59,15 +59,28 @@ class RunnerTests(unittest.TestCase):
             seen.append(work)
             self.assertFalse(list(work.rglob('rubric.json')))
             self.assertFalse((work / 'evals').exists())
-            self.assertEqual((work / 'plugin').exists(), len(seen) == 1)
+            self.assertNotEqual(work.parent, Path(output))
+            self.assertNotIn(Path(output), work.parents)
+            self.assertFalse(list(Path(output).rglob('rubric.json')))
+            self.assertFalse(list(Path(output).rglob('plugin-snapshot')))
+            self.assertEqual((work / 'plugin').exists(), len(seen) % 2 == 1)
+            if (work / 'plugin').exists():
+                skill = work / 'plugin/skills/a11y-report/SKILL.md'
+                target = (skill.parent / '../../references/rendered-semantics.md').resolve()
+                self.assertTrue(target.is_file())
+                self.assertEqual(target, work / 'plugin/references/rendered-semantics.md')
+                self.assertIn('relative to the file containing each link', kwargs['input'])
             self.assertIn('read-only', command)
             self.assertNotIn('Retain F-01', kwargs['input'])
             Path(command[command.index('-o') + 1]).write_text('A response requiring human assessment.')
             return subprocess.CompletedProcess(command, 0)
         with tempfile.TemporaryDirectory() as output:
             with patch.object(runner.shutil, 'which', return_value='/fake/codex'), patch.object(runner.subprocess, 'run', side_effect=fake_cli):
-                runner.run(self.args(output, execute=True))
-            self.assertEqual(len(set(seen)), 2)
+                runner.run(self.args(output, execute=True, case=['native-control-attribution-and-evidence', 'form-inspection-provenance']))
+            self.assertEqual(len(set(seen)), 4)
+            self.assertEqual(len(list(Path(output).rglob('rubric.json'))), 4)
+            archived = next(Path(output).glob('a11y-eval-*/plugin-snapshot'))
+            self.assertEqual(runner.digest(archived), runner.digest(ROOT / 'plugins/a11y-review'))
             self.assertTrue(all(not p.exists() for p in seen))
             results = json.loads(next(Path(output).glob('a11y-eval-*/results.json')).read_text())
             self.assertTrue(all(r['grade'] == 'needs review' for r in results))
@@ -83,6 +96,24 @@ class RunnerTests(unittest.TestCase):
             result = json.loads(next(Path(output).glob('a11y-eval-*/results.json')).read_text())[0]
             self.assertEqual(result['execution'], 'timeout')
             self.assertEqual(result['grade'], 'not graded')
+            self.assertTrue(list(Path(output).rglob('rubric.json')))
+            self.assertTrue(list(Path(output).rglob('plugin-snapshot')))
+
+    def test_interruption_preserves_rubric_after_child_exits(self):
+        def fake_cli(command, **kwargs):
+            if command[0] == 'git' or '--version' in command:
+                return subprocess.CompletedProcess(command, 0, stdout='test\n')
+            self.assertFalse(list(Path(output).rglob('rubric.json')))
+            self.assertFalse(list(Path(output).rglob('plugin-snapshot')))
+            raise KeyboardInterrupt()
+        with tempfile.TemporaryDirectory() as output:
+            with patch.object(runner.shutil, 'which', return_value='/fake/codex'), patch.object(runner.subprocess, 'run', side_effect=fake_cli):
+                with self.assertRaises(KeyboardInterrupt):
+                    runner.run(self.args(output, execute=True))
+            result = json.loads(next(Path(output).glob('a11y-eval-*/results.json')).read_text())[0]
+            self.assertEqual(result['execution'], 'interrupted')
+            self.assertTrue(list(Path(output).rglob('rubric.json')))
+            self.assertTrue(list(Path(output).rglob('plugin-snapshot')))
 
     def test_execution_requires_explicit_model(self):
         with tempfile.TemporaryDirectory() as output:
