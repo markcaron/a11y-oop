@@ -32,7 +32,7 @@ For component-author reviews that include examples, inspect relevant demos/snipp
 
 ## Return
 
-Lead with evidence-backed findings and suggested changes, then list runtime checks still needed.
+Lead with evidence-backed findings and suggested changes, then list runtime checks still needed. Identify their target states/transitions and required browser environments using the [browser requirements](../../references/browser-coverage.md); if support policy is unknown, label the proposed matrix as an assumption.
 
 - Identify source inference as source inference; do not claim keyboard or AT execution.
 - Preserve unresolved finding IDs.
