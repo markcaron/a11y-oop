@@ -32,9 +32,13 @@ For component-author reviews that include examples, inspect relevant demos/snipp
 
 ## Return
 
-Lead with evidence-backed findings and suggested changes, then list runtime checks still needed. Identify their target states/transitions and required browser environments using the [browser requirements](../../references/browser-coverage.md); if support policy is unknown, label the proposed matrix as an assumption.
+Lead with evidence-backed findings and suggested changes, then list runtime checks still needed.
 
+- Read the [browser requirements](../../references/browser-coverage.md) before preparing the runtime handoff.
+- Identify the target states/transitions for the remaining checks.
+- Name the proposed browser environments from the project's support policy or the browser reference's fallback; when policy is unknown, explicitly label the matrix as an assumption. Saying only "required browsers" is insufficient.
+- Mark unexecuted checks Not tested and identify known coverage gaps; do not imply that source review exercised the proposed environments.
 - Identify source inference as source inference; do not claim keyboard or AT execution.
 - Preserve unresolved finding IDs.
-- For a detailed audit or handoff, use the shared guide's record fields and [browser requirements](../../references/browser-coverage.md).
+- For a detailed audit or handoff, use the shared guide's record fields.
 - Stay read-only unless fixes were requested.
